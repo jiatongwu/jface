@@ -10,36 +10,36 @@ import superCRM.pojos.ContactEO;
 import superCRM.pojos.CustomerEO;
 
 public class NewCustomerWizard extends Wizard {
-	/** ĞÂ½¨¿Í»§Ò³Ãæ */
+	/** æ–°å»ºå®¢æˆ·é¡µé¢ */
 	private NewCustomerWizardPage newCustomerPage;
 
-	/** ĞÂ½¨ÁªÏµÈËÒ³Ãæ */
+	/** æ–°å»ºè”ç³»äººé¡µé¢ */
 	private NewContactWizardPage newContactPage;
 
-	/** ¹¹Ôì·½·¨,³õÊ¼»¯Ò³Ãæ */
+	/** æ„é€ æ–¹æ³•,åˆå§‹åŒ–é¡µé¢ */
 	public NewCustomerWizard(IWorkbenchWindow window) {
 		newCustomerPage = new NewCustomerWizardPage();
 		this.addPage(newCustomerPage);
 		newContactPage = new NewContactWizardPage();
 		this.addPage(newContactPage);
-		this.setWindowTitle("ĞÂ½¨¿Í»§Ïòµ¼");
+		this.setWindowTitle("æ–°å»ºå®¢æˆ·å‘å¯¼");
 	}
 
-	/** µ¥»÷Íê³É°´Å¥Ê± */
+	/** å•å‡»å®ŒæˆæŒ‰é’®æ—¶ */
 	public boolean performFinish() {
-		/** »ñµÃĞÂ½¨¿Í»§Ò³ÃæÊäÈëµÄ¿Í»§¶ÔÏó */
+		/** è·å¾—æ–°å»ºå®¢æˆ·é¡µé¢è¾“å…¥çš„å®¢æˆ·å¯¹è±¡ */
 		CustomerEO customer = newCustomerPage.getCustomer();
-		/** Èç¹û¿Í»§¶ÔÏó²»Îªnull */
+		/** å¦‚æœå®¢æˆ·å¯¹è±¡ä¸ä¸ºnull */
 		if (customer != null) {
-			/** µ÷ÓÃÒµÎñ²ã,±£´æ¿Í»§µ½Êı¾İ¿âÖĞ */
+			/** è°ƒç”¨ä¸šåŠ¡å±‚,ä¿å­˜å®¢æˆ·åˆ°æ•°æ®åº“ä¸­ */
 			ICustomerSerivce customerSerivce = SuperFactory.getSuperApplication().getCustomerSerivce();
 			CustomerEO c = customerSerivce.addCustomer(customer);
-			/** »ñµÃĞÂ½¨ÁªÏµÈËÒ³ÃæµÄÁªÏµÈË¶ÔÏó */
+			/** è·å¾—æ–°å»ºè”ç³»äººé¡µé¢çš„è”ç³»äººå¯¹è±¡ */
 			ContactEO contact = newContactPage.getContact();
-			/** Èç¹û¶ÔÏóÎª null »ò¿Í»§¶ÔÏóÎªnull */
+			/** å¦‚æœå¯¹è±¡ä¸º null æˆ–å®¢æˆ·å¯¹è±¡ä¸ºnull */
 			if (c == null || contact == null)
 				return true;
-			/** µ÷ÓÃÒµÎñ²ã,±£´æ¸ÃÁªÏµÈËµ½Êı¾İ¿â */
+			/** è°ƒç”¨ä¸šåŠ¡å±‚,ä¿å­˜è¯¥è”ç³»äººåˆ°æ•°æ®åº“ */
 			IContactSerivce contactSerivce = SuperFactory.getSuperApplication().getContactSerivce();
 			contact.setCustomerId(c.getId());
 			contactSerivce.addContact(contact);

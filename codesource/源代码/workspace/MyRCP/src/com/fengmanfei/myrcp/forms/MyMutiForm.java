@@ -10,11 +10,11 @@ public class MyMutiForm extends FormEditor {
 	public MyMutiForm() {
 		super();
 	}
-	//ÊµÏÖ¸¸ÀàÖĞµÄ³éÏó·½·¨£¬
-	//ÔÚ¸Ã·½·¨ÖĞ´´½¨Ã¿¸öÒ³Ãæ
+	//å®ç°çˆ¶ç±»ä¸­çš„æŠ½è±¡æ–¹æ³•ï¼Œ
+	//åœ¨è¯¥æ–¹æ³•ä¸­åˆ›å»ºæ¯ä¸ªé¡µé¢
 	protected void addPages() {
 		try {
-			//Ìí¼ÓÁ½¸öÒ³Ãæ
+			//æ·»åŠ ä¸¤ä¸ªé¡µé¢
 			addPage(new FirstPage(this));
 			addPage(new SecondPage(this));
 			addPage(new MasterDetailPage(this));
@@ -22,13 +22,13 @@ public class MyMutiForm extends FormEditor {
 			e.printStackTrace();
 		}
 	}
-	//±£´æ¸Ã±à¼­Æ÷Ê±µ÷ÓÃ¸Ã·½·¨
+	//ä¿å­˜è¯¥ç¼–è¾‘å™¨æ—¶è°ƒç”¨è¯¥æ–¹æ³•
 	public void doSave(IProgressMonitor monitor) {
 	}
-	//Áí´æÎª¸Ã±à¼­Æ÷Ê±
+	//å¦å­˜ä¸ºè¯¥ç¼–è¾‘å™¨æ—¶
 	public void doSaveAs() {
 	}
-	//ÊÇ·ñÔÊĞí±£´æ
+	//æ˜¯å¦å…è®¸ä¿å­˜
 	public boolean isSaveAsAllowed() {
 		return false;
 	}

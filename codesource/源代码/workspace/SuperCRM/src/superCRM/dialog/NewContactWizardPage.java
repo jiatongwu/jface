@@ -12,63 +12,63 @@ import org.eclipse.swt.widgets.Text;
 import superCRM.pojos.ContactEO;
 
 public class NewContactWizardPage extends WizardPage {
-	/** Ò³ÃæÃû³Æ */
+	/** é¡µé¢åç§° */
 	public static final String NEW_CONTACT_PAGE = "CONTACT";
 
-	/** ĞÕÃû */
+	/** å§“å */
 	private Text displayName;
 
-	/** Àà±ğ */
+	/** ç±»åˆ« */
 	private Combo category;
 
-	/** ĞÔ±ğ */
+	/** æ€§åˆ« */
 	private Combo sex;
 
-	/** ³öÉúÈÕÆÚ */
+	/** å‡ºç”Ÿæ—¥æœŸ */
 	private Text birthDate;
 
-	/** Ö°Î» */
+	/** èŒä½ */
 	private Combo jobTitle;
 
-	/** ÁªÏµÈË¶ÔÏó */
+	/** è”ç³»äººå¯¹è±¡ */
 	private ContactEO contact;
 
 	public NewContactWizardPage() {
-		super(NEW_CONTACT_PAGE, "ĞÂ½¨ÁªÏµÈË", null);
-		this.setTitle("ĞÂ½¨ÁªÏµÈË");
-		this.setDescription("ÇëÊäÈëÁªÏµÈËµÄÏêÏ¸ĞÅÏ¢£º");
+		super(NEW_CONTACT_PAGE, "æ–°å»ºè”ç³»äºº", null);
+		this.setTitle("æ–°å»ºè”ç³»äºº");
+		this.setDescription("è¯·è¾“å…¥è”ç³»äººçš„è¯¦ç»†ä¿¡æ¯ï¼š");
 	}
 
 	public void createControl(Composite parent) {
-		/** ÉèÖÃÃæ°å²¼¾Ö */
+		/** è®¾ç½®é¢æ¿å¸ƒå±€ */
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new GridLayout(2, false));
 		GridData data = new GridData(GridData.FILL_HORIZONTAL);
-		/** ĞÕÃû */
-		new Label(composite, SWT.NONE).setText("ĞÕÃû£º");
+		/** å§“å */
+		new Label(composite, SWT.NONE).setText("å§“åï¼š");
 		displayName = new Text(composite, SWT.BORDER);
 		displayName.setLayoutData(data);
-		/** Àà±ğ */
-		new Label(composite, SWT.NONE).setText("Àà±ğ£º");
+		/** ç±»åˆ« */
+		new Label(composite, SWT.NONE).setText("ç±»åˆ«ï¼š");
 		category = new Combo(composite, SWT.BORDER);
 		category.setItems(new String[] { "Friend", "Family", "Contact" });
 		category.select(0);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		category.setLayoutData(data);
-		/** ĞÔ±ğ */
-		new Label(composite, SWT.NONE).setText("ĞÔ±ğ£º");
+		/** æ€§åˆ« */
+		new Label(composite, SWT.NONE).setText("æ€§åˆ«ï¼š");
 		sex = new Combo(composite, SWT.BORDER);
 		sex.setItems(new String[] { "Female", "Male" });
 		sex.select(0);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		sex.setLayoutData(data);
-		/** ³öÉúÈÕÆÚ */
-		new Label(composite, SWT.NONE).setText("³öÉúÈÕÆÚ:");
+		/** å‡ºç”Ÿæ—¥æœŸ */
+		new Label(composite, SWT.NONE).setText("å‡ºç”Ÿæ—¥æœŸ:");
 		birthDate = new Text(composite, SWT.BORDER);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		birthDate.setLayoutData(data);
-		/** Ö°Î»£º */
-		new Label(composite, SWT.NONE).setText("Ö°Î»£º");
+		/** èŒä½ï¼š */
+		new Label(composite, SWT.NONE).setText("èŒä½ï¼š");
 		jobTitle = new Combo(composite, SWT.BORDER);
 		jobTitle.setItems(new String[] { "CEO", "CTO", "CFO" });
 		jobTitle.select(0);
@@ -77,7 +77,7 @@ public class NewContactWizardPage extends WizardPage {
 		setControl(composite);
 	}
 
-	/** »ñµÃÓÃ»§ÊäÈëµÄÁªÏµÈËĞÅÏ¢ */
+	/** è·å¾—ç”¨æˆ·è¾“å…¥çš„è”ç³»äººä¿¡æ¯ */
 	public ContactEO getContact() {
 		if (!displayName.getText().equals("")) {
 			contact = new ContactEO();

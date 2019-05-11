@@ -34,19 +34,19 @@ public class OpenEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent e) {
 
 				String select = list.getSelection()[0];
-				// »ñµÃµ±Ç°¼¤»îµÄIWorkbenchPage¶ÔÏó
+				// è·å¾—å½“å‰æ¿€æ´»çš„IWorkbenchPageå¯¹è±¡
 				IWorkbenchPage page = getViewSite().getWorkbenchWindow().getActivePage();
 				try {
-					if (select.equals("Editor")) {// Èç¹ûÑ¡ÖĞµÄ"Editor"Ò»Ïî
-						// ´´½¨ÊäÈëµÄÄÚÈİ¶ÔÏó
+					if (select.equals("Editor")) {// å¦‚æœé€‰ä¸­çš„"Editor"ä¸€é¡¹
+						// åˆ›å»ºè¾“å…¥çš„å†…å®¹å¯¹è±¡
 						JsEditorInput editor = new JsEditorInput(select);
-						// ´ò¿ª¸Ã±à¼­Æ÷
+						// æ‰“å¼€è¯¥ç¼–è¾‘å™¨
 						page.openEditor(editor, JsEditor.ID);
 
-					} else if (select.equals("MutiPage Editor")) {// Èç¹ûÑ¡ÖĞµÄ"Editor"Ò»Ïî
+					} else if (select.equals("MutiPage Editor")) {// å¦‚æœé€‰ä¸­çš„"Editor"ä¸€é¡¹
 						page.openEditor(new NullEditorInput(), MutiEditorSample.ID);
 
-					}else if (select.equals("Form Editor")) {// Èç¹ûÑ¡ÖĞµÄ"Editor"Ò»Ïî
+					}else if (select.equals("Form Editor")) {// å¦‚æœé€‰ä¸­çš„"Editor"ä¸€é¡¹
 							page.openEditor(new NullEditorInput(), MyMutiForm.ID);
 					}
 				} catch (PartInitException ee) {

@@ -15,9 +15,9 @@ public class TableLabelProvider implements ITableLabelProvider {
 		return null;
 	}
 
-	/** ÉèÖÃ±í¸ñÏÔÊ¾µÄÊı¾İ */
+	/** è®¾ç½®è¡¨æ ¼æ˜¾ç¤ºçš„æ•°æ® */
 	public String getColumnText(Object element, int columnIndex) {
-		/** Èç¹ûÊäÈëµÄÊÇ¿Í»§¶ÔÏó,·µ»ØÏàÓ¦µÄÊı¾İÖµ */
+		/** å¦‚æœè¾“å…¥çš„æ˜¯å®¢æˆ·å¯¹è±¡,è¿”å›ç›¸åº”çš„æ•°æ®å€¼ */
 		if (element instanceof CustomerEO) {
 			CustomerEO c = (CustomerEO) element;
 			if (columnIndex == 0)
@@ -30,7 +30,7 @@ public class TableLabelProvider implements ITableLabelProvider {
 				return c.getCategory();
 			else if (columnIndex == 4)
 				return c.getNumberEmployee();
-			/** Èç¹ûÊäÈëµÄÊÇÁªÏµÈË¶ÔÏó,·µ»ØÏàÓ¦µÄÊı¾İÖµ */
+			/** å¦‚æœè¾“å…¥çš„æ˜¯è”ç³»äººå¯¹è±¡,è¿”å›ç›¸åº”çš„æ•°æ®å€¼ */
 		} else if (element instanceof ContactEO) {
 			ContactEO c = (ContactEO) element;
 
@@ -39,7 +39,7 @@ public class TableLabelProvider implements ITableLabelProvider {
 			else if (columnIndex == 1)
 				return c.getDisplayName();
 			else if (columnIndex == 2) {
-				/** Èç¹ûÊÇ¿Í»§µÄid,Òª²éÑ¯¸Ã¿Í»§µÄÃû³Æ,²¢½«Ãû³ÆÏÔÊ¾ */
+				/** å¦‚æœæ˜¯å®¢æˆ·çš„id,è¦æŸ¥è¯¢è¯¥å®¢æˆ·çš„åç§°,å¹¶å°†åç§°æ˜¾ç¤º */
 				ICustomerSerivce customerSerivce = SuperFactory.getSuperApplication().getCustomerSerivce();
 				CustomerEO customer = customerSerivce.getCustomer(c.getCustomerId());
 				if (customer != null)

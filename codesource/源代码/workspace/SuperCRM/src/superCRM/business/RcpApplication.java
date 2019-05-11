@@ -6,13 +6,13 @@ import superCRM.model.ISuperApplication;
 
 public class RcpApplication implements ISuperApplication {
 
-	/** ¶¨Òå¿Í»§·şÎñ¶ÔÏó */
+	/** å®šä¹‰å®¢æˆ·æœåŠ¡å¯¹è±¡ */
 	private ICustomerSerivce customerSerivce = null;
 
-	/** ¶¨ÒåÁªÏµÈË·şÎñ¶ÔÏó */
+	/** å®šä¹‰è”ç³»äººæœåŠ¡å¯¹è±¡ */
 	private IContactSerivce contactSerivce = null;
 
-	/** »ñµÃ¿Í»§·şÎñ¶ÔÏó */
+	/** è·å¾—å®¢æˆ·æœåŠ¡å¯¹è±¡ */
 	public ICustomerSerivce getCustomerSerivce() {
 		if (customerSerivce == null) {
 			customerSerivce = new CustomerSerivce();
@@ -20,7 +20,7 @@ public class RcpApplication implements ISuperApplication {
 		return customerSerivce;
 	}
 
-	/** »ñµÃÁªÏµÈË·şÎñ¶ÔÏó */
+	/** è·å¾—è”ç³»äººæœåŠ¡å¯¹è±¡ */
 	public IContactSerivce getContactSerivce() {
 		if (contactSerivce == null) {
 			contactSerivce = new ContactSerivce();

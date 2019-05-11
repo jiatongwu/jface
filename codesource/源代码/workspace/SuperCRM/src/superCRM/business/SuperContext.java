@@ -2,11 +2,11 @@ package superCRM.business;
 
 public class SuperContext {
 
-	/** ¹¹Ôì·½·¨Îªprivate */
+	/** æ„é€ æ–¹æ³•ä¸ºprivate */
 	private SuperContext() {
 	}
 
-	/** µ¥ÀıÄ£Ê½µÄÓ¦ÓÃ */
+	/** å•ä¾‹æ¨¡å¼çš„åº”ç”¨ */
 	private static SuperContext context = null;
 
 	public static SuperContext getInstance() {
@@ -15,15 +15,15 @@ public class SuperContext {
 		return context;
 	}
 
-	/** ±£´æµÇÂ¼×´Ì¬ÊôĞÔ */
+	/** ä¿å­˜ç™»å½•çŠ¶æ€å±æ€§ */
 	private boolean bLogin = false;
 
-	/** ÊÇ·ñÒÑµÇÂ¼ */
+	/** æ˜¯å¦å·²ç™»å½• */
 	public boolean isLogin() {
 		return bLogin;
 	}
 
-	/** ÉèÖÃµÇÂ¼×´Ì¬ */
+	/** è®¾ç½®ç™»å½•çŠ¶æ€ */
 	public void setLogin(boolean login) {
 		bLogin = login;
 	}

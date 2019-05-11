@@ -19,7 +19,7 @@ public class NewContactAction extends Action implements IWorkbenchAction{
 		this.workbenchWindow = window;
 		setId( ID );
 		setActionDefinitionId(ID);
-		setText("ĞÂ½¨ÁªÏµÈË");
+		setText("æ–°å»ºè”ç³»äºº");
 		setImageDescriptor(SuperCRMPlugin.getImageDescriptor("icons/contact.gif"));
 	}
 

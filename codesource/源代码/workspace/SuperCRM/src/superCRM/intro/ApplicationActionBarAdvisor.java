@@ -21,17 +21,17 @@ import superCRM.views.QuickNewContactView;
 import superCRM.views.QuickNewCustomerView;
 import superCRM.views.SearchView;
 
-/** ´°¿ÚµÄ²Ëµ¥ÌõÀà */
+/** çª—å£çš„èœå•æ¡ç±» */
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
-	/** ĞÂ½¨²Ëµ¥µÄ²Ëµ¥Ïî */
+	/** æ–°å»ºèœå•çš„èœå•é¡¹ */
 	private IWorkbenchAction newCustomerAction;
 
 	private IWorkbenchAction newContactAction;
 
 	private IWorkbenchAction exitAction;
 
-	/** ²é¿´²Ëµ¥µÄ²Ëµ¥Ïî */
+	/** æŸ¥çœ‹èœå•çš„èœå•é¡¹ */
 	private IWorkbenchAction viewNavAction;
 
 	private IWorkbenchAction viewSearchAction;
@@ -44,7 +44,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	private IWorkbenchAction viewContactAction;
 
-	/** °ïÖú²Ëµ¥µÄ²Ëµ¥Ïî */
+	/** å¸®åŠ©èœå•çš„èœå•é¡¹ */
 	private IWorkbenchAction introAction;
 
 	private IWorkbenchAction helpAction;
@@ -53,78 +53,78 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	private IWorkbenchAction preferenceAction;
 
-	/** ¹¹Ôì·½·¨ */
+	/** æ„é€ æ–¹æ³• */
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
 	}
 
 	protected void makeActions(IWorkbenchWindow window) {
-		/** ĞÂ½¨¿Í»§²Ù×÷ */
+		/** æ–°å»ºå®¢æˆ·æ“ä½œ */
 		newCustomerAction = ActionManager.createNewCustomerAction(window);
 		register(newCustomerAction);
 		
-		/** ĞÂ½¨ÁªÏµÈË²Ù×÷ */
+		/** æ–°å»ºè”ç³»äººæ“ä½œ */
 		newContactAction = ActionManager.createNewContactAction(window);
 		register(newContactAction);
 		
-		/**ÍË³ö²Ù×÷*/
+		/**é€€å‡ºæ“ä½œ*/
 		exitAction = ActionFactory.QUIT.create(window);
 		register(exitAction);
 
-		/**²é¿´µ¼º½ÊÓÍ¼²Ù×÷*/
+		/**æŸ¥çœ‹å¯¼èˆªè§†å›¾æ“ä½œ*/
 		viewNavAction = ActionManager.createShowViewAction(window, NavView.ID);
 		register(viewNavAction);
 		
-		/**²é¿´ËÑË÷ÊÓÍ¼²Ù×÷*/
+		/**æŸ¥çœ‹æœç´¢è§†å›¾æ“ä½œ*/
 		viewSearchAction = ActionManager.createShowViewAction(window, SearchView.ID);
 		register(viewSearchAction);
 		
-		/**²é¿´¿ìËÙĞÂ½¨¿Í»§ÊÓÍ¼²Ù×÷*/
+		/**æŸ¥çœ‹å¿«é€Ÿæ–°å»ºå®¢æˆ·è§†å›¾æ“ä½œ*/
 		viewFastNewCustomerAction = ActionManager.createShowViewAction(window, QuickNewCustomerView.ID);
 		register(viewFastNewCustomerAction);
 		
-		/**²é¿´¿ìËÙĞÂ½¨ÁªÏµÈËÊÓÍ¼²Ù×÷*/
+		/**æŸ¥çœ‹å¿«é€Ÿæ–°å»ºè”ç³»äººè§†å›¾æ“ä½œ*/
 		viewFastNewCintactAction = ActionManager.createShowViewAction(window, QuickNewContactView.ID);
 		register(viewFastNewCintactAction);
 		
-		/**²é¿´¿Í»§ÁĞ±íÊÓÍ¼²Ù×÷*/
+		/**æŸ¥çœ‹å®¢æˆ·åˆ—è¡¨è§†å›¾æ“ä½œ*/
 		viewCustomerAction = ActionManager.createShowViewAction(window, CustomerSummaryView.ID);
 		register(viewCustomerAction);
 		
-		/**²é¿´ÁªÏµÈËÁĞ±íÊÓÍ¼²Ù×÷*/
+		/**æŸ¥çœ‹è”ç³»äººåˆ—è¡¨è§†å›¾æ“ä½œ*/
 		viewContactAction = ActionManager.createShowViewAction(window, ContactSummaryView.ID);
 		register(viewContactAction);
 
-		/**´ò¿ª»¶Ó­ÊÓÍ¼²Ù×÷*/
+		/**æ‰“å¼€æ¬¢è¿è§†å›¾æ“ä½œ*/
 		introAction = ActionFactory.INTRO.create(window);
 		register(introAction);
 		
-		/**´ò¿ª°ïÖú´°¿Ú²Ù×÷*/
+		/**æ‰“å¼€å¸®åŠ©çª—å£æ“ä½œ*/
 		helpAction = ActionFactory.HELP_CONTENTS.create(window);
 		register(helpAction);
 		
-		/**´ò¿ª¹ØÓÚ´°¿Ú²Ù×÷*/
+		/**æ‰“å¼€å…³äºçª—å£æ“ä½œ*/
 		aboutAction = ActionFactory.ABOUT.create(window);
 		register(aboutAction);
 
-		/**´ò¿ªÊ×Ñ¡Ïî²Ù×÷*/
+		/**æ‰“å¼€é¦–é€‰é¡¹æ“ä½œ*/
 		preferenceAction = ActionFactory.PREFERENCES.create(window);
 		register(preferenceAction);
 	}
 	
 	/**
-	 * ´´½¨²Ëµ¥Ìõ,²¢Ìí¼Ó²Ëµ¥Ïî
+	 * åˆ›å»ºèœå•æ¡,å¹¶æ·»åŠ èœå•é¡¹
 	 */
 	protected void fillMenuBar(IMenuManager menuBar) {
 
-		MenuManager systemMenu = new MenuManager("ĞÂ½¨(&N)");
+		MenuManager systemMenu = new MenuManager("æ–°å»º(&N)");
 		systemMenu.add(newCustomerAction);
 		systemMenu.add(newContactAction);
 		systemMenu.add(new Separator());
 		systemMenu.add(exitAction);
 		menuBar.add(systemMenu);
 
-		MenuManager viewMenu = new MenuManager("²é¿´(&V)");
+		MenuManager viewMenu = new MenuManager("æŸ¥çœ‹(&V)");
 		viewMenu.add(viewNavAction);
 		viewMenu.add(viewSearchAction);
 		viewMenu.add(new Separator());
@@ -135,7 +135,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		viewMenu.add(viewContactAction);
 		menuBar.add(viewMenu);
 
-		MenuManager helpMenu = new MenuManager("°ïÖú(&H)", IWorkbenchActionConstants.M_HELP);
+		MenuManager helpMenu = new MenuManager("å¸®åŠ©(&H)", IWorkbenchActionConstants.M_HELP);
 		helpMenu.add(introAction);
 		helpMenu.add(helpAction);
 		helpMenu.add(aboutAction);
@@ -143,7 +143,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		menuBar.add(helpMenu);
 	}
 	/**
-	 * ´´½¨¹¤¾ßÌõ,²¢Ìí¼Ó¹¤¾ß°´Å¥
+	 * åˆ›å»ºå·¥å…·æ¡,å¹¶æ·»åŠ å·¥å…·æŒ‰é’®
 	 */
 	protected void fillCoolBar(ICoolBarManager coolBar) {
 		IToolBarManager barManager = new ToolBarManager(coolBar.getStyle());
@@ -161,7 +161,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		coolBar.add(barManager);
 	}
 	/**
-	 * Ìí¼ÓÏµÍ³ÍĞÅÌËùÊ¹ÓÃµÄ²Ù×÷Ïî
+	 * æ·»åŠ ç³»ç»Ÿæ‰˜ç›˜æ‰€ä½¿ç”¨çš„æ“ä½œé¡¹
 	 * 
 	 * @param trayMenu
 	 */

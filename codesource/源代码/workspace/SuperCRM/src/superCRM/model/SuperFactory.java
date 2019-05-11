@@ -2,16 +2,16 @@ package superCRM.model;
 
 import superCRM.business.RcpApplication;
 
-/**Í¨¹ıµ¥ÀıÄ£Ê½À´´´½¨¹ÜÀíÕû¸öÏµÍ³µÄ¶ÔÏó*/
+/**é€šè¿‡å•ä¾‹æ¨¡å¼æ¥åˆ›å»ºç®¡ç†æ•´ä¸ªç³»ç»Ÿçš„å¯¹è±¡*/
 public class SuperFactory {
 	
-	/**ÉèÖÃÎªË½ÓĞÀàĞÍ,²»ÔÊĞíÊµÀı»¯*/
+	/**è®¾ç½®ä¸ºç§æœ‰ç±»å‹,ä¸å…è®¸å®ä¾‹åŒ–*/
 	private SuperFactory(){	}
 	
-	/**¶¨ÒåÎª¾²Ì¬ÀàĞÍ*/
+	/**å®šä¹‰ä¸ºé™æ€ç±»å‹*/
 	private static ISuperApplication app = null ;
 	
-	/**»ñµÃ¸ÃÊµÀı*/
+	/**è·å¾—è¯¥å®ä¾‹*/
 	public static ISuperApplication getSuperApplication (){
 		if ( app == null){
 			app = new RcpApplication();

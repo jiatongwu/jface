@@ -12,15 +12,15 @@ public class NonEclipse {
 	public static void main(String[] args) {
 		Display display = new Display();
 		Shell shell = new Shell(display);
-		shell.setText("SWT表单示例");
+		shell.setText("SWT琛ㄥ崟绀轰緥");
 		shell.setLayout( new FillLayout());
-		//创建表单工具对象
+		//鍒涘缓琛ㄥ崟宸ュ叿瀵硅薄
 		FormToolkit toolkit = new FormToolkit(shell.getDisplay());
-		//通过表单工具对象创建可滚动的表单对象
+		//閫氳繃琛ㄥ崟宸ュ叿瀵硅薄鍒涘缓鍙粴鍔ㄧ殑琛ㄥ崟瀵硅薄
 		ScrolledForm form = toolkit.createScrolledForm(shell);
 		form.setLayout( new GridLayout());
-		//设置表单文本
-		form.setText("Hello, Non Eclipse 表单");
+		//璁剧疆琛ㄥ崟鏂囨湰
+		form.setText("Hello, Non Eclipse 琛ㄥ崟");
 		toolkit.createLabel(form,"text");
 		shell.pack();
 		shell.open();

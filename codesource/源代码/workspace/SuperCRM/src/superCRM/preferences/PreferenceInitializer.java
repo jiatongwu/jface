@@ -6,7 +6,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import superCRM.SuperCRMPlugin;
 
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
-	/** ÉèÖÃÊ×Ñ¡ÏîÄ¬ÈÏÖµ */
+	/** è®¾ç½®é¦–é€‰é¡¹é»˜è®¤å€¼ */
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = SuperCRMPlugin.getDefault().getPreferenceStore();
 		store.setDefault(PreferenceConstants.P_AUTO_LOGIN, false);

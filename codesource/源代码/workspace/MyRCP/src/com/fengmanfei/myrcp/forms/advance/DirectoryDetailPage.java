@@ -30,21 +30,21 @@ public class DirectoryDetailPage implements IDetailsPage {
 	private Button isWrite;
 	private Composite client;
 	public void createContents(Composite parent) {
-		//ÉèÖÃ¸¸ÀàÃæ°åµÄ²¼¾Ö
+		//è®¾ç½®çˆ¶ç±»é¢æ¿çš„å¸ƒå±€
 		TableWrapLayout layout = new TableWrapLayout();
 		layout.topMargin = 5;
 		layout.leftMargin = 5;
 		layout.rightMargin = 2;
 		layout.bottomMargin = 2;
 		parent.setLayout(layout);
-		//»ñµÃ±íµ¥¹¤¾ß¶ÔÏó
+		//è·å¾—è¡¨å•å·¥å…·å¯¹è±¡
 		FormToolkit toolkit = mform.getToolkit();
-		//´´½¨DetailµÄÄÚÈİÇø
+		//åˆ›å»ºDetailçš„å†…å®¹åŒº
 		fileSection = toolkit.createSection(parent, Section.DESCRIPTION|Section.TITLE_BAR);
 		TableWrapData td = new TableWrapData(TableWrapData.FILL, TableWrapData.TOP);
 		td.grabHorizontal = true;
 		fileSection.setLayoutData(td);
-		//´´½¨ÄÚÈİÇøµÄËùÉèÖÃµÄÃæ°å
+		//åˆ›å»ºå†…å®¹åŒºçš„æ‰€è®¾ç½®çš„é¢æ¿
 		client = toolkit.createComposite(fileSection);
 		fileSection.setClient( client );
 		GridLayout gridLayout = new GridLayout();
@@ -53,15 +53,15 @@ public class DirectoryDetailPage implements IDetailsPage {
 		gridLayout.numColumns = 2;
 		gridLayout.horizontalSpacing=10;
 		client.setLayout(gridLayout);
-		//´´½¨Detail²¿·Ö¾ßÌåµÄ¸÷ÖÖ¿Ø¼ş
-		toolkit.createLabel( client , "Ãû³Æ:");
+		//åˆ›å»ºDetailéƒ¨åˆ†å…·ä½“çš„å„ç§æ§ä»¶
+		toolkit.createLabel( client , "åç§°:");
 		fileName = toolkit.createText( client ,"");
-		toolkit.createLabel( client , "Â·¾¶:");
+		toolkit.createLabel( client , "è·¯å¾„:");
 		filePath = toolkit.createText( client , "");
-		toolkit.createLabel( client , "×îºóĞŞ¸Ä:");
+		toolkit.createLabel( client , "æœ€åä¿®æ”¹:");
 		lastModify = toolkit.createText( client , file!=null?new Date(file.lastModified()).toLocaleString():"");
-		isRead = toolkit.createButton( client , "ÊÇ·ñ¿É¶Á" ,SWT.CHECK);
-		isWrite = toolkit.createButton( client , "ÊÇ·ñ¿ÉĞ´" ,SWT.CHECK);
+		isRead = toolkit.createButton( client , "æ˜¯å¦å¯è¯»" ,SWT.CHECK);
+		isWrite = toolkit.createButton( client , "æ˜¯å¦å¯å†™" ,SWT.CHECK);
 		
 	}
 
@@ -90,35 +90,35 @@ public class DirectoryDetailPage implements IDetailsPage {
 	public void refresh() {
 		
 	}
-	//µ±MasterÇøÓòÑ¡ÖĞÊÂ¼ş·¢ÉúÊ±
+	//å½“MasteråŒºåŸŸé€‰ä¸­äº‹ä»¶å‘ç”Ÿæ—¶
 	public void selectionChanged(IFormPart part, ISelection selection) {
-		//Ê×ÏÈ»ñµÃÑ¡ÖĞµÄ¶ÔÏó
+		//é¦–å…ˆè·å¾—é€‰ä¸­çš„å¯¹è±¡
 		IStructuredSelection currentSelection = (IStructuredSelection)selection;
 		if (currentSelection.size()==1) 
 			file = (File)currentSelection.getFirstElement();
-		//Èç¹ûÑ¡ÖĞµÄ¶ÔÏó²»Îªnull,ÔòË¢ĞÂ¿Ø¼şËùÏÔÊ¾µÄÖµ
+		//å¦‚æœé€‰ä¸­çš„å¯¹è±¡ä¸ä¸ºnull,åˆ™åˆ·æ–°æ§ä»¶æ‰€æ˜¾ç¤ºçš„å€¼
 		if (file != null)
 			update();
 	}
-	//Ë¢ĞÂÖµ
+	//åˆ·æ–°å€¼
 	public void update (){
-		//Èç¹ûÑ¡ÖĞµÄÎªÎÄ¼ş¼Ğ
+		//å¦‚æœé€‰ä¸­çš„ä¸ºæ–‡ä»¶å¤¹
 		if ( file.isDirectory()){
-			fileSection.setText("ÎÄ¼ş¼Ğ");
-			fileSection.setDescription("ÕâÊÇÒ»¸öÎÄ¼ş¼Ğ");
-		}else{//·ñÔò
-			fileSection.setText("ÎÄ¼ş");
-			fileSection.setDescription("ÕâÊÇÒ»¸öÎÄ¼ş");	
+			fileSection.setText("æ–‡ä»¶å¤¹");
+			fileSection.setDescription("è¿™æ˜¯ä¸€ä¸ªæ–‡ä»¶å¤¹");
+		}else{//å¦åˆ™
+			fileSection.setText("æ–‡ä»¶");
+			fileSection.setDescription("è¿™æ˜¯ä¸€ä¸ªæ–‡ä»¶");	
 		}
-		//ÉèÖÃÎÄ¼şÃû
+		//è®¾ç½®æ–‡ä»¶å
 		fileName.setText(file.getName());
-		//ÉèÖÃÂ·¾¶
+		//è®¾ç½®è·¯å¾„
 		filePath.setText(file.getAbsolutePath());
-		//ÉèÖÃÉÏ´ÎĞŞ¸Ä
+		//è®¾ç½®ä¸Šæ¬¡ä¿®æ”¹
 		lastModify.setText(new Date(file.lastModified()).toLocaleString());
-		//ÉèÖÃÊÇ·ñÖ»¶Á
+		//è®¾ç½®æ˜¯å¦åªè¯»
 		isRead.setSelection( file.canRead());
-		//ÉèÖÃÊÇ·ñ¿ÉĞ´
+		//è®¾ç½®æ˜¯å¦å¯å†™
 		isWrite.setSelection( file.canWrite() );
 	}
 }

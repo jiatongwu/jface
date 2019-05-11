@@ -21,64 +21,64 @@ public class FileMasterDetailsBlock extends MasterDetailsBlock {
 	public FileMasterDetailsBlock(FormPage page) {
 		this.page = page;
 	}
-	//¸¸ÀàÖĞµÄ³éÏó·½·¨£¬´´½¨Master²¿·Ö
+	//çˆ¶ç±»ä¸­çš„æŠ½è±¡æ–¹æ³•ï¼Œåˆ›å»ºMasteréƒ¨åˆ†
 	protected void createMasterPart(final IManagedForm managedForm, Composite parent) {
 		FormToolkit toolkit = managedForm.getToolkit();
-		//´´½¨Ò»¸öÄÚÈİÇø
+		//åˆ›å»ºä¸€ä¸ªå†…å®¹åŒº
 		Section section = toolkit.createSection(parent, Section.DESCRIPTION | Section.TITLE_BAR);
-		section.setText("ä¯ÀÀÎÄ¼ş");
+		section.setText("æµè§ˆæ–‡ä»¶");
 		section.marginWidth = 10;
 		section.marginHeight = 5;
-		//´´½¨ÄÚÈİÇøµÄÃæ°å
+		//åˆ›å»ºå†…å®¹åŒºçš„é¢æ¿
 		Composite client = toolkit.createComposite(section, SWT.WRAP);
-		//»æÖÆ¸ÃÃæ°åµÄ±ß¿ò£¬Óë±íµ¥µÄ·ç¸ñÒ»ÖÂ
+		//ç»˜åˆ¶è¯¥é¢æ¿çš„è¾¹æ¡†ï¼Œä¸è¡¨å•çš„é£æ ¼ä¸€è‡´
 		toolkit.paintBordersFor(client);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 2;
 		layout.marginWidth = 2;
 		layout.marginHeight = 2;
 		client.setLayout(layout);
-		//´´½¨Ò»¸öÊ÷£¬Ê¹ÓÃtoolkit¶ÔÏó´´½¨
+		//åˆ›å»ºä¸€ä¸ªæ ‘ï¼Œä½¿ç”¨toolkitå¯¹è±¡åˆ›å»º
 		Tree tree = toolkit.createTree(client, SWT.NULL);
 		GridData gd = new GridData(GridData.FILL_BOTH);
 		gd.heightHint = 20;
 		gd.widthHint = 100;
 		tree.setLayoutData(gd);
 		/*
-		 IFormPart¹ÜÀíÁËÕû¸öPartµÄdirty state, saving, commit, focus, selection changesµÈµÈÕâÑùµÄÊÂ¼ş¡£
-		 ²¢²»ÊÇ±íµ¥ÖĞµÄÃ¿Ò»¸ö-¿Õ¼äÕ¾¶¼ĞèÒª³ÉÎªÒ»¸öIFormPart£¬×îºÃ½«Ò»×écontrolÍ¨¹ıÊµÏÖIFormPart±ä³ÉÒ»¸öPart.
-	     Ò»°ãÀ´ËµSection¾ÍÊÇÒ»¸ö×ÔÈ»ĞÎ³ÉµÄ×é£¬ËùÒÔEclipse FormÌá¹©ÁËÒ»¸öSectionPartµÄÊµÏÖ£¬
-	     Ëü°üº¬Ò»¸öSectionµÄ¶ÔÏó¡£   
+		 IFormPartç®¡ç†äº†æ•´ä¸ªPartçš„dirty state, saving, commit, focus, selection changesç­‰ç­‰è¿™æ ·çš„äº‹ä»¶ã€‚
+		 å¹¶ä¸æ˜¯è¡¨å•ä¸­çš„æ¯ä¸€ä¸ª-ç©ºé—´ç«™éƒ½éœ€è¦æˆä¸ºä¸€ä¸ªIFormPartï¼Œæœ€å¥½å°†ä¸€ç»„controlé€šè¿‡å®ç°IFormPartå˜æˆä¸€ä¸ªPart.
+	     ä¸€èˆ¬æ¥è¯´Sectionå°±æ˜¯ä¸€ä¸ªè‡ªç„¶å½¢æˆçš„ç»„ï¼Œæ‰€ä»¥Eclipse Formæä¾›äº†ä¸€ä¸ªSectionPartçš„å®ç°ï¼Œ
+	     å®ƒåŒ…å«ä¸€ä¸ªSectionçš„å¯¹è±¡ã€‚   
 	    */
 		final SectionPart spart = new SectionPart(section);
-		//×¢²á¸Ã¶ÔÏóµ½IManagedForm±íµ¥¹ÜÀíÆ÷ÖĞ
+		//æ³¨å†Œè¯¥å¯¹è±¡åˆ°IManagedFormè¡¨å•ç®¡ç†å™¨ä¸­
 		managedForm.addPart(spart);
-		//½«ÆÕÍ¨µÄÊ÷°ü×°³ÉMVCµÄÊ÷
+		//å°†æ™®é€šçš„æ ‘åŒ…è£…æˆMVCçš„æ ‘
 		TreeViewer viewer = new TreeViewer(tree);
-		//×¢²áÊ÷µÄÑ¡ÔñÊÂ¼ş¼àÌıÆ÷
+		//æ³¨å†Œæ ‘çš„é€‰æ‹©äº‹ä»¶ç›‘å¬å™¨
 		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			//µ±µ¥»÷Ê÷ÖĞÄ³Ò»¸ö½ÚµãÊ±
+			//å½“å•å‡»æ ‘ä¸­æŸä¸€ä¸ªèŠ‚ç‚¹æ—¶
 			public void selectionChanged(SelectionChangedEvent event) {
-				//Í¨¹ıIManagedFormÀ´·¢²¼IFormPartËù¶ÔÓ¦µÄÊÂ¼ş
+				//é€šè¿‡IManagedFormæ¥å‘å¸ƒIFormPartæ‰€å¯¹åº”çš„äº‹ä»¶
 				managedForm.fireSelectionChanged(spart, event.getSelection());
 			}
 		});
-		//ÉèÖÃÊ÷µÄÄÚÈİ
+		//è®¾ç½®æ ‘çš„å†…å®¹
 		viewer.setContentProvider(new MasterContentProvider());
-		//ÉèÖÃÊ÷µÄ±êÇ©
+		//è®¾ç½®æ ‘çš„æ ‡ç­¾
 		viewer.setLabelProvider(new MasterLabelProvider());
-		//ÉèÖÃ³õÊ¼»¯ÊäÈëµÄÀà
+		//è®¾ç½®åˆå§‹åŒ–è¾“å…¥çš„ç±»
 		viewer.setInput(new File("E:\\Program Files"));
 	}
-	//×¢²áÏêÏ¸Ò³Ãæ²¿·Ö
+	//æ³¨å†Œè¯¦ç»†é¡µé¢éƒ¨åˆ†
 	protected void registerPages(DetailsPart detailsPart) {
-		//½«DirectoryDetailPage¶ÔÏó×¢²á
+		//å°†DirectoryDetailPageå¯¹è±¡æ³¨å†Œ
 		detailsPart.registerPage(File.class, new DirectoryDetailPage());
 	}
-	//´´½¨±íµ¥ÇøµÄAction
+	//åˆ›å»ºè¡¨å•åŒºçš„Action
 	protected void createToolBarActions(IManagedForm managedForm) {
 		final ScrolledForm form = managedForm.getForm();
-		//Ë®Æ½²¼¾Ö²Ù×÷
+		//æ°´å¹³å¸ƒå±€æ“ä½œ
 		Action hAction = new Action("horizon", Action.AS_RADIO_BUTTON) {
 			public void run() {
 				sashForm.setOrientation(SWT.HORIZONTAL);
@@ -86,9 +86,9 @@ public class FileMasterDetailsBlock extends MasterDetailsBlock {
 			}
 		};
 		hAction.setChecked(true);
-		hAction.setToolTipText("Ë®Æ½²¼¾Ö");
+		hAction.setToolTipText("æ°´å¹³å¸ƒå±€");
 		hAction.setImageDescriptor(MyRCPPlugin.getImageDescriptor("icons/hor.gif"));
-		//´¹Ö±²¼¾Ö²Ù×÷
+		//å‚ç›´å¸ƒå±€æ“ä½œ
 		Action vAction = new Action("vertical", Action.AS_RADIO_BUTTON) {
 			public void run() {
 				sashForm.setOrientation(SWT.VERTICAL);
@@ -96,9 +96,9 @@ public class FileMasterDetailsBlock extends MasterDetailsBlock {
 			}
 		};
 		vAction.setChecked(false);
-		vAction.setToolTipText("´¹Ö±²¼¾Ö"); //$NON-NLS-1$
+		vAction.setToolTipText("å‚ç›´å¸ƒå±€"); //$NON-NLS-1$
 		vAction.setImageDescriptor(MyRCPPlugin.getImageDescriptor("icons/ver.gif"));
-		//½«ÕâÁ½¸ö²Ù×÷Ìí¼Óµ½±íµ¥µÄ¹¤¾ßÀ¸¹ÜÀíÆ÷ÖĞ
+		//å°†è¿™ä¸¤ä¸ªæ“ä½œæ·»åŠ åˆ°è¡¨å•çš„å·¥å…·æ ç®¡ç†å™¨ä¸­
 		form.getToolBarManager().add(hAction);
 		form.getToolBarManager().add(vAction);
 	}

@@ -6,32 +6,32 @@ import org.eclipse.ui.IPersistableElement;
 import myRCP.MyRCPPlugin;
 
 public class JsEditorInput implements IEditorInput {
-	//ÊäÈëµÄ×Ö·û
+	//è¾“å…¥çš„å­—ç¬¦
 	private String input ;
 	public JsEditorInput ( String input ){
 		this.input = input ;
 	}
-	//ÊÇ·ñ½«±à¼­Æ÷±£´æÔÚ×î½ü·ÃÎÊ¼ÇÂ¼ÖĞ
+	//æ˜¯å¦å°†ç¼–è¾‘å™¨ä¿å­˜åœ¨æœ€è¿‘è®¿é—®è®°å½•ä¸­
 	public boolean exists() {
 		return true;
 	}
-	//ÊäÈëÄÚÈİµÄÍ¼±ê
+	//è¾“å…¥å†…å®¹çš„å›¾æ ‡
 	public ImageDescriptor getImageDescriptor() {
 		return MyRCPPlugin.getImageDescriptor("icon/sample.gif");
 	}
-	//ÊäÈëĞÅÏ¢µÄÃû³Æ
+	//è¾“å…¥ä¿¡æ¯çš„åç§°
 	public String getName() {
 		return input;
 	}
-	//ÊÇ·ñ¿ÉÒÔ³Ö¾Ã»¯¸Ã±à¼­Æ÷
+	//æ˜¯å¦å¯ä»¥æŒä¹…åŒ–è¯¥ç¼–è¾‘å™¨
 	public IPersistableElement getPersistable() {
 		return null;
 	}
-	//ÉèÖÃ±à¼­Æ÷±êÇ©ÖĞÏÔÊ¾ÌáÊ¾ĞÅÏ¢
+	//è®¾ç½®ç¼–è¾‘å™¨æ ‡ç­¾ä¸­æ˜¾ç¤ºæç¤ºä¿¡æ¯
 	public String getToolTipText() {
 		return input;
 	}
-	//·µ»ØÓë¸ÃÊäÈëÏà¹ØµÄÀàµÄ¶ÔÏó
+	//è¿”å›ä¸è¯¥è¾“å…¥ç›¸å…³çš„ç±»çš„å¯¹è±¡
 	public Object getAdapter(Class adapter) {
 		return null;
 	}

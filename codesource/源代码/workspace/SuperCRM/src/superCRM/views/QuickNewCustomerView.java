@@ -21,71 +21,71 @@ import superCRM.pojos.CustomerEO;
 public class QuickNewCustomerView extends ViewPart {
 	public static final String ID = "superCRM.views.QuickNewCustomerView";
 
-	/** ¿Í»§Ãû³Æ */
+	/** å®¢æˆ·åç§° */
 	private Text displayName;
 
-	/** ÍøÖ· */
+	/** ç½‘å€ */
 	private Text website;
 
-	/** ¿Í»§·ÖÀà */
+	/** å®¢æˆ·åˆ†ç±» */
 	private Combo category;
 
-	/** ¹«Ë¾ÈËÊı */
+	/** å…¬å¸äººæ•° */
 	private Combo number;
 
 	public QuickNewCustomerView() {
 		super();
 	}
 
-	/** ´´½¨ÊÓÍ¼µÄ½çÃæ */
+	/** åˆ›å»ºè§†å›¾çš„ç•Œé¢ */
 	public void createPartControl(Composite parent) {
-		/** ÉèÖÃÃæ°å²¼¾Ö */
+		/** è®¾ç½®é¢æ¿å¸ƒå±€ */
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new GridLayout(2, false));
 		GridData data = new GridData(GridData.FILL_HORIZONTAL);
-		/** ¿Í»§Ãû³Æ */
-		new Label(composite, SWT.NONE).setText("¿Í»§Ãû³Æ£º");
+		/** å®¢æˆ·åç§° */
+		new Label(composite, SWT.NONE).setText("å®¢æˆ·åç§°ï¼š");
 		displayName = new Text(composite, SWT.BORDER);
 		displayName.setLayoutData(data);
-		/** ÍøÖ· */
-		new Label(composite, SWT.NONE).setText("ÍøÖ·£º");
+		/** ç½‘å€ */
+		new Label(composite, SWT.NONE).setText("ç½‘å€ï¼š");
 		website = new Text(composite, SWT.BORDER);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		website.setLayoutData(data);
-		/** ¿Í»§·ÖÀà */
-		new Label(composite, SWT.NONE).setText("Àà±ğ£º");
+		/** å®¢æˆ·åˆ†ç±» */
+		new Label(composite, SWT.NONE).setText("ç±»åˆ«ï¼š");
 		category = new Combo(composite, SWT.BORDER);
 		category.setItems(new String[] { "Customer", "Partener", "Competitor" });
 		category.select(0);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		category.setLayoutData(data);
-		/** ¹«Ë¾ÈËÊı */
-		new Label(composite, SWT.NONE).setText("¹«Ë¾ÈËÊı£º");
+		/** å…¬å¸äººæ•° */
+		new Label(composite, SWT.NONE).setText("å…¬å¸äººæ•°ï¼š");
 		number = new Combo(composite, SWT.BORDER);
 		number.setItems(new String[] { "1-10", "11-50", "51-100", "101-500", "500-" });
 		number.select(0);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		number.setLayoutData(data);
-		/** Ìí¼Ó°´Å¥ */
+		/** æ·»åŠ æŒ‰é’® */
 		Button btAdd = new Button(composite, SWT.PUSH);
-		btAdd.setText("Ìí¼Ó");
-		/** ×¢²áÌí¼Ó°´Å¥¼àÌıÆ÷ */
+		btAdd.setText("æ·»åŠ ");
+		/** æ³¨å†Œæ·»åŠ æŒ‰é’®ç›‘å¬å™¨ */
 		btAdd.addSelectionListener(new SelectionAdapter() {
-			/** µ±µ¥»÷Ìí¼Ó°´Å¥Ê± */
+			/** å½“å•å‡»æ·»åŠ æŒ‰é’®æ—¶ */
 			public void widgetSelected(SelectionEvent e) {
-				/** ´´½¨¿Í»§¶ÔÏó */
+				/** åˆ›å»ºå®¢æˆ·å¯¹è±¡ */
 				CustomerEO customer = new CustomerEO();
-				/** ·Ö±ğÈ¡³öÓÃ»§ÊäÈëÖµ,²¢¸³Öµ¸ø¿Í»§¶ÔÏó */
+				/** åˆ†åˆ«å–å‡ºç”¨æˆ·è¾“å…¥å€¼,å¹¶èµ‹å€¼ç»™å®¢æˆ·å¯¹è±¡ */
 				customer.setDisplayName(displayName.getText());
 				customer.setWebSite(website.getText());
 				customer.setCategory(category.getText());
 				customer.setNumberEmployee(number.getText());
-				/** µ÷ÓÃÒµÎñ²ã±£´æ¿Í»§Êı¾İ */
+				/** è°ƒç”¨ä¸šåŠ¡å±‚ä¿å­˜å®¢æˆ·æ•°æ® */
 				ICustomerSerivce customerSerivce = SuperFactory.getSuperApplication().getCustomerSerivce();
 				customerSerivce.addCustomer(customer);
-				/** ²éÕÒÊÇ·ñ¿Í»§ÁĞ±íÊÓÍ¼ÒÑ¾­´ò¿ª */
+				/** æŸ¥æ‰¾æ˜¯å¦å®¢æˆ·åˆ—è¡¨è§†å›¾å·²ç»æ‰“å¼€ */
 				IViewPart view = getViewSite().getPage().findView(CustomerSummaryView.ID);
-				/** ÈôÃ»´ò¿ª,ÔòÊ×ÏÈ´ò¿ª¿Í»§ÁĞ±íÊÓÍ¼ */
+				/** è‹¥æ²¡æ‰“å¼€,åˆ™é¦–å…ˆæ‰“å¼€å®¢æˆ·åˆ—è¡¨è§†å›¾ */
 				if (view == null) {
 					try {
 						view = getViewSite().getPage().showView(CustomerSummaryView.ID);
@@ -93,7 +93,7 @@ public class QuickNewCustomerView extends ViewPart {
 						ee.printStackTrace();
 					}
 				}
-				/** ¸üĞÂ¿Í»§ÁĞ±íÊı¾İ */
+				/** æ›´æ–°å®¢æˆ·åˆ—è¡¨æ•°æ® */
 				CustomerSummaryView customerSummaryView = (CustomerSummaryView) view;
 				customerSummaryView.refreshData();
 			}

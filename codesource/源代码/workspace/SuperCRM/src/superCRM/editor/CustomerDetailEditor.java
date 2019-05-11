@@ -24,16 +24,16 @@ import superCRM.pojos.CustomerEO;
 import superCRM.views.CustomerSummaryView;
 
 public class CustomerDetailEditor extends EditorPart {
-	/** ±à¼­Æ÷µÄID */
+	/** ç¼–è¾‘å™¨çš„ID */
 	public static final String ID = "superCRM.editor.CustomerDetailEditor";
 
-	/** ±à¼­Æ÷ÊÇ·ñĞŞ¸Ä¹ıµÄ±ê¼Ç */
+	/** ç¼–è¾‘å™¨æ˜¯å¦ä¿®æ”¹è¿‡çš„æ ‡è®° */
 	private boolean bDirty = false;
 
-	/** ±à¼­Æ÷±£´æµÄ¿Í»§¶ÔÏó */
+	/** ç¼–è¾‘å™¨ä¿å­˜çš„å®¢æˆ·å¯¹è±¡ */
 	private CustomerEO customer;
 
-	/** ½çÃæ¿Ø¼ş */
+	/** ç•Œé¢æ§ä»¶ */
 	private Text displayName;
 
 	private Text website;
@@ -42,7 +42,7 @@ public class CustomerDetailEditor extends EditorPart {
 
 	private Combo number;
 
-	/** ±íµ¥¹¤¾ß¶ÔÏó */
+	/** è¡¨å•å·¥å…·å¯¹è±¡ */
 	private FormToolkit toolkit;
 
 	public CustomerDetailEditor() {
@@ -53,25 +53,25 @@ public class CustomerDetailEditor extends EditorPart {
 		this.setSite(site);
 		this.setInput(input);
 		this.setPartName(input.getName());
-		/** ½«ÊäÈëµÄ±à¼­Æ÷¶ÔÏóµÄ¿Í»§¶ÔÏó¸³Öµ¸ø¿Í»§¶ÔÏó */
+		/** å°†è¾“å…¥çš„ç¼–è¾‘å™¨å¯¹è±¡çš„å®¢æˆ·å¯¹è±¡èµ‹å€¼ç»™å®¢æˆ·å¯¹è±¡ */
 		this.customer = ((CustomerDetailInput) input).getCustomer();
 	}
 
 	public void createPartControl(Composite parent) {
-		/** ÉèÖÃ±êµ¥µÄ»ù±¾ÊôĞÔ */
+		/** è®¾ç½®æ ‡å•çš„åŸºæœ¬å±æ€§ */
 		toolkit = new FormToolkit(parent.getDisplay());
 		ScrolledForm form = toolkit.createScrolledForm(parent);
 		TableWrapLayout tableLayout = new TableWrapLayout();
 		tableLayout.numColumns = 2;
 		form.getBody().setLayout(tableLayout);
-		form.setText("¿Í»§ÏêÏ¸ĞÅÏ¢");
+		form.setText("å®¢æˆ·è¯¦ç»†ä¿¡æ¯");
 		toolkit.getColors().setForeground(form.getForeground());
-		/** ´´½¨½çÃæµÄ¿Ø¼ş */
-		toolkit.createLabel(form.getBody(), "¿Í»§ID£º");
+		/** åˆ›å»ºç•Œé¢çš„æ§ä»¶ */
+		toolkit.createLabel(form.getBody(), "å®¢æˆ·IDï¼š");
 		toolkit.createLabel(form.getBody(), customer.getId() + "");
-		toolkit.createLabel(form.getBody(), "¿Í»§Ãû³Æ£º");
+		toolkit.createLabel(form.getBody(), "å®¢æˆ·åç§°ï¼š");
 		TableWrapData data = new TableWrapData(TableWrapData.FILL_GRAB);
-		/** ¿Í»§Ãû³Æ */
+		/** å®¢æˆ·åç§° */
 		displayName = toolkit.createText(form.getBody(), customer.getDisplayName(), SWT.BORDER);
 		displayName.setLayoutData(data);
 		ModifyListener listener = new ModifyListener() {
@@ -84,15 +84,15 @@ public class CustomerDetailEditor extends EditorPart {
 		};
 		displayName.addModifyListener(listener);
 
-		/** ÍøÖ· */
-		toolkit.createLabel(form.getBody(), "ÍøÖ·£º");
+		/** ç½‘å€ */
+		toolkit.createLabel(form.getBody(), "ç½‘å€ï¼š");
 		data = new TableWrapData(TableWrapData.FILL_GRAB);
 		website = toolkit.createText(form.getBody(), customer.getWebSite(), SWT.BORDER);
 		website.setLayoutData(data);
 		website.addModifyListener(listener);
 
-		/** Àà±ğ */
-		toolkit.createLabel(form.getBody(), "Àà±ğ£º");
+		/** ç±»åˆ« */
+		toolkit.createLabel(form.getBody(), "ç±»åˆ«ï¼š");
 		data = new TableWrapData(TableWrapData.FILL_GRAB);
 		category = new Combo(form.getBody(), SWT.BORDER);
 		toolkit.adapt(category, false, false);
@@ -101,8 +101,8 @@ public class CustomerDetailEditor extends EditorPart {
 		category.setText(customer.getCategory());
 		category.addModifyListener(listener);
 
-		/** ¹«Ë¾ÈËÊı */
-		toolkit.createLabel(form.getBody(), "¹«Ë¾ÈËÊı£º");
+		/** å…¬å¸äººæ•° */
+		toolkit.createLabel(form.getBody(), "å…¬å¸äººæ•°ï¼š");
 		data = new TableWrapData(TableWrapData.FILL_GRAB);
 		number = new Combo(form.getBody(), SWT.BORDER);
 		toolkit.adapt(number, false, false);
@@ -112,23 +112,23 @@ public class CustomerDetailEditor extends EditorPart {
 		number.addModifyListener(listener);
 	}
 
-	/** ±£´æ±à¼­Æ÷ */
+	/** ä¿å­˜ç¼–è¾‘å™¨ */
 	public void doSave(IProgressMonitor monitor) {
 		try {
-			monitor.beginTask("±£´æ¿Í»§...", 100);
-			/** »ñµÃĞŞ¸ÄºóµÄ¿Í»§ĞÅÏ¢ */
+			monitor.beginTask("ä¿å­˜å®¢æˆ·...", 100);
+			/** è·å¾—ä¿®æ”¹åçš„å®¢æˆ·ä¿¡æ¯ */
 			customer.setDisplayName(displayName.getText());
 			customer.setWebSite(website.getText());
 			customer.setCategory(category.getText());
 			customer.setNumberEmployee(number.getText());
-			/** µ÷ÓÃÒµÎñ²ã±£´æ¸üĞÂ¿Í»§ĞÅÏ¢ */
+			/** è°ƒç”¨ä¸šåŠ¡å±‚ä¿å­˜æ›´æ–°å®¢æˆ·ä¿¡æ¯ */
 			ICustomerSerivce customerSerivce = SuperFactory.getSuperApplication().getCustomerSerivce();
 			customerSerivce.updateCustomer(customer);
-			/** ¸üĞÂ¿Í»§ÁĞ±íÊÓÍ¼Êı¾İ */
+			/** æ›´æ–°å®¢æˆ·åˆ—è¡¨è§†å›¾æ•°æ® */
 			refreshView();
 			monitor.done();
 			if (monitor.isCanceled())
-				throw new InterruptedException("È¡Ïû±£´æ");
+				throw new InterruptedException("å–æ¶ˆä¿å­˜");
 		} catch (InterruptedException e) {
 			;
 		}
@@ -150,7 +150,7 @@ public class CustomerDetailEditor extends EditorPart {
 		displayName.setFocus();
 	}
 
-	/** ¸üĞÂ¿Í»§ÁĞ±íÊÓÍ¼Êı¾İ */
+	/** æ›´æ–°å®¢æˆ·åˆ—è¡¨è§†å›¾æ•°æ® */
 	public void refreshView() {
 		IViewPart view = getEditorSite().getPage().findView(CustomerSummaryView.ID);
 		if (view == null)

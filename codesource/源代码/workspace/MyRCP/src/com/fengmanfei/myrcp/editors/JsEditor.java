@@ -13,71 +13,71 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
 
 public class JsEditor extends EditorPart {
-	//¶ÔÓ¦plugin.xmlÖ¸¶¨µÄid
+	//å¯¹åº”plugin.xmlæŒ‡å®šçš„id
 	public static final String ID = "com.fengmanfei.myrcp.editors.JsEditor";
 	private Text text;
-	//±à¼­Æ÷ÖĞµÄÄÚÈİÊÇ·ñ±»ĞŞ¸ÄµÄ±êÖ¾
+	//ç¼–è¾‘å™¨ä¸­çš„å†…å®¹æ˜¯å¦è¢«ä¿®æ”¹çš„æ ‡å¿—
 	private boolean bDirty = false;
 	public JsEditor() {
 		super();
 	}
-	//³õÊ¼»¯±à¼­Æ÷
+	//åˆå§‹åŒ–ç¼–è¾‘å™¨
 	public void init(IEditorSite site, IEditorInput input)
 			throws PartInitException {
-		this.setSite(site);//ÉèÖÃsite
-		this.setInput(input);//ÉèÖÃÊäÈëµÄIEditorInput¶ÔÏó
-		this.setPartName(input.getName());//ÉèÖÃ±à¼­Æ÷ÉÏ·½ÏÔÊ¾µÄÃû³Æ
+		this.setSite(site);//è®¾ç½®site
+		this.setInput(input);//è®¾ç½®è¾“å…¥çš„IEditorInputå¯¹è±¡
+		this.setPartName(input.getName());//è®¾ç½®ç¼–è¾‘å™¨ä¸Šæ–¹æ˜¾ç¤ºçš„åç§°
 	}
-	//´´½¨±à¼­Æ÷ÖĞµÄ¿Ø¼ş
+	//åˆ›å»ºç¼–è¾‘å™¨ä¸­çš„æ§ä»¶
 	public void createPartControl(Composite parent) {
 		text = new Text(parent, SWT.NONE);
-		//µ±ÎÄ±¾¿òĞŞ¸ÄÊ±£¬Éè¶¨ÄÚÈİ±»ĞŞ¸Ä¹ı
+		//å½“æ–‡æœ¬æ¡†ä¿®æ”¹æ—¶ï¼Œè®¾å®šå†…å®¹è¢«ä¿®æ”¹è¿‡
 		text.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
-				if (!isDirty()) {//Èç¹ûÎ´ĞŞ¸Ä
-					setDirty(true);//ÉèÖÃĞŞ¸Ä
-					//¸ü¸Ä±à¼­Æ÷µÄ×´Ì¬
+				if (!isDirty()) {//å¦‚æœæœªä¿®æ”¹
+					setDirty(true);//è®¾ç½®ä¿®æ”¹
+					//æ›´æ”¹ç¼–è¾‘å™¨çš„çŠ¶æ€
 					firePropertyChange(IEditorPart.PROP_DIRTY);
 				}
 			}
 		});
 	}
-	//±à¼­Æ÷¹Ø±ÕÊ±£¬±£´æ±à¼­Æ÷ÄÚÈİÊ±Ëùµ÷ÓÃµÄ·½·¨
+	//ç¼–è¾‘å™¨å…³é—­æ—¶ï¼Œä¿å­˜ç¼–è¾‘å™¨å†…å®¹æ—¶æ‰€è°ƒç”¨çš„æ–¹æ³•
 	public void doSave(IProgressMonitor monitor) {
-		//½«±£´æ×´Ì¬ÏÔÊ¾ÔÚ×´Ì¬À¸ÖĞ
+		//å°†ä¿å­˜çŠ¶æ€æ˜¾ç¤ºåœ¨çŠ¶æ€æ ä¸­
 		try {
-			monitor.beginTask("±£´æÎÄ¼ş...", 100);
+			monitor.beginTask("ä¿å­˜æ–‡ä»¶...", 100);
 
 			for (int i = 0; i < 10 && !monitor.isCanceled(); i++) {
 				Thread.sleep(500);
 				monitor.worked(10);
 				double d = (i + 1) / 10d;
-				monitor.subTask("ÒÑÍê³É" + d * 100 + "%");// ÏÔÊ¾ÈÎÎñ×´Ì¬
+				monitor.subTask("å·²å®Œæˆ" + d * 100 + "%");// æ˜¾ç¤ºä»»åŠ¡çŠ¶æ€
 			}
 			monitor.done();
 			if (monitor.isCanceled())
-				throw new InterruptedException("È¡Ïû±£´æ");
+				throw new InterruptedException("å–æ¶ˆä¿å­˜");
 		} catch (InterruptedException e) {
 			;
 		}
 	}
-	//Áí´æÎªµ÷ÓÃµÄ·½·¨
+	//å¦å­˜ä¸ºè°ƒç”¨çš„æ–¹æ³•
 	public void doSaveAs() {
 
 	}
-	//ÅĞ¶ÏÊÇ·ñ±»ĞŞ¸Ä¹ı
+	//åˆ¤æ–­æ˜¯å¦è¢«ä¿®æ”¹è¿‡
 	public boolean isDirty() {
 		return bDirty;
 	}
-	//ÊÇ·ñÔÊĞí±£´æ
+	//æ˜¯å¦å…è®¸ä¿å­˜
 	public boolean isSaveAsAllowed() {
 		return true;
 	}
-	//ÉèÖÃ½¹µã
+	//è®¾ç½®ç„¦ç‚¹
 	public void setFocus() {
 		text.setFocus();
 	}
-	//ÉèÖÃ±à¼­Æ÷ÄÚÈİ±»ĞŞ¸Ä¹ı
+	//è®¾ç½®ç¼–è¾‘å™¨å†…å®¹è¢«ä¿®æ”¹è¿‡
 	public void setDirty(boolean b) {
 		bDirty = b;
 	}

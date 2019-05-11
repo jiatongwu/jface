@@ -20,41 +20,41 @@ import superCRM.table.TableContentProvider;
 import superCRM.table.TableLabelProvider;
 
 public class ContactSummaryView extends ViewPart implements ISelectionListener {
-	/** ¸ÃÊÓÍ¼µÄID */
+	/** è¯¥è§†å›¾çš„ID */
 	public static final String ID = "superCRM.views.ContactSummaryView";
 
-	/** ±íÍ·Êı¾İ */
-	public static final String[] COLUMN_NAME = { "IDºÅ", "ĞÕÃû", "¿Í»§Ãû³Æ", "Àà±ğ", "ĞÔ±ğ", "³öÉúÈÕÆÚ", "Ö°Î»" };
+	/** è¡¨å¤´æ•°æ® */
+	public static final String[] COLUMN_NAME = { "IDå·", "å§“å", "å®¢æˆ·åç§°", "ç±»åˆ«", "æ€§åˆ«", "å‡ºç”Ÿæ—¥æœŸ", "èŒä½" };
 
-	/** µ±Ç°Ñ¡ÖĞµÄ¶ÔÏó */
+	/** å½“å‰é€‰ä¸­çš„å¯¹è±¡ */
 	private IStructuredSelection currentSelection;
 
-	/** ÁªÏµÈËÊı¾İËùÊôµÄ¿Í»§ */
+	/** è”ç³»äººæ•°æ®æ‰€å±çš„å®¢æˆ· */
 	private CustomerEO customer;
 
-	/** ÁªÏµÈËÊı¾İ¶ÔÏó */
+	/** è”ç³»äººæ•°æ®å¯¹è±¡ */
 	public List data;
 
-	/** ÁªÏµÈË±í¶ÔÏó */
+	/** è”ç³»äººè¡¨å¯¹è±¡ */
 	private TableViewer viewer;
 
-	/** ¿Í»§·şÎñ */
+	/** å®¢æˆ·æœåŠ¡ */
 	private ICustomerSerivce customerSerivce;
 
-	/** ÁªÏµÈË·şÎñ */
+	/** è”ç³»äººæœåŠ¡ */
 	private IContactSerivce contactSerivce;
 
 	public ContactSummaryView() {
 		super();
-		/** ´´½¨¿Í»§ºÍÁªÏµÈË·şÎñ¶ÔÏó */
+		/** åˆ›å»ºå®¢æˆ·å’Œè”ç³»äººæœåŠ¡å¯¹è±¡ */
 		customerSerivce = SuperFactory.getSuperApplication().getCustomerSerivce();
 		contactSerivce = SuperFactory.getSuperApplication().getContactSerivce();
 	}
 
 	public void createPartControl(Composite parent) {
-		/** ×¢²áÑ¡Ôñ·şÎñ¶ÔÏó */
+		/** æ³¨å†Œé€‰æ‹©æœåŠ¡å¯¹è±¡ */
 		this.getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(this);
-		/** ³õÊ¼»¯ÁªÏµÈË±í¸ñ */
+		/** åˆå§‹åŒ–è”ç³»äººè¡¨æ ¼ */
 		viewer = new TableViewer(parent, SWT.FULL_SELECTION);
 		for (int i = 0; i < COLUMN_NAME.length; i++) {
 			new TableColumn(viewer.getTable(), SWT.LEFT).setText(COLUMN_NAME[i]);
@@ -64,7 +64,7 @@ public class ContactSummaryView extends ViewPart implements ISelectionListener {
 		viewer.getTable().setLinesVisible(true);
 		viewer.setContentProvider(new TableContentProvider());
 		viewer.setLabelProvider(new TableLabelProvider());
-		/** Ä¬ÈÏÇé¿öÏÂÉèÖÃÏÔÊ¾ËùÓĞÁªÏµÈË */
+		/** é»˜è®¤æƒ…å†µä¸‹è®¾ç½®æ˜¾ç¤ºæ‰€æœ‰è”ç³»äºº */
 		data = contactSerivce.getAllContacts();
 		viewer.setInput(data);
 	}
@@ -73,15 +73,15 @@ public class ContactSummaryView extends ViewPart implements ISelectionListener {
 		viewer.getTable().setFocus();
 	}
 
-	/** µ±µ¥»÷¿Í»§¼ÇÂ¼Ê± */
+	/** å½“å•å‡»å®¢æˆ·è®°å½•æ—¶ */
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 
 		if (selection instanceof IStructuredSelection) {
-			/** »ñµÃµ±Ç°Ñ¡ÖĞµÄ¿Í»§¶ÔÏó */
+			/** è·å¾—å½“å‰é€‰ä¸­çš„å®¢æˆ·å¯¹è±¡ */
 			currentSelection = (IStructuredSelection) selection;
 			if (currentSelection.getFirstElement() instanceof CustomerEO) {
 				customer = (CustomerEO) currentSelection.getFirstElement();
-				/** ÖØĞÂÉèÖÃÁªÏµÈËÁĞ±íÖĞµÄÊı¾İ */
+				/** é‡æ–°è®¾ç½®è”ç³»äººåˆ—è¡¨ä¸­çš„æ•°æ® */
 				this.setData(customerSerivce.getContacts(customer));
 			}
 		}
@@ -92,14 +92,14 @@ public class ContactSummaryView extends ViewPart implements ISelectionListener {
 		this.getSite().getWorkbenchWindow().getSelectionService().removeSelectionListener(this);
 	}
 
-	/** ÉèÖÃÊı¾İ */
+	/** è®¾ç½®æ•°æ® */
 	public void setData(List data) {
 		this.data = data;
 		viewer.setInput(this.data);
 		viewer.refresh();
 	}
 
-	/** ¸üĞÂÊı¾İ */
+	/** æ›´æ–°æ•°æ® */
 	public void refreshData() {
 		data = contactSerivce.getAllContacts();
 		viewer.setInput(data);

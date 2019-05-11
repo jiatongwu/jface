@@ -32,63 +32,63 @@ import com.fengmanfei.myrcp.actions.MyAction;
 
 
 public class SampleView extends ViewPart {
-	//¸ÃÊÓÍ¼µÄid,ÔÚplugin.xmlÎÄ¼şÖĞ¶¨Òå,Í¨³£Ê¹ÓÃ×Ö·û´®³£Á¿µÄ·½Ê½
+	//è¯¥è§†å›¾çš„id,åœ¨plugin.xmlæ–‡ä»¶ä¸­å®šä¹‰,é€šå¸¸ä½¿ç”¨å­—ç¬¦ä¸²å¸¸é‡çš„æ–¹å¼
 	public static final String ID = "com.fengmanfei.myrcp.views.SampleView";
-	private TableViewer viewer;//ÊÓÍ¼ÖĞÏÔÊ¾µÄ±í¸ñ¶ÔÏó
-	//²Ù×÷¶ÔÏó
+	private TableViewer viewer;//è§†å›¾ä¸­æ˜¾ç¤ºçš„è¡¨æ ¼å¯¹è±¡
+	//æ“ä½œå¯¹è±¡
 	private Action action1;
 	private Action action2;
-	//¹¹Ôì·½·¨
+	//æ„é€ æ–¹æ³•
 	public SampleView() {
 	}
-	//Îª¸¸ÀàÖĞµÄ³éÏó·½·¨£¬´´½¨ÊÓÍ¼ÖĞµÄ¸÷ÖÖ¿Ø¼ş
+	//ä¸ºçˆ¶ç±»ä¸­çš„æŠ½è±¡æ–¹æ³•ï¼Œåˆ›å»ºè§†å›¾ä¸­çš„å„ç§æ§ä»¶
 	public void createPartControl(Composite parent) {
-		//´´½¨Ò»¸ö±í¸ñ¶ÔÏó
+		//åˆ›å»ºä¸€ä¸ªè¡¨æ ¼å¯¹è±¡
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
-		makeActions();//´´½¨²Ù×÷¶ÔÏó
-		hookDoubleClickAction();//Ìí¼Ó±í¸ñË«»÷ÊÂ¼ş
-		hookContextMenu();//Ìí¼ÓÉÏÏÂÎÄ²Ëµ¥
-		contributeToActionBars();//Ìí¼ÓÊÓÍ¼¹¤¾ßÀ¸²Ù×÷
+		makeActions();//åˆ›å»ºæ“ä½œå¯¹è±¡
+		hookDoubleClickAction();//æ·»åŠ è¡¨æ ¼åŒå‡»äº‹ä»¶
+		hookContextMenu();//æ·»åŠ ä¸Šä¸‹æ–‡èœå•
+		contributeToActionBars();//æ·»åŠ è§†å›¾å·¥å…·æ æ“ä½œ
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getTable(),"SampleViewContextId");
 	}
 
 	private void hookContextMenu() {
-		//´´½¨²Ëµ¥¹ÜÀíÆ÷¶ÔÏó
+		//åˆ›å»ºèœå•ç®¡ç†å™¨å¯¹è±¡
 		MenuManager menuMgr = new MenuManager("#PopupMenu");	
 		menuMgr.add(action1);
 		menuMgr.add(action2);
 		menuMgr.add(new MyAction( getSite().getWorkbenchWindow()));
 		menuMgr.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 		
-		//ÎªÁĞ±í¶ÔÏó´´½¨ÉÏÏÂÎÄ²Ëµ¥
+		//ä¸ºåˆ—è¡¨å¯¹è±¡åˆ›å»ºä¸Šä¸‹æ–‡èœå•
 		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		//ÉèÖÃ²Ëµ¥
+		//è®¾ç½®èœå•
 		viewer.getControl().setMenu(menu);
-		//×¢²áÉÏÏÂÎÄ²Ëµ¥
+		//æ³¨å†Œä¸Šä¸‹æ–‡èœå•
 		getSite().registerContextMenu(menuMgr, viewer);
 		getSite().setSelectionProvider(viewer); 
 	}
 
 	private void contributeToActionBars() {
-		//»ñµÃÊÓÍ¼µÄ²Ù×÷À¸¶ÔÏó
+		//è·å¾—è§†å›¾çš„æ“ä½œæ å¯¹è±¡
 		IActionBars bars = getViewSite().getActionBars();
-		//Ìí¼ÓÏÂÀ­²Ëµ¥
+		//æ·»åŠ ä¸‹æ‹‰èœå•
 		fillLocalPullDown(bars.getMenuManager());
-		//Ìí¼Ó¹¤¾ßÀ¸
+		//æ·»åŠ å·¥å…·æ 
 		fillLocalToolBar(bars.getToolBarManager());
 	}
-	//Ìí¼ÓÏÂÀ­²Ëµ¥
+	//æ·»åŠ ä¸‹æ‹‰èœå•
 	private void fillLocalPullDown(IMenuManager manager) {
 		manager.add(action1);
 		manager.add(new Separator());
 		manager.add(action2);
 	}
 	
-	//Ìí¼Ó¹¤¾ßÀ¸
+	//æ·»åŠ å·¥å…·æ 
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(action1);
 		manager.add(action2);
@@ -117,31 +117,31 @@ public class SampleView extends ViewPart {
 	}
 
 	private void hookDoubleClickAction() {
-		//×¢²áË«»÷ÊÂ¼ş¼àÌıÆ÷
+		//æ³¨å†ŒåŒå‡»äº‹ä»¶ç›‘å¬å™¨
 		viewer.addDoubleClickListener(new IDoubleClickListener() {
-			//µ±Ë«»÷Ê±
+			//å½“åŒå‡»æ—¶
 			public void doubleClick(DoubleClickEvent event) {
-				//»ñµÃµ±Ç°Ñ¡ÖĞµÄÒ»Ïî
+				//è·å¾—å½“å‰é€‰ä¸­çš„ä¸€é¡¹
 				ISelection selection = viewer.getSelection();
 				Object obj = ((IStructuredSelection)selection).getFirstElement();
-				//»ñµÃÒªÏÔÊ¾ÄÚÈİµÄÊÓÍ¼¶ÔÏó
+				//è·å¾—è¦æ˜¾ç¤ºå†…å®¹çš„è§†å›¾å¯¹è±¡
 				IViewPart viewPart =  getSite().getPage().findView(AnotherView.ID);
-				//È·±£ÕÒµ½ËùÒªÊ¹ÓÃµÄÊÓÍ¼
+				//ç¡®ä¿æ‰¾åˆ°æ‰€è¦ä½¿ç”¨çš„è§†å›¾
 				Assert.isNotNull(viewPart);
-				//Ç¿ÖÆÀàĞÍ×ª»»ÎªÁíÒ»¸öÊÓÍ¼¶ÔÏó
+				//å¼ºåˆ¶ç±»å‹è½¬æ¢ä¸ºå¦ä¸€ä¸ªè§†å›¾å¯¹è±¡
 				AnotherView view = (AnotherView)viewPart;
-				//ÉèÖÃ¸ÃÊÓÍ¼ÖĞÏÔÊ¾µÄÄÚÈİ
-				view.setContent( "ÄãË«»÷ÁË"+(String)obj );
+				//è®¾ç½®è¯¥è§†å›¾ä¸­æ˜¾ç¤ºçš„å†…å®¹
+				view.setContent( "ä½ åŒå‡»äº†"+(String)obj );
 			}
 		});
 	}
 	private void showMessage(String message) {
 		MessageDialog.openInformation(
 			viewer.getControl().getShell(),
-			"Ñù±¾ÊÓÍ¼",
+			"æ ·æœ¬è§†å›¾",
 			message);
 	}
-	//¸¸ÀàÖĞµÄ³éÏó·½·¨£¬¸ÃÊÓÍ¼»ñµÃ½¹µãÊ±£¬½«½¹µãÉèÖÃÎª±í¸ñ
+	//çˆ¶ç±»ä¸­çš„æŠ½è±¡æ–¹æ³•ï¼Œè¯¥è§†å›¾è·å¾—ç„¦ç‚¹æ—¶ï¼Œå°†ç„¦ç‚¹è®¾ç½®ä¸ºè¡¨æ ¼
 	public void setFocus() {
 		viewer.getControl().setFocus();
 	}

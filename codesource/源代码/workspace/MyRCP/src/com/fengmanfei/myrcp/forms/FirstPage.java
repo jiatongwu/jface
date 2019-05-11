@@ -15,49 +15,49 @@ public class FirstPage extends FormPage {
 	public static final String ID = "com.fengmanfei.myrcp.forms.FirstPage";
 
 	public FirstPage(FormEditor editor) {
-		// ¹¹Ôì·½·¨£¬ÉèÖÃFormÒ³µÄIDºÍÃû³Æ
-		super(editor, ID, "µÚÒ»Ò³");
+		// æ„é€ æ–¹æ³•ï¼Œè®¾ç½®Formé¡µçš„IDå’Œåç§°
+		super(editor, ID, "ç¬¬ä¸€é¡µ");
 	}
 
-	// ¸²¸Ç¸¸ÀàÖĞµÄ·½·¨
-	// ÔÚ¸Ã·½·¨ÖĞ´´½¨±íµ¥ÇøÓòµÄ¸÷ÖÖ¿Ø¼ş
+	// è¦†ç›–çˆ¶ç±»ä¸­çš„æ–¹æ³•
+	// åœ¨è¯¥æ–¹æ³•ä¸­åˆ›å»ºè¡¨å•åŒºåŸŸçš„å„ç§æ§ä»¶
 	protected void createFormContent(IManagedForm managedForm) {
-		// Í¨¹ımanagedForm¶ÔÏó»ñµÃ±íµ¥¹¤¾ß¶ÔÏó
+		// é€šè¿‡managedFormå¯¹è±¡è·å¾—è¡¨å•å·¥å…·å¯¹è±¡
 		FormToolkit toolkit = managedForm.getToolkit();
-		// Í¨¹ımanagedForm¶ÔÏó»ñµÃScrolledForm¿É¹ö¶¯µÄ±íµ¥¶ÔÏó
+		// é€šè¿‡managedFormå¯¹è±¡è·å¾—ScrolledFormå¯æ»šåŠ¨çš„è¡¨å•å¯¹è±¡
 		ScrolledForm form = managedForm.getForm();
-		// ÉèÖÃ±íµ¥ÎÄ±¾
-		form.setText("ÕâÊÇµÚÒ»Ò³£¬Hello, Eclipse ±íµ¥");
-		// ´´½¨±í¸ñ²¼¾Ö
+		// è®¾ç½®è¡¨å•æ–‡æœ¬
+		form.setText("è¿™æ˜¯ç¬¬ä¸€é¡µï¼ŒHello, Eclipse è¡¨å•");
+		// åˆ›å»ºè¡¨æ ¼å¸ƒå±€
 		TableWrapLayout layout = new TableWrapLayout();
-		layout.numColumns = 2;// ±í¸ñµÄÁĞÊı
-		layout.bottomMargin = 10;// ÏÂ²¹°×
-		layout.topMargin = 10;// ÉÏ²¹°×
-		layout.leftMargin = 10;// ×ó²¹°×
-		layout.rightMargin = 10;// ÓÒ²¹°×
-		form.getBody().setLayout(layout);// ÉèÖÃ±í¸ñµÄ²¼¾Ö
+		layout.numColumns = 2;// è¡¨æ ¼çš„åˆ—æ•°
+		layout.bottomMargin = 10;// ä¸‹è¡¥ç™½
+		layout.topMargin = 10;// ä¸Šè¡¥ç™½
+		layout.leftMargin = 10;// å·¦è¡¥ç™½
+		layout.rightMargin = 10;// å³è¡¥ç™½
+		form.getBody().setLayout(layout);// è®¾ç½®è¡¨æ ¼çš„å¸ƒå±€
 
-		// ´´½¨µÚÒ»¸ö±êÇ©
-		Label l1 = toolkit.createLabel(form.getBody(), "ÕâÊÇºÜ³¤µÄÒ»¶ÎÎÄ±¾ÎÄ±¾1", SWT.WRAP);
-		// ´´½¨µÚ¶ş¸ö±êÇ©
-		Label l2 = toolkit.createLabel(form.getBody(), "ÕâÊÇÎÄ±¾2", SWT.WRAP);
-		// ´´½¨Ò»¸öTableWrapData¶ÔÏó£¬ÉèÖÃÎªË®Æ½ºÍ´¹Ö±³äÂúÊ½Ìî³ä
+		// åˆ›å»ºç¬¬ä¸€ä¸ªæ ‡ç­¾
+		Label l1 = toolkit.createLabel(form.getBody(), "è¿™æ˜¯å¾ˆé•¿çš„ä¸€æ®µæ–‡æœ¬æ–‡æœ¬1", SWT.WRAP);
+		// åˆ›å»ºç¬¬äºŒä¸ªæ ‡ç­¾
+		Label l2 = toolkit.createLabel(form.getBody(), "è¿™æ˜¯æ–‡æœ¬2", SWT.WRAP);
+		// åˆ›å»ºä¸€ä¸ªTableWrapDataå¯¹è±¡ï¼Œè®¾ç½®ä¸ºæ°´å¹³å’Œå‚ç›´å……æ»¡å¼å¡«å……
 		TableWrapData td = new TableWrapData(TableWrapData.FILL_GRAB);
-		// ½«²¼¾ÖÊı¾İÓ¦ÓÃµ½µÚ¶ş¸ö±êÇ©
+		// å°†å¸ƒå±€æ•°æ®åº”ç”¨åˆ°ç¬¬äºŒä¸ªæ ‡ç­¾
 		l2.setLayoutData(td);
-		Label l3 = toolkit.createLabel(form.getBody(), "ÕâÊÇÎÄ±¾3", SWT.WRAP);
-		// µÚÈı¸ö±êÇ©µÄ²¼¾ÖÊı¾İ
+		Label l3 = toolkit.createLabel(form.getBody(), "è¿™æ˜¯æ–‡æœ¬3", SWT.WRAP);
+		// ç¬¬ä¸‰ä¸ªæ ‡ç­¾çš„å¸ƒå±€æ•°æ®
 		td = new TableWrapData();
-		td.colspan = 2;// ÉèÖÃµ¥Ôª¸ñµÄ¿çÁ½ÁĞ
+		td.colspan = 2;// è®¾ç½®å•å…ƒæ ¼çš„è·¨ä¸¤åˆ—
 		l3.setLayoutData(td);
-		// µÚËÄ¸ö±êÇ©µÄ²¼¾ÖÊı¾İ
-		Label l4 = toolkit.createLabel(form.getBody(), "ÕâÊÇÎÄ±¾4", SWT.WRAP);
+		// ç¬¬å››ä¸ªæ ‡ç­¾çš„å¸ƒå±€æ•°æ®
+		Label l4 = toolkit.createLabel(form.getBody(), "è¿™æ˜¯æ–‡æœ¬4", SWT.WRAP);
 		td = new TableWrapData();
-		td.rowspan = 2;// ÉèÖÃµ¥Ôª¸ñ¿çÁ½ĞĞ
-		td.grabVertical = true;// ´¹Ö±ÇÀÕ¼
+		td.rowspan = 2;// è®¾ç½®å•å…ƒæ ¼è·¨ä¸¤è¡Œ
+		td.grabVertical = true;// å‚ç›´æŠ¢å 
 		l4.setLayoutData(td);
-		Label l5 = toolkit.createLabel(form.getBody(), "ÕâÊÇÎÄ±¾5", SWT.WRAP);
-		Label l6 = toolkit.createLabel(form.getBody(), "ÕâÊÇÎÄ±¾6", SWT.WRAP);
+		Label l5 = toolkit.createLabel(form.getBody(), "è¿™æ˜¯æ–‡æœ¬5", SWT.WRAP);
+		Label l6 = toolkit.createLabel(form.getBody(), "è¿™æ˜¯æ–‡æœ¬6", SWT.WRAP);
 		form.getBody().setBackground(form.getBody().getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 	}
 }

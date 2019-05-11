@@ -9,14 +9,14 @@ import superCRM.SuperCRMPlugin;
 
 public class CustomerDetailInput implements IEditorInput {
 
-	/** ÓÃ»§±£´æÊäÈëµÄ¿Í»§ĞÅÏ¢ */
+	/** ç”¨æˆ·ä¿å­˜è¾“å…¥çš„å®¢æˆ·ä¿¡æ¯ */
 	private CustomerEO customer;
 
 	public CustomerDetailInput(CustomerEO c) {
 		this.customer = c;
 	}
 
-	/** ÒÔÏÂÎª½Ó¿ÚÖĞµÄ·½·¨ */
+	/** ä»¥ä¸‹ä¸ºæ¥å£ä¸­çš„æ–¹æ³• */
 	public boolean exists() {
 		return true;
 	}
@@ -41,12 +41,12 @@ public class CustomerDetailInput implements IEditorInput {
 		return null;
 	}
 
-	/** »ñµÃ¿Í»§¶ÔÏó */
+	/** è·å¾—å®¢æˆ·å¯¹è±¡ */
 	public CustomerEO getCustomer() {
 		return customer;
 	}
 
-	/** ÉèÖÃ¿Í»§¶ÔÏó */
+	/** è®¾ç½®å®¢æˆ·å¯¹è±¡ */
 	public void setCustomer(CustomerEO customer) {
 		this.customer = customer;
 	}

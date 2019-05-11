@@ -12,14 +12,14 @@ public class Perspective implements IPerspectiveFactory {
 		layout.addStandaloneView(MyFormView.ID,true,IPageLayout.LEFT,.3f,editorArea);
 		//layout.addStandaloneView(OpenEditorView.ID,true,IPageLayout.RIGHT,.3f,editorArea);
 		//layout.addView(FirstView.ID,IPageLayout.LEFT,0.45f,editorPart);
-		//ÎªÍ¸ÊÓÍ¼Ìí¼ÓÒ»¸öÊÓÍ¼
+		//ä¸ºé€è§†å›¾æ·»åŠ ä¸€ä¸ªè§†å›¾
 /*
-		layout.addStandaloneView(IPageLayout.ID_OUTLINE,//ÊÓÍ¼µÄID
-				true,//ÊÇ·ñÏÔÊ¾ÊÓÍ¼µÄ±êÌâ
-				IPageLayout.LEFT,//·ÅÖÃÔÚÍ¸ÊÓÍ¼µÄ×ó²àÎ»ÖÃ
-				0.45f,//ËùÕ¼Í¸ÊÓÍ¼µÄ°Ù·Ö±ÈÎª45%
-				editorArea);//Ìí¼ÓµÄÏà¹ØÇøÓò
-		layout.addStandaloneView(AnotherView.ID,//ÊÓÍ¼µÄID
+		layout.addStandaloneView(IPageLayout.ID_OUTLINE,//è§†å›¾çš„ID
+				true,//æ˜¯å¦æ˜¾ç¤ºè§†å›¾çš„æ ‡é¢˜
+				IPageLayout.LEFT,//æ”¾ç½®åœ¨é€è§†å›¾çš„å·¦ä¾§ä½ç½®
+				0.45f,//æ‰€å é€è§†å›¾çš„ç™¾åˆ†æ¯”ä¸º45%
+				editorArea);//æ·»åŠ çš„ç›¸å…³åŒºåŸŸ
+		layout.addStandaloneView(AnotherView.ID,//è§†å›¾çš„ID
 				true,
 				IPageLayout.BOTTOM,
 				0.45f,

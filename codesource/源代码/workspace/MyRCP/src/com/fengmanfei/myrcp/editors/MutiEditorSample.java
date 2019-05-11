@@ -8,27 +8,27 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 
 public class MutiEditorSample extends MultiPageEditorPart {
 
-	//¸Ã±à¼­Æ÷µÄ±êÊ¶
+	//è¯¥ç¼–è¾‘å™¨çš„æ ‡è¯†
 	public static final String ID = "com.fengmanfei.myrcp.editors.MutiEditorSample";
-	private JsEditor page1 ;//±à¼­Æ÷¶ÔÏó
-	private JsEditor page2 ;//±à¼­Æ÷¶ÔÏó
-	private Label control1 ;//±êÇ©¶ÔÏó
-	//¸¸ÀàÖĞ³éÏó·½·¨
+	private JsEditor page1 ;//ç¼–è¾‘å™¨å¯¹è±¡
+	private JsEditor page2 ;//ç¼–è¾‘å™¨å¯¹è±¡
+	private Label control1 ;//æ ‡ç­¾å¯¹è±¡
+	//çˆ¶ç±»ä¸­æŠ½è±¡æ–¹æ³•
 	protected void createPages() {
-		//´´½¨Ò³ÃæºÍ±êÇ©¶ÔÏó
+		//åˆ›å»ºé¡µé¢å’Œæ ‡ç­¾å¯¹è±¡
 		page1 = new JsEditor();
 		page2 = new JsEditor();
 		control1 = new Label ( getContainer(), SWT.NONE);
-		control1.setText("ÕâÊÇÒ»¸ö±êÇ©");
+		control1.setText("è¿™æ˜¯ä¸€ä¸ªæ ‡ç­¾");
 		try {
-			//Ìí¼ÓµÚÒ»Ò³
+			//æ·»åŠ ç¬¬ä¸€é¡µ
 			addPage( page1 , new JsEditorInput("One"));
-			//ÉèÖÃÑ¡Ïî¿¨µÄÃû³Æ
+			//è®¾ç½®é€‰é¡¹å¡çš„åç§°
 			setPageText(0,"One");
-			//Ìí¼ÓµÚ¶şÒ³
+			//æ·»åŠ ç¬¬äºŒé¡µ
 			addPage( page2 , new JsEditorInput("Two"));
 			setPageText(1,"Two");
-			//Ìí¼ÓµÚÈıÒ³£¬ÎªÒ»¸ö±êÇ©
+			//æ·»åŠ ç¬¬ä¸‰é¡µï¼Œä¸ºä¸€ä¸ªæ ‡ç­¾
 			addPage(control1);
 			setPageText(2,"Three");
 		} catch (PartInitException e) {

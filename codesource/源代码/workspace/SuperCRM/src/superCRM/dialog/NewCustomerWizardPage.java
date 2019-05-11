@@ -14,52 +14,52 @@ import superCRM.pojos.CustomerEO;
 ;
 
 public class NewCustomerWizardPage extends WizardPage {
-	/** Ò³ÃæÃû³Æ */
+	/** é¡µé¢åç§° */
 	public static final String NEW_CUSTOMER_PAGE = "CUSTOMER";
 
-	/** ¿Í»§Ãû³Æ */
+	/** å®¢æˆ·åç§° */
 	private Text displayName;
 
-	/** ÍøÖ· */
+	/** ç½‘å€ */
 	private Text website;
 
-	/** ¿Í»§·ÖÀà */
+	/** å®¢æˆ·åˆ†ç±» */
 	private Combo category;
 
-	/** ¹«Ë¾ÈËÊı */
+	/** å…¬å¸äººæ•° */
 	private Combo number;
 
 	private CustomerEO customer;
 
 	public NewCustomerWizardPage() {
-		super(NEW_CUSTOMER_PAGE, "ĞÂ½¨¿Í»§", null);
-		this.setTitle("ĞÂ½¨¿Í»§");
-		this.setDescription("ÇëÊäÈë¿Í»§µÄÏêÏ¸ĞÅÏ¢£º");
+		super(NEW_CUSTOMER_PAGE, "æ–°å»ºå®¢æˆ·", null);
+		this.setTitle("æ–°å»ºå®¢æˆ·");
+		this.setDescription("è¯·è¾“å…¥å®¢æˆ·çš„è¯¦ç»†ä¿¡æ¯ï¼š");
 	}
 
 	public void createControl(Composite parent) {
-		/** ÉèÖÃÃæ°å²¼¾Ö */
+		/** è®¾ç½®é¢æ¿å¸ƒå±€ */
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new GridLayout(2, false));
 		GridData data = new GridData(GridData.FILL_HORIZONTAL);
-		/** ¿Í»§Ãû³Æ */
-		new Label(composite, SWT.NONE).setText("¿Í»§Ãû³Æ£º");
+		/** å®¢æˆ·åç§° */
+		new Label(composite, SWT.NONE).setText("å®¢æˆ·åç§°ï¼š");
 		displayName = new Text(composite, SWT.BORDER);
 		displayName.setLayoutData(data);
-		/** ÍøÖ· */
-		new Label(composite, SWT.NONE).setText("ÍøÖ·£º");
+		/** ç½‘å€ */
+		new Label(composite, SWT.NONE).setText("ç½‘å€ï¼š");
 		website = new Text(composite, SWT.BORDER);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		website.setLayoutData(data);
-		/** ¿Í»§·ÖÀà */
-		new Label(composite, SWT.NONE).setText("Àà±ğ£º");
+		/** å®¢æˆ·åˆ†ç±» */
+		new Label(composite, SWT.NONE).setText("ç±»åˆ«ï¼š");
 		category = new Combo(composite, SWT.BORDER);
 		category.setItems(new String[] { "Customer", "Partener", "Competitor" });
 		category.select(0);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		category.setLayoutData(data);
-		/** ¹«Ë¾ÈËÊı */
-		new Label(composite, SWT.NONE).setText("¹«Ë¾ÈËÊı£º");
+		/** å…¬å¸äººæ•° */
+		new Label(composite, SWT.NONE).setText("å…¬å¸äººæ•°ï¼š");
 		number = new Combo(composite, SWT.BORDER);
 		number.setItems(new String[] { "1-10", "11-50", "51-100", "101-500", "500-" });
 		number.select(0);
@@ -68,7 +68,7 @@ public class NewCustomerWizardPage extends WizardPage {
 		setControl(composite);
 	}
 
-	/** »ñµÃÓÃ»§ÊäÈëµÄ¿Í»§ĞÅÏ¢ */
+	/** è·å¾—ç”¨æˆ·è¾“å…¥çš„å®¢æˆ·ä¿¡æ¯ */
 	public CustomerEO getCustomer() {
 		if (!displayName.getText().equals("")) {
 			customer = new CustomerEO();

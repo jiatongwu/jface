@@ -37,8 +37,8 @@ public class SampleAction implements IWorkbenchWindowActionDelegate {
 		/*
 		MessageDialog.openInformation(
 			window.getShell(),
-			"MyRCP ²å¼ş",
-			"Hello£¬Eclipse world");
+			"MyRCP æ’ä»¶",
+			"Helloï¼ŒEclipse world");
 			*/
 
 		if(window != null) {	

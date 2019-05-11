@@ -22,35 +22,35 @@ import superCRM.table.TableContentProvider;
 import superCRM.table.TableLabelProvider;
 
 public class CustomerSummaryView extends ViewPart {
-	/** ¸ÃÊÓÍ¼µÄID */
+	/** è¯¥è§†å›¾çš„ID */
 	public static final String ID = "superCRM.views.CustomerSummaryView";
 
-	/** ±íÍ·Êı¾İ */
-	public static final String[] COLUMN_NAME = { "IDºÅ", "¿Í»§Ãû³Æ", "ÍøÖ·", "¿Í»§Àà±ğ", "¹«Ë¾ÈËÊı" };
+	/** è¡¨å¤´æ•°æ® */
+	public static final String[] COLUMN_NAME = { "IDå·", "å®¢æˆ·åç§°", "ç½‘å€", "å®¢æˆ·ç±»åˆ«", "å…¬å¸äººæ•°" };
 
-	/** ±íÖĞµÄÊı¾İ */
+	/** è¡¨ä¸­çš„æ•°æ® */
 	public List data;
 
-	/** ±í¶ÔÏó */
+	/** è¡¨å¯¹è±¡ */
 	private TableViewer viewer;
 
-	/** ¿Í»§·şÎñ¶ÔÏó */
+	/** å®¢æˆ·æœåŠ¡å¯¹è±¡ */
 	private ICustomerSerivce customerSerivce;
 
-	/** ¿Í»§ÏêÏ¸±à¼­Æ÷ÊäÈë¶ÔÏó */
+	/** å®¢æˆ·è¯¦ç»†ç¼–è¾‘å™¨è¾“å…¥å¯¹è±¡ */
 	private CustomerDetailInput customerDetailInput;
 
 	public CustomerSummaryView() {
 		super();
-		/** »ñµÃ¿Í»§·şÎñ¶ÔÏó */
+		/** è·å¾—å®¢æˆ·æœåŠ¡å¯¹è±¡ */
 		customerSerivce = SuperFactory.getSuperApplication().getCustomerSerivce();
-		/** ²éÑ¯ËùÓĞµÄ¿Í»§Êı¾İ */
+		/** æŸ¥è¯¢æ‰€æœ‰çš„å®¢æˆ·æ•°æ® */
 		data = customerSerivce.getAllCustomers();
 	}
 
-	/** ´´½¨ÊÓÍ¼µÄ½çÃæ */
+	/** åˆ›å»ºè§†å›¾çš„ç•Œé¢ */
 	public void createPartControl(Composite parent) {
-		/** ³õÊ¼»¯±í¸ñ */
+		/** åˆå§‹åŒ–è¡¨æ ¼ */
 		viewer = new TableViewer(parent, SWT.FULL_SELECTION);
 		for (int i = 0; i < COLUMN_NAME.length; i++) {
 			new TableColumn(viewer.getTable(), SWT.LEFT).setText(COLUMN_NAME[i]);
@@ -58,23 +58,23 @@ public class CustomerSummaryView extends ViewPart {
 		}
 		viewer.getTable().setHeaderVisible(true);
 		viewer.getTable().setLinesVisible(true);
-		/** ÉèÖÃ±í¸ñµÄÄÚÈİÆ÷ */
+		/** è®¾ç½®è¡¨æ ¼çš„å†…å®¹å™¨ */
 		viewer.setContentProvider(new TableContentProvider());
-		/** ÉèÖÃ±í¸ñµÄ±êÇ©Æ÷ */
+		/** è®¾ç½®è¡¨æ ¼çš„æ ‡ç­¾å™¨ */
 		viewer.setLabelProvider(new TableLabelProvider());
-		/** ÉèÖÃ±í¸ñµÄÊı¾İ */
+		/** è®¾ç½®è¡¨æ ¼çš„æ•°æ® */
 		viewer.setInput(data);
-		/** µ±Ë«»÷±í¸ñÊ± */
+		/** å½“åŒå‡»è¡¨æ ¼æ—¶ */
 		viewer.addDoubleClickListener(new IDoubleClickListener() {
 
 			public void doubleClick(DoubleClickEvent event) {
-				/** ´ò¿ª¿Í»§ÏêÏ¸±à¼­Æ÷ */
+				/** æ‰“å¼€å®¢æˆ·è¯¦ç»†ç¼–è¾‘å™¨ */
 				StructuredSelection select = (StructuredSelection) event.getSelection();
-				/** »ñµÃµ±Ç°Ñ¡ÖĞµÄ¿Í»§ */
+				/** è·å¾—å½“å‰é€‰ä¸­çš„å®¢æˆ· */
 				CustomerEO c = (CustomerEO) select.getFirstElement();
-				/** ´´½¨¿Í»§ÏêÏ¸±à¼­Æ÷ÊäÈë¶ÔÏó */
+				/** åˆ›å»ºå®¢æˆ·è¯¦ç»†ç¼–è¾‘å™¨è¾“å…¥å¯¹è±¡ */
 				customerDetailInput = new CustomerDetailInput(c);
-				/** ´ò¿ª¿Í»§ÏêÏ¸±à¼­Æ÷ */
+				/** æ‰“å¼€å®¢æˆ·è¯¦ç»†ç¼–è¾‘å™¨ */
 				IWorkbenchPage page = getViewSite().getWorkbenchWindow().getActivePage();
 				try {
 					page.openEditor(customerDetailInput, CustomerDetailEditor.ID);
@@ -84,7 +84,7 @@ public class CustomerSummaryView extends ViewPart {
 			}
 
 		});
-		/** ½«¸Ã±í¸ñ×¢²áÎªÑ¡Ôñ·şÎñÌá¹©Õß */
+		/** å°†è¯¥è¡¨æ ¼æ³¨å†Œä¸ºé€‰æ‹©æœåŠ¡æä¾›è€… */
 		this.getSite().setSelectionProvider(viewer);
 
 	}
@@ -97,14 +97,14 @@ public class CustomerSummaryView extends ViewPart {
 		return data;
 	}
 
-	/** ÉèÖÃ±í¸ñÊı¾İ */
+	/** è®¾ç½®è¡¨æ ¼æ•°æ® */
 	public void setData(List data) {
 		this.data = data;
 		viewer.setInput(this.data);
 		viewer.refresh();
 	}
 
-	/** Ë¢ĞÂ±í¸ñÊı¾İ */
+	/** åˆ·æ–°è¡¨æ ¼æ•°æ® */
 	public void refreshData() {
 		data = customerSerivce.getAllCustomers();
 		viewer.setInput(data);

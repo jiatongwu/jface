@@ -2,7 +2,7 @@ package superCRM.pojos;
 
 public class CustomerEO {
 
-	/** ¿Í»§¶ÔÏóµÄÊôĞÔ */
+	/** å®¢æˆ·å¯¹è±¡çš„å±æ€§ */
 	private int id;
 
 	private String displayName;
@@ -15,7 +15,7 @@ public class CustomerEO {
 
 	private String activeStatus = "Y";
 
-	/** »ñµÃ¿Í»§ÊôĞÔµÄgetterºÍsetter·½·¨ */
+	/** è·å¾—å®¢æˆ·å±æ€§çš„getterå’Œsetteræ–¹æ³• */
 	public int getId() {
 		return id;
 	}

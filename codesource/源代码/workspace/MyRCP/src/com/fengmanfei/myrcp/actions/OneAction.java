@@ -33,7 +33,7 @@ public class OneAction extends Action implements IWorkbenchAction {
 	}
 
 	public void dispose() {
-		// TODO 自动生成方法存根
+		// TODO 鑷姩鐢熸垚鏂规硶瀛樻牴
 		
 	}
 

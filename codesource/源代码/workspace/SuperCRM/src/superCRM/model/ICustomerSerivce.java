@@ -3,24 +3,24 @@ package superCRM.model;
 import java.util.List;
 import superCRM.pojos.CustomerEO;
 
-/**ÓĞ¹Ø¶Ô¿Í»§¹ÜÀíµÄ·şÎñ*/
+/**æœ‰å…³å¯¹å®¢æˆ·ç®¡ç†çš„æœåŠ¡*/
 public interface ICustomerSerivce {
 	
-	/**Ìí¼ÓÒ»¸ö¿Í»§*/
+	/**æ·»åŠ ä¸€ä¸ªå®¢æˆ·*/
 	public CustomerEO addCustomer ( CustomerEO customer );
 	
-	/**¸üĞÂ¿Í»§ĞÅÏ¢*/
+	/**æ›´æ–°å®¢æˆ·ä¿¡æ¯*/
 	public void updateCustomer ( CustomerEO customer );
 	
-	/**¸ù¾İ¿Í»§ID»ñµÃ¿Í»§ĞÅÏ¢*/
+	/**æ ¹æ®å®¢æˆ·IDè·å¾—å®¢æˆ·ä¿¡æ¯*/
 	public CustomerEO getCustomer ( int id );
 	
-	/**¸ù¾İ¹Ø¼ü×Ö»ñµÃ²éÑ¯³öµÄ¿Í»§ĞÅÏ¢*/
+	/**æ ¹æ®å…³é”®å­—è·å¾—æŸ¥è¯¢å‡ºçš„å®¢æˆ·ä¿¡æ¯*/
 	public List getCustomers ( String keywords );
 	
-	/**»ñµÃËùÓĞ¿Í»§ĞÅÏ¢*/
+	/**è·å¾—æ‰€æœ‰å®¢æˆ·ä¿¡æ¯*/
 	public List getAllCustomers ();
 	
-	/**»ñµÃÄ³Ò»¸ö¿Í»§ÏÂµÄÁªÏµÈË*/
+	/**è·å¾—æŸä¸€ä¸ªå®¢æˆ·ä¸‹çš„è”ç³»äºº*/
 	public List getContacts ( CustomerEO customer);
 }

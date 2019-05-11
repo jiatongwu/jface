@@ -24,16 +24,16 @@ import superCRM.model.ICustomerSerivce;
 import superCRM.model.SuperFactory;
 
 public class SearchView extends ViewPart {
-	/** ¸ÃÊÓÍ¼µÄID */
+	/** è¯¥è§†å›¾çš„ID */
 	public static final String ID = "superCRM.views.SearchView";
 
-	/** ¿Í»§µ¥Ñ¡°´Å¥ */
+	/** å®¢æˆ·å•é€‰æŒ‰é’® */
 	private Button btCustomer;
 
-	/** ÁªÏµÈËµ¥Ñ¡°´Å¥ */
+	/** è”ç³»äººå•é€‰æŒ‰é’® */
 	private Button btContact;
 
-	/** ¹Ø¼ü×ÖÎÄ±¾ */
+	/** å…³é”®å­—æ–‡æœ¬ */
 	private Text keywords;
 
 	public SearchView() {
@@ -41,37 +41,37 @@ public class SearchView extends ViewPart {
 	}
 
 	public void createPartControl(Composite parent) {
-		/** ÉèÖÃÃæ°å²¼¾Ö */
+		/** è®¾ç½®é¢æ¿å¸ƒå±€ */
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new GridLayout(1, false));
 		GridData data = new GridData(GridData.FILL_HORIZONTAL);
-		/** ´´½¨·Ö×éÃæ°å·ÅÖÃÁ½¸öµ¥Ñ¡°´Å¥ */
+		/** åˆ›å»ºåˆ†ç»„é¢æ¿æ”¾ç½®ä¸¤ä¸ªå•é€‰æŒ‰é’® */
 		Group group = new Group(composite, SWT.NONE);
-		group.setText("ËÑË÷Àà±ğ");
+		group.setText("æœç´¢ç±»åˆ«");
 		group.setLayout(new GridLayout(2, false));
 		group.setLayoutData(data);
-		/** ¿Í»§µ¥Ñ¡°´Å¥ */
+		/** å®¢æˆ·å•é€‰æŒ‰é’® */
 		btCustomer = new Button(group, SWT.RADIO);
-		btCustomer.setText("¿Í»§");
-		/** ÁªÏµÈËµ¥Ñ¡°´Å¥ */
+		btCustomer.setText("å®¢æˆ·");
+		/** è”ç³»äººå•é€‰æŒ‰é’® */
 		btContact = new Button(group, SWT.RADIO);
-		btContact.setText("ÁªÏµÈË");
-		/** ¸ù¾İÊ×Ñ¡ÏîÉèÖÃÄ¬ÈÏÑ¡ÖĞ¿Í»§»¹ÊÇÑ¡ÖĞÁªÏµÈË */
+		btContact.setText("è”ç³»äºº");
+		/** æ ¹æ®é¦–é€‰é¡¹è®¾ç½®é»˜è®¤é€‰ä¸­å®¢æˆ·è¿˜æ˜¯é€‰ä¸­è”ç³»äºº */
 		IPreferenceStore store = SuperCRMPlugin.getDefault().getPreferenceStore();
 		String type = store.getString(PreferenceConstants.P_DEFAULT_SEARCH);
 		if (type.equals("Customer"))
 			btCustomer.setSelection(true);
 		else
 			btContact.setSelection(true);
-		/** ¹Ø¼ü×Ö */
-		new Label(composite, SWT.NONE).setText("¹Ø¼ü×Ö£º");
+		/** å…³é”®å­— */
+		new Label(composite, SWT.NONE).setText("å…³é”®å­—ï¼š");
 		keywords = new Text(composite, SWT.BORDER);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		keywords.setLayoutData(data);
-		/** ËÑË÷°´Å¥ */
+		/** æœç´¢æŒ‰é’® */
 		Button btSearch = new Button(composite, SWT.PUSH);
-		btSearch.setText("ËÑË÷");
-		/** µ±µ¥»÷Ñ¡ÖĞ°´Å¥Ê± */
+		btSearch.setText("æœç´¢");
+		/** å½“å•å‡»é€‰ä¸­æŒ‰é’®æ—¶ */
 		btSearch.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				doSearch();
@@ -80,15 +80,15 @@ public class SearchView extends ViewPart {
 		});
 	}
 
-	/** Ö´ĞĞËÑË÷ */
+	/** æ‰§è¡Œæœç´¢ */
 	protected void doSearch() {
-		/** Èç¹ûÑ¡ÖĞÁË¿Í»§ */
+		/** å¦‚æœé€‰ä¸­äº†å®¢æˆ· */
 		if (btCustomer.getSelection()) {
-			/** »ñµÃ¿Í»§·şÎñ¶ÔÏó */
+			/** è·å¾—å®¢æˆ·æœåŠ¡å¯¹è±¡ */
 			ICustomerSerivce customerSerivce = SuperFactory.getSuperApplication().getCustomerSerivce();
-			/** »ñµÃ²éÑ¯½á¹ûµÄ¿Í»§Êı¾İ */
+			/** è·å¾—æŸ¥è¯¢ç»“æœçš„å®¢æˆ·æ•°æ® */
 			List customers = customerSerivce.getCustomers(keywords.getText());
-			/** ´ò¿ª¿Í»§ÁĞ±íÊÓÍ¼,²¢Ë¢ĞÂÊı¾İ */
+			/** æ‰“å¼€å®¢æˆ·åˆ—è¡¨è§†å›¾,å¹¶åˆ·æ–°æ•°æ® */
 			IViewPart view = getViewSite().getPage().findView(CustomerSummaryView.ID);
 			if (view == null) {
 				try {
@@ -99,13 +99,13 @@ public class SearchView extends ViewPart {
 			}
 			CustomerSummaryView customerSummaryView = (CustomerSummaryView) view;
 			customerSummaryView.setData(customers);
-			/** Èç¹ûÑ¡ÖĞÁËÁªÏµÈË */
+			/** å¦‚æœé€‰ä¸­äº†è”ç³»äºº */
 		} else if (btContact.getSelection()) {
-			/** »ñµÃÁªÏµÈË·şÎñ¶ÔÏó */
+			/** è·å¾—è”ç³»äººæœåŠ¡å¯¹è±¡ */
 			IContactSerivce contactSerivce = SuperFactory.getSuperApplication().getContactSerivce();
-			/** »ñµÃ²éÑ¯½á¹ûµÄÁªÏµÈËÊı¾İ */
+			/** è·å¾—æŸ¥è¯¢ç»“æœçš„è”ç³»äººæ•°æ® */
 			List contacts = contactSerivce.getContacts(keywords.getText());
-			/** ´ò¿ªÁªÏµÈËÁĞ±íÊÓÍ¼,²¢Ë¢ĞÂÊı¾İ */
+			/** æ‰“å¼€è”ç³»äººåˆ—è¡¨è§†å›¾,å¹¶åˆ·æ–°æ•°æ® */
 			IViewPart view = getViewSite().getPage().findView(ContactSummaryView.ID);
 			if (view == null) {
 				try {

@@ -11,14 +11,14 @@ public class ContactDaoMysqlImpl implements IContactDao {
 
 	public ContactEO findById(int id) {
 		int row = -1;
-		// ¶Á¼ÇÂ¼µÄsqlÓï¾ä
+		// è¯»è®°å½•çš„sqlè¯­å¥
 		String sql = "select * from contact where contact_id=" + id
 				+ " and active_status='Y'";
-		ResultSet rs = DbManager.getResultSet(sql);// Ö´ĞĞsqlÓï¾ä²¢·µ»ØResultSet
+		ResultSet rs = DbManager.getResultSet(sql);// æ‰§è¡Œsqlè¯­å¥å¹¶è¿”å›ResultSet
 		try {
-			rs.last();// ÒÆ¶¯µ½×îºóÒ»ĞĞ
-			row = rs.getRow();// µÃµ½×Ü¼ÇÂ¼Êı
-			if (row == 1) {// Èç¹ûÖ»²éÑ¯µ½Ò»Ìõ¼ÇÂ¼£¬Ôò´ú±í¸Ã¼ÇÂ¼´æÔÚ²¢¸üĞÂ¸ÃÀàµÄÊôĞÔ
+			rs.last();// ç§»åŠ¨åˆ°æœ€åä¸€è¡Œ
+			row = rs.getRow();// å¾—åˆ°æ€»è®°å½•æ•°
+			if (row == 1) {// å¦‚æœåªæŸ¥è¯¢åˆ°ä¸€æ¡è®°å½•ï¼Œåˆ™ä»£è¡¨è¯¥è®°å½•å­˜åœ¨å¹¶æ›´æ–°è¯¥ç±»çš„å±æ€§
 				ContactEO contact = new ContactEO();
 				contact.setId( rs.getInt("contact_id"));
 				contact.setCustomerId( rs.getInt("customer_id"));
@@ -74,7 +74,7 @@ public class ContactDaoMysqlImpl implements IContactDao {
 		}
 	}
 	public List getContactResult(String sql) {
-		ResultSet rs = DbManager.getResultSet(sql);// Ö´ĞĞsqlÓï¾ä²¢·µ»ØResultSet
+		ResultSet rs = DbManager.getResultSet(sql);// æ‰§è¡Œsqlè¯­å¥å¹¶è¿”å›ResultSet
 		List list =  new ArrayList();
 		try {
 			while(rs.next()){

@@ -18,38 +18,38 @@ import superCRM.table.TableContentProvider;
 import superCRM.table.TableLabelProvider;
 
 public class SelectCustomerPage extends WizardPage {
-	/** Ò³ÃæÃû³Æ */
+	/** é¡µé¢åç§° */
 	public static final String SELECT_CUSTOMER_PAGE = "SELECT_CUSTOMER";
 
-	/** ¿Í»§ÁĞ±íµÄ±êÌâ */
-	public static final String[] COLUMN_NAME = { "IDºÅ", "¿Í»§Ãû³Æ", "ÍøÖ·", "¿Í»§Àà±ğ", "¹«Ë¾ÈËÊı" };
+	/** å®¢æˆ·åˆ—è¡¨çš„æ ‡é¢˜ */
+	public static final String[] COLUMN_NAME = { "IDå·", "å®¢æˆ·åç§°", "ç½‘å€", "å®¢æˆ·ç±»åˆ«", "å…¬å¸äººæ•°" };
 
-	/** ´øÑ¡Ôñ¿òµÄ±í¸ñ */
+	/** å¸¦é€‰æ‹©æ¡†çš„è¡¨æ ¼ */
 	private CheckboxTableViewer viewer;
 
-	/** ±í¸ñÊı¾İ */
+	/** è¡¨æ ¼æ•°æ® */
 	public List data;
 
-	/** ¿Í»§·şÎñ¶ÔÏó */
+	/** å®¢æˆ·æœåŠ¡å¯¹è±¡ */
 	private ICustomerSerivce customerSerivce;
 
-	/** ¿Í»§¶ÔÏó */
+	/** å®¢æˆ·å¯¹è±¡ */
 	private CustomerEO cusotmer;
 
 	public SelectCustomerPage() {
-		super(SELECT_CUSTOMER_PAGE, "ĞÂ½¨¿Í»§", null);
-		this.setTitle("Ñ¡Ôñ¿Í»§");
-		this.setDescription("ÇëÑ¡Ôñ¿Í»§µÄÏêÏ¸ĞÅÏ¢£º");
+		super(SELECT_CUSTOMER_PAGE, "æ–°å»ºå®¢æˆ·", null);
+		this.setTitle("é€‰æ‹©å®¢æˆ·");
+		this.setDescription("è¯·é€‰æ‹©å®¢æˆ·çš„è¯¦ç»†ä¿¡æ¯ï¼š");
 		this.setPageComplete(false);
 		customerSerivce = SuperFactory.getSuperApplication().getCustomerSerivce();
 		data = customerSerivce.getAllCustomers();
 	}
 
 	public void createControl(Composite parent) {
-		/** ÉèÖÃÃæ°å²¼¾Ö */
+		/** è®¾ç½®é¢æ¿å¸ƒå±€ */
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new FillLayout());
-		/** ³õÊ¼»¯±íÊı¾İ */
+		/** åˆå§‹åŒ–è¡¨æ•°æ® */
 		viewer = CheckboxTableViewer.newCheckList(composite, SWT.FULL_SELECTION | SWT.SINGLE);
 		for (int i = 0; i < COLUMN_NAME.length; i++) {
 			new TableColumn(viewer.getTable(), SWT.LEFT).setText(COLUMN_NAME[i]);
@@ -60,22 +60,22 @@ public class SelectCustomerPage extends WizardPage {
 		viewer.setContentProvider(new TableContentProvider());
 		viewer.setLabelProvider(new TableLabelProvider());
 		viewer.setInput(data);
-		/** ×¢²á±í¸ñµ¥»÷¼àÌıÆ÷ */
+		/** æ³¨å†Œè¡¨æ ¼å•å‡»ç›‘å¬å™¨ */
 		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			/** µ±µ¥»÷±í¸ñÖĞÒ»ĞĞÊ± */
+			/** å½“å•å‡»è¡¨æ ¼ä¸­ä¸€è¡Œæ—¶ */
 			public void selectionChanged(SelectionChangedEvent event) {
-				/** »ñµÃ±í¸ñÑ¡ÖĞµÄĞĞ */
+				/** è·å¾—è¡¨æ ¼é€‰ä¸­çš„è¡Œ */
 				Object[] checkedObj = viewer.getCheckedElements();
-				/** Èç¹û²»ÊÇÑ¡ÔñÁËÒ»¸ö¿Í»§,ÔòÌáÊ¾´íÎó */
+				/** å¦‚æœä¸æ˜¯é€‰æ‹©äº†ä¸€ä¸ªå®¢æˆ·,åˆ™æç¤ºé”™è¯¯ */
 				if (checkedObj.length != 1) {
-					setErrorMessage("ÇëÑ¡ÔñÒ»¸ö¿Í»§");
+					setErrorMessage("è¯·é€‰æ‹©ä¸€ä¸ªå®¢æˆ·");
 					setPageComplete(false);
 					return;
 				}
-				/** ÉèÖÃÏÂÒ»²½¿ÉÓÃ×´Ì¬ */
+				/** è®¾ç½®ä¸‹ä¸€æ­¥å¯ç”¨çŠ¶æ€ */
 				setErrorMessage(null);
 				setPageComplete(true);
-				/** ½«Ñ¡ÖĞµÄ¿Í»§¶ÔÏó¸³Öµ¸ø¸ÃÒ³ÃæµÄ¿Í»§¶ÔÏó */
+				/** å°†é€‰ä¸­çš„å®¢æˆ·å¯¹è±¡èµ‹å€¼ç»™è¯¥é¡µé¢çš„å®¢æˆ·å¯¹è±¡ */
 				cusotmer = (CustomerEO) checkedObj[0];
 			}
 
@@ -83,12 +83,12 @@ public class SelectCustomerPage extends WizardPage {
 		setControl(composite);
 	}
 
-	/** »ñµÃ¸ÃÒ³ÃæµÄ¿Í»§¶ÔÏó */
+	/** è·å¾—è¯¥é¡µé¢çš„å®¢æˆ·å¯¹è±¡ */
 	public CustomerEO getCusotmer() {
 		return cusotmer;
 	}
 
-	/** ÉèÖÃ¸ÃÒ³ÃæµÄ¿Í»§¶ÔÏó */
+	/** è®¾ç½®è¯¥é¡µé¢çš„å®¢æˆ·å¯¹è±¡ */
 	public void setCusotmer(CustomerEO cusotmer) {
 		this.cusotmer = cusotmer;
 	}

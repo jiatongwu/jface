@@ -9,15 +9,15 @@ public class BasicPreferencePage extends FieldEditorPreferencePage implements IW
 
 	public BasicPreferencePage() {
 		super(GRID);
-		/** ÉèÖÃÊ×Ñ¡Ïî±£´æ¶ÔÏó */
+		/** è®¾ç½®é¦–é€‰é¡¹ä¿å­˜å¯¹è±¡ */
 		setPreferenceStore(SuperCRMPlugin.getDefault().getPreferenceStore());
-		/** ÉèÖÃÊ×Ñ¡ÏîÒ³ÃæÃèÊöĞÅÏ¢ */
-		setDescription("»ù±¾ÉèÖÃ");
+		/** è®¾ç½®é¦–é€‰é¡¹é¡µé¢æè¿°ä¿¡æ¯ */
+		setDescription("åŸºæœ¬è®¾ç½®");
 	}
 
 	public void createFieldEditors() {
-		/** Ìí¼ÓÒ»¸öµ¥Ñ¡°´Å¥×é×Ö¶Î */
-		addField(new RadioGroupFieldEditor(PreferenceConstants.P_DEFAULT_SEARCH, "Ä¬ÈÏµÄËÑË÷ÀàĞÍ", 2, new String[][] { { "¿Í»§", "Customer" }, { "ÁªÏµÈË", "Contact" } }, getFieldEditorParent(), true));
+		/** æ·»åŠ ä¸€ä¸ªå•é€‰æŒ‰é’®ç»„å­—æ®µ */
+		addField(new RadioGroupFieldEditor(PreferenceConstants.P_DEFAULT_SEARCH, "é»˜è®¤çš„æœç´¢ç±»å‹", 2, new String[][] { { "å®¢æˆ·", "Customer" }, { "è”ç³»äºº", "Contact" } }, getFieldEditorParent(), true));
 	}
 
 	public void init(IWorkbench workbench) {

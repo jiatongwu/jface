@@ -31,162 +31,162 @@ public class MyFormView extends ViewPart {
 
 	public static final String ID = "com.fengmanfei.myrcp.views.MyFormView";
 
-	private FormToolkit toolkit;// ±íµ¥µÄ¹¤¾ß¶ÔÏó
+	private FormToolkit toolkit;// è¡¨å•çš„å·¥å…·å¯¹è±¡
 
-	private ScrolledForm form;// ¿É¹ö¶¯µÄ±íµ¥¶ÔÏó
+	private ScrolledForm form;// å¯æ»šåŠ¨çš„è¡¨å•å¯¹è±¡
 
 	public MyFormView() {
 		super();
 	}
 
-	// ÊµÏÖ¸¸ÀàÖĞµÄ³éÏó·½·¨£¬´´½¨ÊÓÍ¼ÖĞµÄ¸÷ÖÖ¿Ø¼ş
+	// å®ç°çˆ¶ç±»ä¸­çš„æŠ½è±¡æ–¹æ³•ï¼Œåˆ›å»ºè§†å›¾ä¸­çš„å„ç§æ§ä»¶
 	public void createPartControl(Composite parent) {
-		// ´´½¨±íµ¥¹¤¾ß¶ÔÏó
+		// åˆ›å»ºè¡¨å•å·¥å…·å¯¹è±¡
 		toolkit = new FormToolkit(parent.getDisplay());
-		// Í¨¹ı±íµ¥¹¤¾ß¶ÔÏó´´½¨¿É¹ö¶¯µÄ±íµ¥¶ÔÏó
+		// é€šè¿‡è¡¨å•å·¥å…·å¯¹è±¡åˆ›å»ºå¯æ»šåŠ¨çš„è¡¨å•å¯¹è±¡
 		form = toolkit.createScrolledForm(parent);
-		// ÉèÖÃ±íµ¥ÎÄ±¾
-		form.setText("Hello, Eclipse ±íµ¥");
+		// è®¾ç½®è¡¨å•æ–‡æœ¬
+		form.setText("Hello, Eclipse è¡¨å•");
 		
 		// form.setBackgroundImage( MyRCPPlugin.getImageDescriptor("icons/form_bg.gif").createImage());
-		//ÉèÖÃ±íµ¥µÄ²¼¾Ö
+		//è®¾ç½®è¡¨å•çš„å¸ƒå±€
 		form.getBody().setLayout( new TableWrapLayout());
 		
-		//´´½¨¿ÉÕÛµşµÄÃæ°å
+		//åˆ›å»ºå¯æŠ˜å çš„é¢æ¿
 		ExpandableComposite expcomp = toolkit.createExpandableComposite(form.getBody(), ExpandableComposite.TREE_NODE);
-		//¶¨Òå×Ö·û´®
-		String txt = "ÔÚWebÍøÒ³µÄUIÌåÏµÖĞ£¬×î³£¼ûµÄÒ²ÊÇĞ§¹û×îºÃµÄ¾ÍÊÇÊ¹Ò³ÃæÖĞµÄ²¿·ÖÇøÓòÖĞµÄÄÚÈİ¿ÉÒÔÕÛµşºÍÕ¹¿ª£¬Eclipse±íµ¥Ò²Ìá¹©ÁË¿ÉÕÛµşµÄÃæ°å£¨ExpandableComposite£©À´ÊµÏÖÏàÍ¬µÄ¹¦ÄÜ.";
-		//´´½¨Ò»¸ö±êÇ©²¢ÏÔÊ¾×Ö·û´®
+		//å®šä¹‰å­—ç¬¦ä¸²
+		String txt = "åœ¨Webç½‘é¡µçš„UIä½“ç³»ä¸­ï¼Œæœ€å¸¸è§çš„ä¹Ÿæ˜¯æ•ˆæœæœ€å¥½çš„å°±æ˜¯ä½¿é¡µé¢ä¸­çš„éƒ¨åˆ†åŒºåŸŸä¸­çš„å†…å®¹å¯ä»¥æŠ˜å å’Œå±•å¼€ï¼ŒEclipseè¡¨å•ä¹Ÿæä¾›äº†å¯æŠ˜å çš„é¢æ¿ï¼ˆExpandableCompositeï¼‰æ¥å®ç°ç›¸åŒçš„åŠŸèƒ½.";
+		//åˆ›å»ºä¸€ä¸ªæ ‡ç­¾å¹¶æ˜¾ç¤ºå­—ç¬¦ä¸²
 		Label client = toolkit.createLabel(expcomp, txt, SWT.WRAP);
-		//ÎªÕÛµşÃæ°åÉèÖÃÉèÖÃ±êÌâ
-		expcomp.setText("ÕâÊÇÒ»¸ö¿ÉÕÛµşµÄÃæ°å£¨ExpandableComposite£©");
+		//ä¸ºæŠ˜å é¢æ¿è®¾ç½®è®¾ç½®æ ‡é¢˜
+		expcomp.setText("è¿™æ˜¯ä¸€ä¸ªå¯æŠ˜å çš„é¢æ¿ï¼ˆExpandableCompositeï¼‰");
 		//expcomp.setToggleColor( Display.getCurrent().getSystemColor( SWT.COLOR_DARK_BLUE));
-		// ½«Label×÷ÎªÕÛµşÃæ°åÕÛµşÇøµÄÄÚÈİ
+		// å°†Labelä½œä¸ºæŠ˜å é¢æ¿æŠ˜å åŒºçš„å†…å®¹
 		expcomp.setClient(client);
-		// ÎªÕÛµşÃæ°åÌí¼ÓÕ¹¿ª/ÕÛµşÊ±µÄ¼àÌıÆ÷
+		// ä¸ºæŠ˜å é¢æ¿æ·»åŠ å±•å¼€/æŠ˜å æ—¶çš„ç›‘å¬å™¨
 		expcomp.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
-				// ¸ù¾İ¿Ø¼şµÄĞÂ³ß´çÖØĞÂ¶¨Î»ºÍ¸üĞÂ¹ö¶¯Ìõ
+				// æ ¹æ®æ§ä»¶çš„æ–°å°ºå¯¸é‡æ–°å®šä½å’Œæ›´æ–°æ»šåŠ¨æ¡
 				form.reflow(true);
 			}
 		});
 
-		//´´½¨ÄÚÈİÇøÓò£¬Ê¹ÓÃTWISTIEÑùÊ½£¬²¢ÇÒÊ¹ÓÃTITLE_BARÏÔÊ¾±³¾°µÄ±êÌâ
+		//åˆ›å»ºå†…å®¹åŒºåŸŸï¼Œä½¿ç”¨TWISTIEæ ·å¼ï¼Œå¹¶ä¸”ä½¿ç”¨TITLE_BARæ˜¾ç¤ºèƒŒæ™¯çš„æ ‡é¢˜
 		Section section = toolkit.createSection(form.getBody(), Section.TWISTIE|Section.TITLE_BAR|Section.DESCRIPTION);
-		//ÉèÖÃ±êÌâÎÄ×Ö
-		section.setText("ÕâÊÇÒ»¸öÄÚÈİÇø(Section)");
-		//´´½¨Ò»¸öÃæ°å£¬×÷ÎªÄÚÈİÕÛµşÇø·ÅÖÃµÄ¿Ø¼ş
+		//è®¾ç½®æ ‡é¢˜æ–‡å­—
+		section.setText("è¿™æ˜¯ä¸€ä¸ªå†…å®¹åŒº(Section)");
+		//åˆ›å»ºä¸€ä¸ªé¢æ¿ï¼Œä½œä¸ºå†…å®¹æŠ˜å åŒºæ”¾ç½®çš„æ§ä»¶
 		Composite sectionClient = toolkit.createComposite(section);
 		sectionClient.setLayout( new GridLayout());
 		Button bt1 = toolkit.createButton(sectionClient, "CheckBox 1", SWT.CHECK);
 		Button bt2 = toolkit.createButton(sectionClient, "CheckBox 2", SWT.CHECK);
-		//ÉèÖÃÄÚÈİÇø¿Ø¼ş
+		//è®¾ç½®å†…å®¹åŒºæ§ä»¶
 		section.setClient(sectionClient);
 		toolkit.createCompositeSeparator(section);
-		section.setDescription("ÕâÊÇÔÚ±êÌâÀ¸ÏÂµÄÒ»¶ÎÃèÊö");
+		section.setDescription("è¿™æ˜¯åœ¨æ ‡é¢˜æ ä¸‹çš„ä¸€æ®µæè¿°");
 		section.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
-				// ¸ù¾İ¿Ø¼şµÄĞÂ³ß´çÖØĞÂ¶¨Î»ºÍ¸üĞÂ¹ö¶¯Ìõ
+				// æ ¹æ®æ§ä»¶çš„æ–°å°ºå¯¸é‡æ–°å®šä½å’Œæ›´æ–°æ»šåŠ¨æ¡
 				form.reflow(true);
 			}
 		});
-		//´´½¨´øÍ¼±êµÄ³¬Á´½Ó
+		//åˆ›å»ºå¸¦å›¾æ ‡çš„è¶…é“¾æ¥
 		ImageHyperlink imageHyperlink =  toolkit.createImageHyperlink(section,SWT.CENTER);
-		//ÉèÖÃ³¬Á´½ÓµÄÍ¼±ê
+		//è®¾ç½®è¶…é“¾æ¥çš„å›¾æ ‡
 		imageHyperlink.setImage( PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD).createImage());
-		//½«¸ÃÍ¼±ê³¬Á´½ÓÌí¼Óµ½ÄÚÈİÇøµÄ¹¤¾ßÀ¸ÖĞ
+		//å°†è¯¥å›¾æ ‡è¶…é“¾æ¥æ·»åŠ åˆ°å†…å®¹åŒºçš„å·¥å…·æ ä¸­
 		section.setTextClient( imageHyperlink );
 		
-		//´´½¨Ò»¸öÄÚÈİÇø
+		//åˆ›å»ºä¸€ä¸ªå†…å®¹åŒº
 		Section linkSection = toolkit.createSection( form.getBody(), Section.TWISTIE|Section.TITLE_BAR);
-		linkSection.setText("ÕâÊÇ³¬¼¶Á´½Ó");
+		linkSection.setText("è¿™æ˜¯è¶…çº§é“¾æ¥");
 		Composite linkComp = toolkit.createComposite( linkSection );
 		linkComp.setLayout( new GridLayout());
 		linkSection.setClient( linkComp );
-		//´´½¨³¬Á´½Ó£¬ÎÄ×Ö¿ÉÒÔÕÛĞĞÏÔÊ¾
-		Hyperlink textLink = toolkit.createHyperlink(linkComp,"ÕâÊÇÒ»¸öÎÄ±¾³¬Á´½Ó",SWT.WRAP);
-		//×¢²á³¬Á´½ÓÊÂ¼ş¼àÌıÆ÷
+		//åˆ›å»ºè¶…é“¾æ¥ï¼Œæ–‡å­—å¯ä»¥æŠ˜è¡Œæ˜¾ç¤º
+		Hyperlink textLink = toolkit.createHyperlink(linkComp,"è¿™æ˜¯ä¸€ä¸ªæ–‡æœ¬è¶…é“¾æ¥",SWT.WRAP);
+		//æ³¨å†Œè¶…é“¾æ¥äº‹ä»¶ç›‘å¬å™¨
 		textLink.addHyperlinkListener( new IHyperlinkListener(){
 			public void linkEntered(HyperlinkEvent e) {
-				//¹â±ê½øÈë³¬Á´½ÓÇøÓò
+				//å…‰æ ‡è¿›å…¥è¶…é“¾æ¥åŒºåŸŸ
 			}
 			public void linkExited(HyperlinkEvent e) {
-				//¹â±êÀë¿ª³¬Á´½ÓÇøÓò
+				//å…‰æ ‡ç¦»å¼€è¶…é“¾æ¥åŒºåŸŸ
 			}
 
 			public void linkActivated(HyperlinkEvent e) {
-				//µ¥»÷³¬Á´½Ó¼¤»îÊ±
-				System.out.println("³¬Á´½Ó±»¼¤»î");
+				//å•å‡»è¶…é“¾æ¥æ¿€æ´»æ—¶
+				System.out.println("è¶…é“¾æ¥è¢«æ¿€æ´»");
 			}
 			
 		});
-		//´´½¨´øÓĞÍ¼Æ¬µÄ³¬Á´½Ó
+		//åˆ›å»ºå¸¦æœ‰å›¾ç‰‡çš„è¶…é“¾æ¥
 		ImageHyperlink imageLink = toolkit.createImageHyperlink( linkComp ,SWT.WRAP );
-		//ÉèÖÃ³¬Á´½ÓµÄÍ¼±ê
+		//è®¾ç½®è¶…é“¾æ¥çš„å›¾æ ‡
 		imageLink.setImage( MyRCPPlugin.getImageDescriptor("icons/help_contents.gif").createImage() );
-		//ÉèÖÃ³¬Á´½ÓµÄÎÄ±¾
-		imageLink.setText("ÕâÊÇÒ»¸öÍ¼Æ¬³¬Á´½Ó");
-		//ÉèÖÃµ±Êó±ê·Åµ½³¬Á´½ÓÉÏÊ±µÄÍ¼±ê
+		//è®¾ç½®è¶…é“¾æ¥çš„æ–‡æœ¬
+		imageLink.setText("è¿™æ˜¯ä¸€ä¸ªå›¾ç‰‡è¶…é“¾æ¥");
+		//è®¾ç½®å½“é¼ æ ‡æ”¾åˆ°è¶…é“¾æ¥ä¸Šæ—¶çš„å›¾æ ‡
 		imageLink.setHoverImage( MyRCPPlugin.getImageDescriptor("icons/linkto_help.gif").createImage());
-		//×¢²á³¬Á´½Ó¼àÌıÆ÷£¬Ê¹ÓÃHyperlinkAdapterÊÊÅäÆ÷¶ÔÏó
+		//æ³¨å†Œè¶…é“¾æ¥ç›‘å¬å™¨ï¼Œä½¿ç”¨HyperlinkAdapteré€‚é…å™¨å¯¹è±¡
 		imageLink.addHyperlinkListener( new HyperlinkAdapter(){
 			public void linkActivated(HyperlinkEvent e) {
-				System.out.println("³¬Á´½Ó±»¼¤»î");
+				System.out.println("è¶…é“¾æ¥è¢«æ¿€æ´»");
 			}
 		});
 		linkSection.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
-				// ¸ù¾İ¿Ø¼şµÄĞÂ³ß´çÖØĞÂ¶¨Î»ºÍ¸üĞÂ¹ö¶¯Ìõ
+				// æ ¹æ®æ§ä»¶çš„æ–°å°ºå¯¸é‡æ–°å®šä½å’Œæ›´æ–°æ»šåŠ¨æ¡
 				form.reflow(true);
 			}
 		});
 		
-		//´´½¨Ò»¸ö±íµ¥±¾ÎÄ¶ÔÏó£¬true±íÊ¾µ±¸Ã±íµ¥»ñµÃ½¹µãÊ±£¬½«³¬¼¶Á´½ÓµÄ½¹µãÉèÖÃÎª¿É¼û
+		//åˆ›å»ºä¸€ä¸ªè¡¨å•æœ¬æ–‡å¯¹è±¡ï¼Œtrueè¡¨ç¤ºå½“è¯¥è¡¨å•è·å¾—ç„¦ç‚¹æ—¶ï¼Œå°†è¶…çº§é“¾æ¥çš„ç„¦ç‚¹è®¾ç½®ä¸ºå¯è§
 		FormText formText = toolkit.createFormText(form.getBody(), false);
-		//¶¨ÒåÒ»¸ö×Ö·û´®£¬ÆäÖĞ°üº¬http://¸ñÊ½µÄ×Ö·û
-		//String text = "ÕâÊÇÎŞ¸ñÊ½µÄÎÄ±¾"+"ÕâÊÇ´øÓĞ³¬Á´½ÓµÄÎÄ±¾ http://www.eclipse.org ½«×Ô¶¯×ª»¯Îª³¬Á´½Ó,<a> http://www.eclipse.org</a>";
-		//ÉèÖÃÎÄ±¾false±íÊ¾²»×ª»¯tag±ê¼Ç£¬true±íÊ¾×ª»¯³¬Á´½Ó
+		//å®šä¹‰ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå…¶ä¸­åŒ…å«http://æ ¼å¼çš„å­—ç¬¦
+		//String text = "è¿™æ˜¯æ— æ ¼å¼çš„æ–‡æœ¬"+"è¿™æ˜¯å¸¦æœ‰è¶…é“¾æ¥çš„æ–‡æœ¬ http://www.eclipse.org å°†è‡ªåŠ¨è½¬åŒ–ä¸ºè¶…é“¾æ¥,<a> http://www.eclipse.org</a>";
+		//è®¾ç½®æ–‡æœ¬falseè¡¨ç¤ºä¸è½¬åŒ–tagæ ‡è®°ï¼Œtrueè¡¨ç¤ºè½¬åŒ–è¶…é“¾æ¥
 		//formText.setText(text, true, false);
-		//×¢²áµ¥»÷³¬Á´¼àÌıÆ÷
+		//æ³¨å†Œå•å‡»è¶…é“¾ç›‘å¬å™¨
 		formText.addHyperlinkListener(new HyperlinkAdapter(){
-			//µ±µ¥»÷Á´½ÓÊ±
+			//å½“å•å‡»é“¾æ¥æ—¶
 			public void linkActivated(HyperlinkEvent e) {
-				//´òÓ¡³öµ¥»÷µÄ³¬Á´½ÓµØÖ·
-				System.out.println("µ¥»÷ÁË¸Ã³¬Á´½Ó£º"+e.getHref());
+				//æ‰“å°å‡ºå•å‡»çš„è¶…é“¾æ¥åœ°å€
+				System.out.println("å•å‡»äº†è¯¥è¶…é“¾æ¥ï¼š"+e.getHref());
 			}
 		});
-		//ÉèÖÃÎÄ±¾ËùĞèÒªÊ¹ÓÃÍ¼Æ¬£¬Ê¹ÓÃµÚÒ»²ÎÊıÎªÍ¼Æ¬µÄkey£¬¸ÃÖµ¿É±»xml±ê¼ÇÖĞµÄ<img>±ê¼ÇÖĞµÄhrefÒıÓÃ
+		//è®¾ç½®æ–‡æœ¬æ‰€éœ€è¦ä½¿ç”¨å›¾ç‰‡ï¼Œä½¿ç”¨ç¬¬ä¸€å‚æ•°ä¸ºå›¾ç‰‡çš„keyï¼Œè¯¥å€¼å¯è¢«xmlæ ‡è®°ä¸­çš„<img>æ ‡è®°ä¸­çš„hrefå¼•ç”¨
 		formText.setImage("image1",MyRCPPlugin.getImageDescriptor("icons/samples.gif").createImage());
-		//ÉèÖÃÎÄ±¾ÖĞËùĞèÒªÊ¹ÓÃµÄ×ÖÌå£¬µÚÒ»¸ö²ÎÊı±íÊ¾×ÖÌåµÄkey£¬Öµ¿É±»<span>µÄfontÊôĞÔÒıÓÃ
+		//è®¾ç½®æ–‡æœ¬ä¸­æ‰€éœ€è¦ä½¿ç”¨çš„å­—ä½“ï¼Œç¬¬ä¸€ä¸ªå‚æ•°è¡¨ç¤ºå­—ä½“çš„keyï¼Œå€¼å¯è¢«<span>çš„fontå±æ€§å¼•ç”¨
 		formText.setFont("head",form.getFont());
-		//ÉèÖÃÎÄ±¾ÖĞËùĞèÒªÊ¹ÓÃµÄÑÕÉ«£¬µÚÒ»¸ö²ÎÊı±íÊ¾ÑÕÉ«µÄkey£¬Öµ¿É±»<span>µÄcolorÊôĞÔÒıÓÃ
+		//è®¾ç½®æ–‡æœ¬ä¸­æ‰€éœ€è¦ä½¿ç”¨çš„é¢œè‰²ï¼Œç¬¬ä¸€ä¸ªå‚æ•°è¡¨ç¤ºé¢œè‰²çš„keyï¼Œå€¼å¯è¢«<span>çš„colorå±æ€§å¼•ç”¨
 		formText.setColor("headColor",form.getForeground());
-		//ÉèÖÃÎÄ±¾ÖĞËùÒıÓÃµÄ¿Ø¼ş,µÚÒ»¸ö²ÎÊı±íÊ¾¿Ø¼şµÄkey£¬Öµ¿É±»<control>µÄhrefÊôĞÔÒıÓÃ
-		formText.setControl("myControl",toolkit.createButton(form.getBody(),"ÕâÊÇÒ»¸ö°´Å¥",SWT.NONE));
-		//×°ÔØ¸ÃÓëMyFormView.javaÍ¬ÎÄ¼ş¼ĞÏÂµÄdemo.xmlÎÄ¼ş
+		//è®¾ç½®æ–‡æœ¬ä¸­æ‰€å¼•ç”¨çš„æ§ä»¶,ç¬¬ä¸€ä¸ªå‚æ•°è¡¨ç¤ºæ§ä»¶çš„keyï¼Œå€¼å¯è¢«<control>çš„hrefå±æ€§å¼•ç”¨
+		formText.setControl("myControl",toolkit.createButton(form.getBody(),"è¿™æ˜¯ä¸€ä¸ªæŒ‰é’®",SWT.NONE));
+		//è£…è½½è¯¥ä¸MyFormView.javaåŒæ–‡ä»¶å¤¹ä¸‹çš„demo.xmlæ–‡ä»¶
 		InputStream is = MyFormView.class.getResourceAsStream("demo.xml"); //$NON-NLS-1$
-		if (is!=null) {//Èô´æÔÚ¸ÃÎÄ¼ş
-			//ÉèÖÃ±íµ¥ÎÄ±¾ÊäÈëÊı¾İÁ÷
+		if (is!=null) {//è‹¥å­˜åœ¨è¯¥æ–‡ä»¶
+			//è®¾ç½®è¡¨å•æ–‡æœ¬è¾“å…¥æ•°æ®æµ
 			formText.setContents(is, true);
 			try {
-				//×îºó¹Ø±ÕÊı¾İÁ÷
+				//æœ€åå…³é—­æ•°æ®æµ
 				is.close();
 			}
 			catch (IOException e) {
 			}
 		}
-		//»ñµÃ³¬Á´½Ó×é
+		//è·å¾—è¶…é“¾æ¥ç»„
 		HyperlinkGroup group = toolkit.getHyperlinkGroup();
 	}
 
-	// ÊÓÍ¼»ñÈ¡½¹µãÊ±
+	// è§†å›¾è·å–ç„¦ç‚¹æ—¶
 	public void setFocus() {
-		form.setFocus();// ½«½¹µã·ÅÖÃÔÚ±íµ¥ÉÏ
+		form.setFocus();// å°†ç„¦ç‚¹æ”¾ç½®åœ¨è¡¨å•ä¸Š
 	}
 
-	// ¸²¸Ç¸¸ÀàÖĞµÄ·½·¨£¬ÊÍ·ÅÊÓÍ¼Ê±
+	// è¦†ç›–çˆ¶ç±»ä¸­çš„æ–¹æ³•ï¼Œé‡Šæ”¾è§†å›¾æ—¶
 	public void dispose() {
-		toolkit.dispose();// ÊÍ·Å±íµ¥¹¤¾ß¶ÔÏó
+		toolkit.dispose();// é‡Šæ”¾è¡¨å•å·¥å…·å¯¹è±¡
 		super.dispose();
 	}
 }

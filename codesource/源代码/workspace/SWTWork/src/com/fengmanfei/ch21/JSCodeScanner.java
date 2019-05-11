@@ -9,49 +9,49 @@ import org.eclipse.swt.SWT;
 
 public class JSCodeScanner extends RuleBasedScanner {
 	
-	private TextAttribute keywords ;//¹Ø¼ü×ÖµÄÎÄ±¾ÊôĞÔ
-	private TextAttribute string ;//×Ö·û´®µÄÎÄ±¾ÊôĞÔ
-	private TextAttribute object ;//ÄÚÖÃ¶ÔÏóµÄÎÄ±¾ÊôĞÔ
-	private TextAttribute comment ;//×¢ÊÍ²¿·ÖµÄÎÄ±¾ÊôĞÔ
+	private TextAttribute keywords ;//å…³é”®å­—çš„æ–‡æœ¬å±æ€§
+	private TextAttribute string ;//å­—ç¬¦ä¸²çš„æ–‡æœ¬å±æ€§
+	private TextAttribute object ;//å†…ç½®å¯¹è±¡çš„æ–‡æœ¬å±æ€§
+	private TextAttribute comment ;//æ³¨é‡Šéƒ¨åˆ†çš„æ–‡æœ¬å±æ€§
 	public JSCodeScanner(){
-		//»ñµÃÊ×Ñ¡ÏîÖĞËùÉèÖÃµÄÑÕÉ«£¬³õÊ¼»¯¸÷ÎÄ±¾ÊôĞÔ
+		//è·å¾—é¦–é€‰é¡¹ä¸­æ‰€è®¾ç½®çš„é¢œè‰²ï¼Œåˆå§‹åŒ–å„æ–‡æœ¬å±æ€§
 		keywords = new TextAttribute (ResourceManager.getColor(Constants.COLOR_KEYWORD),null,SWT.BOLD);
 		string = new TextAttribute (ResourceManager.getColor(Constants.COLOR_STRING));
 		object = new TextAttribute (ResourceManager.getColor(Constants.COLOR_OBJECT));
 		comment = new TextAttribute (ResourceManager.getColor(Constants.COLOR_COMMENT),null,SWT.ITALIC);
-		//ÉèÖÃ´úÂëµÄ¹æÔò
+		//è®¾ç½®ä»£ç çš„è§„åˆ™
 		setupRules();
 	}
 	private void setupRules() {
-		//ÓÃÒ»¸öList¼¯ºÏ¶ÔÏó±£´æËùÓĞµÄ¹æÔò
+		//ç”¨ä¸€ä¸ªListé›†åˆå¯¹è±¡ä¿å­˜æ‰€æœ‰çš„è§„åˆ™
 	    List rules = new ArrayList();
-	    //×Ö·û´®µÄ¹æÔò
+	    //å­—ç¬¦ä¸²çš„è§„åˆ™
 	    rules.add(new SingleLineRule("\"", "\"",new Token( string), '\\'));
 	    rules.add(new SingleLineRule("'", "'", new Token( string), '\\'));
-	    //×¢ÊÍµÄ¹æÔò
+	    //æ³¨é‡Šçš„è§„åˆ™
 	    rules.add(new SingleLineRule("/*", "*/", new Token( comment), '\\'));
 	    rules.add(new EndOfLineRule("//", new Token( comment),'\\'));
-	    //¿Õ¸ñµÄ¹æÔò
+	    //ç©ºæ ¼çš„è§„åˆ™
 	    rules.add(new WhitespaceRule(new IWhitespaceDetector() {
 	      public boolean isWhitespace(char c) {
 	        return Character.isWhitespace(c);
 	      }
 	    }));
-	    //¹Ø¼ü×ÖµÄ¹æÔò
+	    //å…³é”®å­—çš„è§„åˆ™
 	    WordRule keywordRule = new WordRule(new KeywordDetector());
 	    for (int i = 0, n = Constants.JS_SYNTAX_KEYWORD.length; i < n; i++)
 	    	keywordRule.addWord(Constants.JS_SYNTAX_KEYWORD[i], new Token( keywords ));
 	    rules.add(keywordRule);
-	    //ÄÚÖÃ¶ÔÏóµÄ¹æÔò
+	    //å†…ç½®å¯¹è±¡çš„è§„åˆ™
 	    WordRule objectRule = new WordRule(new ObjectDetector());
 	    for (int i = 0, n = Constants.JS_SYNTAX_BUILDIB_OBJECT.length; i < n; i++)
 	    	objectRule.addWord(Constants.JS_SYNTAX_BUILDIB_OBJECT[i], new Token( object ));
 	    rules.add(objectRule);
-	    //¼¯ºÏÀàÖĞ±£´æµÄ¹æÔò×ª»¯ÎªÊı×é
+	    //é›†åˆç±»ä¸­ä¿å­˜çš„è§„åˆ™è½¬åŒ–ä¸ºæ•°ç»„
 	    IRule[] result = new IRule[rules.size()];
 	    rules.toArray(result);
-	    //µ÷ÓÃ¸¸ÀàÖĞµÄ·½·¨£¬ÉèÖÃ¹æÔò
-	    //´Ë·½·¨·Ç³£ÖØÒª
+	    //è°ƒç”¨çˆ¶ç±»ä¸­çš„æ–¹æ³•ï¼Œè®¾ç½®è§„åˆ™
+	    //æ­¤æ–¹æ³•éå¸¸é‡è¦
 	    setRules(result);
 	}
 	

@@ -1,15 +1,15 @@
 package superCRM.preferences;
 
 public class PreferenceConstants {
-	/** ÊÇ·ñ×Ô¶¯µÇÂ¼ */
+	/** æ˜¯å¦è‡ªåŠ¨ç™»å½• */
 	public static final String P_AUTO_LOGIN = "autoLogin";
 
-	/** ÓÃ»§Ãû */
+	/** ç”¨æˆ·å */
 	public static final String P_USER_NAME = "userName";
 
-	/** ÃÜÂë */
+	/** å¯†ç  */
 	public static final String P_PASSWORD = "password";
 
-	/** Ä¬ÈÏËÑË÷ÀàĞÍ */
+	/** é»˜è®¤æœç´¢ç±»å‹ */
 	public static final String P_DEFAULT_SEARCH = "defaultSearch";
 }

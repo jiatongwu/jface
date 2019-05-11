@@ -8,7 +8,7 @@ import org.eclipse.jface.viewers.Viewer;
 public class TableContentProvider implements IStructuredContentProvider {
 
 	public Object[] getElements(Object inputElement) {
-		/** 如果输入的是List对象 */
+		/** 濡傛灉杈撳叆鐨勬槸List瀵硅薄 */
 		if (inputElement instanceof List) {
 			List list = (List) inputElement;
 			return list.toArray();

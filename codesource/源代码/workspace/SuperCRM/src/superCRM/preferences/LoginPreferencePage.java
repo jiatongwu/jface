@@ -18,56 +18,56 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import superCRM.SuperCRMPlugin;
 
 public class LoginPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
-	/** ÊÇ·ñ×Ô¶¯µÇÂ¼°´Å¥ */
+	/** æ˜¯å¦è‡ªåŠ¨ç™»å½•æŒ‰é’® */
 	private Button bAutoLogin;
 
-	/** ÓÃ»§Ãû */
+	/** ç”¨æˆ·å */
 	private Text userName;
 
-	/** ÃÜÂë */
+	/** å¯†ç  */
 	private Text password;
 
 	public LoginPreferencePage() {
-		super("µÇÂ¼ÉèÖÃ");
+		super("ç™»å½•è®¾ç½®");
 		setPreferenceStore(SuperCRMPlugin.getDefault().getPreferenceStore());
 	}
 
 	protected Control createContents(Composite parent) {
-		/** ÉèÖÃÃæ°å²¼¾Ö */
+		/** è®¾ç½®é¢æ¿å¸ƒå±€ */
 		Composite composite = new Composite(parent, SWT.NONE);
 		GridData gridData = new GridData(GridData.FILL_BOTH);
 		composite.setLayoutData(gridData);
 		composite.setLayout(new GridLayout(2, false));
-		/** ÊÇ·ñµÇÂ¼°´Å¥ */
+		/** æ˜¯å¦ç™»å½•æŒ‰é’® */
 		bAutoLogin = new Button(composite, SWT.CHECK);
-		bAutoLogin.setText("ÊÇ·ñ×Ô¶¯µÇÂ¼");
-		/** ¸ù¾İÊ×Ñ¡ÏîÉèÖÃµÇÂ¼°´Å¥×´Ì¬ */
+		bAutoLogin.setText("æ˜¯å¦è‡ªåŠ¨ç™»å½•");
+		/** æ ¹æ®é¦–é€‰é¡¹è®¾ç½®ç™»å½•æŒ‰é’®çŠ¶æ€ */
 		bAutoLogin.setSelection(getPreferenceStore().getBoolean(PreferenceConstants.P_AUTO_LOGIN));
 		gridData = new GridData();
 		gridData.horizontalSpan = 2;
 		bAutoLogin.setLayoutData(gridData);
-		/** ×¢²áµÇÂ¼°´Å¥Ñ¡ÖĞÊÂ¼ş¼àÌıÆ÷ */
+		/** æ³¨å†Œç™»å½•æŒ‰é’®é€‰ä¸­äº‹ä»¶ç›‘å¬å™¨ */
 		bAutoLogin.addSelectionListener(new SelectionAdapter() {
-			/** µ±Ñ¡ÖĞÊÇ·ñµÇÂ¼°´Å¥Ê± */
+			/** å½“é€‰ä¸­æ˜¯å¦ç™»å½•æŒ‰é’®æ—¶ */
 			public void widgetSelected(SelectionEvent e) {
-				/** ¸ù¾İµÇÂ¼×´Ì¬ÉèÖÃÓÃ»§ÃûºÍÃÜÂë¿òµÄ¿ÉÓÃ×´Ì¬ */
+				/** æ ¹æ®ç™»å½•çŠ¶æ€è®¾ç½®ç”¨æˆ·åå’Œå¯†ç æ¡†çš„å¯ç”¨çŠ¶æ€ */
 				setLoginEnabled(bAutoLogin.getSelection());
 			}
 		});
-		/** ÓÃ»§Ãû */
-		new Label(composite, SWT.NONE).setText("µÇÂ¼µÄÓÃ»§Ãû£º");
+		/** ç”¨æˆ·å */
+		new Label(composite, SWT.NONE).setText("ç™»å½•çš„ç”¨æˆ·åï¼š");
 		userName = new Text(composite, SWT.BORDER);
 		userName.setText(getPreferenceStore().getString(PreferenceConstants.P_USER_NAME));
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
 		userName.setLayoutData(gridData);
-		/** ÃÜÂë */
-		new Label(composite, SWT.NONE).setText("µÇÂ¼µÄÃÜÂë£º");
+		/** å¯†ç  */
+		new Label(composite, SWT.NONE).setText("ç™»å½•çš„å¯†ç ï¼š");
 		password = new Text(composite, SWT.BORDER);
 		password.setEchoChar('*');
 		password.setText(getPreferenceStore().getString(PreferenceConstants.P_PASSWORD));
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
 		password.setLayoutData(gridData);
-		/** ¸ù¾İµÇÂ¼×´Ì¬ÉèÖÃÓÃ»§ÃûºÍÃÜÂë¿òµÄ¿ÉÓÃ×´Ì¬ */
+		/** æ ¹æ®ç™»å½•çŠ¶æ€è®¾ç½®ç”¨æˆ·åå’Œå¯†ç æ¡†çš„å¯ç”¨çŠ¶æ€ */
 		setLoginEnabled(bAutoLogin.getSelection());
 		return composite;
 	}
@@ -76,13 +76,13 @@ public class LoginPreferencePage extends PreferencePage implements IWorkbenchPre
 
 	}
 
-	/** ÉèÖÃÓÃ»§ÃûºÍÃÜÂëÎÄ±¾¿ò×´Ì¬ */
+	/** è®¾ç½®ç”¨æˆ·åå’Œå¯†ç æ–‡æœ¬æ¡†çŠ¶æ€ */
 	private void setLoginEnabled(boolean enable) {
 		userName.setEnabled(!enable);
 		password.setEnabled(!enable);
 	}
 
-	/** µ¥»÷È·¶¨°´Å¥Ê±,ÉèÖÃÊ×Ñ¡ÏîµÄÖµ */
+	/** å•å‡»ç¡®å®šæŒ‰é’®æ—¶,è®¾ç½®é¦–é€‰é¡¹çš„å€¼ */
 	public boolean performOk() {
 		IPreferenceStore store = getPreferenceStore();
 		store.setValue(PreferenceConstants.P_AUTO_LOGIN, bAutoLogin.getSelection());
@@ -91,7 +91,7 @@ public class LoginPreferencePage extends PreferencePage implements IWorkbenchPre
 		return true;
 	}
 
-	/** µ¥»÷»Ö¸´Ä¬ÈÏ°´Å¥Ê±,»Ö¸´Ä¬ÈÏÖµ */
+	/** å•å‡»æ¢å¤é»˜è®¤æŒ‰é’®æ—¶,æ¢å¤é»˜è®¤å€¼ */
 	protected void performDefaults() {
 		IPreferenceStore store = getPreferenceStore();
 		bAutoLogin.setSelection(store.getDefaultBoolean(PreferenceConstants.P_AUTO_LOGIN));

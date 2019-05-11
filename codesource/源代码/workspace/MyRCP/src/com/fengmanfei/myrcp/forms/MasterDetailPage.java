@@ -10,27 +10,27 @@ public class MasterDetailPage extends FormPage {
 
 	public static final String ID = "com.fengmanfei.myrcp.forms.MasterDetailPage";
 
-	// ÉùÃ÷MasterDetailÒ³Ãæ²¿·Ö¶ÔÏó
+	// å£°æ˜MasterDetailé¡µé¢éƒ¨åˆ†å¯¹è±¡
 	private FileMasterDetailsBlock block;
 
 	public MasterDetailPage(FormEditor editor) {
-		super(editor, ID, "Master/DetailÒ³");
+		super(editor, ID, "Master/Detailé¡µ");
 		block = new FileMasterDetailsBlock(this);
 	}
 
 	/*
-	 * ManagedForm·â×°ÁËformÔªËØµÄÉúÃüÖÜÆÚ¹ÜÀíÓë¸÷¸öformÔªËØÖ®¼äµÄÊÂ¼şÍ¨Öª
-	 * ManagedForm±¾Éí²¢²»ÊÇÒ»¸öform£¬Ëû°üº¬ÁËÒ»¸öform²¢ÇÒ¿ÉÒÔ×¢²áIFormPart¡£
-	 * ¿ÉÒÔ½«ManagedForm¿´×÷ÊÇ'viewers'£¬formºÍmanaged formÖ®¼äµÄ¹ØÏµ¾ÍºÃÏñ
-	 * TableÓëTableViewerµÄ¹ØÏµÒ»Ñù¡£
+	 * ManagedFormå°è£…äº†formå…ƒç´ çš„ç”Ÿå‘½å‘¨æœŸç®¡ç†ä¸å„ä¸ªformå…ƒç´ ä¹‹é—´çš„äº‹ä»¶é€šçŸ¥
+	 * ManagedFormæœ¬èº«å¹¶ä¸æ˜¯ä¸€ä¸ªformï¼Œä»–åŒ…å«äº†ä¸€ä¸ªformå¹¶ä¸”å¯ä»¥æ³¨å†ŒIFormPartã€‚
+	 * å¯ä»¥å°†ManagedFormçœ‹ä½œæ˜¯'viewers'ï¼Œformå’Œmanaged formä¹‹é—´çš„å…³ç³»å°±å¥½åƒ
+	 * Tableä¸TableViewerçš„å…³ç³»ä¸€æ ·ã€‚
 	 */
 
 	protected void createFormContent(IManagedForm managedForm) {
-		// »ñµÃ±íµ¥¶ÔÏó
+		// è·å¾—è¡¨å•å¯¹è±¡
 		ScrolledForm form = managedForm.getForm();
-		// ÉèÖÃ±íµ¥µÄ±êÌâ
-		form.setText("ÕâÊÇÒ»¸öä¯ÀÀÎÄ¼şµÄMaster/DetailÒ³Ãæ");
-		// ¸Ã·½·¨·Ç³£ÖØÒª£¬¸ºÔğ´´½¨MasterºÍDetailÇøÓò£¬¾¡Á¿ÔÚ×îºóµ÷ÓÃ
+		// è®¾ç½®è¡¨å•çš„æ ‡é¢˜
+		form.setText("è¿™æ˜¯ä¸€ä¸ªæµè§ˆæ–‡ä»¶çš„Master/Detailé¡µé¢");
+		// è¯¥æ–¹æ³•éå¸¸é‡è¦ï¼Œè´Ÿè´£åˆ›å»ºMasterå’ŒDetailåŒºåŸŸï¼Œå°½é‡åœ¨æœ€åè°ƒç”¨
 		block.createContent(managedForm);
 	}
 

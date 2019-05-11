@@ -16,70 +16,70 @@ import superCRM.SuperCRMPlugin;
 import superCRM.preferences.PreferenceConstants;
 import superCRM.util.LayoutUtil;
 
-/** µÇÂ¼¶Ô»°¿ò */
+/** ç™»å½•å¯¹è¯æ¡† */
 public class LoginDialog extends TitleAreaDialog {
 
-	/** ÓÃ»§Ãû */
+	/** ç”¨æˆ·å */
 	private Text userName;
 
-	/** ÃÜÂë */
+	/** å¯†ç  */
 	private Text password;
 
 	public LoginDialog(Shell parentShell) {
 		super(parentShell);
 	}
 
-	/** ÉèÖÃµÇÂ¼¶Ô»°¿òµÄÊôĞÔ */
+	/** è®¾ç½®ç™»å½•å¯¹è¯æ¡†çš„å±æ€§ */
 	protected void configureShell(Shell newShell) {
-		newShell.setText("ÓÃ»§µÇÂ¼");
+		newShell.setText("ç”¨æˆ·ç™»å½•");
 		newShell.setSize(300, 200);
 		newShell.setImage(SuperCRMPlugin.getImageDescriptor("icons/logo.gif").createImage());
 		LayoutUtil.centerShell(Display.getCurrent(), newShell);
 	}
 
-	/** ÉèÖÃµÇÂ¼¶Ô»°¿òµÄÄÚÈİÊôĞÔ */
+	/** è®¾ç½®ç™»å½•å¯¹è¯æ¡†çš„å†…å®¹å±æ€§ */
 	protected Control createContents(Composite parent) {
 		super.createContents(parent);
-		this.setTitle("ÓÃ»§µÇÂ¼");
-		this.setMessage("ÇëÊäÈëÓÃ»§ÃûºÍÃÜÂëµÇÂ¼ÏµÍ³");
+		this.setTitle("ç”¨æˆ·ç™»å½•");
+		this.setMessage("è¯·è¾“å…¥ç”¨æˆ·åå’Œå¯†ç ç™»å½•ç³»ç»Ÿ");
 		return parent;
 	}
 
-	/** ÉèÖÃµÇÂ¼¶Ô»°¿òÄÚÈİÇøµÄÊôĞÔ */
+	/** è®¾ç½®ç™»å½•å¯¹è¯æ¡†å†…å®¹åŒºçš„å±æ€§ */
 	protected Control createDialogArea(Composite parent) {
 		super.createDialogArea(parent);
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 		GridLayout layout = new GridLayout(2, false);
 		composite.setLayout(layout);
-		new Label(composite, SWT.NONE).setText("ÓÃ»§Ãû£º");
+		new Label(composite, SWT.NONE).setText("ç”¨æˆ·åï¼š");
 		userName = new Text(composite, SWT.BORDER);
 		userName.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		new Label(composite, SWT.NONE).setText("ÃÜÂë£º");
+		new Label(composite, SWT.NONE).setText("å¯†ç ï¼š");
 		password = new Text(composite, SWT.BORDER);
 		password.setEchoChar('*');
 		password.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		return parent;
 	}
 
-	/** ¸²¸Ç¸¸ÀàµÄ·½·¨,µ±µ¥»÷°´Å¥Ê±µ÷ÓÃ */
+	/** è¦†ç›–çˆ¶ç±»çš„æ–¹æ³•,å½“å•å‡»æŒ‰é’®æ—¶è°ƒç”¨ */
 	protected void buttonPressed(int buttonId) {
-		/** Èç¹ûµ¥»÷ÁËÈ·¶¨°´Å¥ */
+		/** å¦‚æœå•å‡»äº†ç¡®å®šæŒ‰é’® */
 		if (IDialogConstants.OK_ID == buttonId) {
-			/** ÓÃ»§Ãû²»Îª¿Õ */
+			/** ç”¨æˆ·åä¸ä¸ºç©º */
 			if (userName.getText().equals("")) {
-				this.setErrorMessage("ÓÃ»§Ãû²»Îª¿Õ");
+				this.setErrorMessage("ç”¨æˆ·åä¸ä¸ºç©º");
 				return;
 			}
-			/** ÃÜÂë²»Îª¿Õ */
+			/** å¯†ç ä¸ä¸ºç©º */
 			if (password.getText().equals("")) {
-				this.setErrorMessage("ÃÜÂë²»Îª¿Õ£¡");
+				this.setErrorMessage("å¯†ç ä¸ä¸ºç©ºï¼");
 				return;
 			}
-			/**ÑéÖ¤ÓÃ»§ÃûÃÜÂë*/
+			/**éªŒè¯ç”¨æˆ·åå¯†ç */
 			boolean bValid = checkValid();
 			if (!bValid) {
-				this.setErrorMessage("ÓÃ»§Ãû»òÃÜÂë´íÎó£¡");
+				this.setErrorMessage("ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¼");
 				return;
 			}
 			okPressed();
@@ -87,10 +87,10 @@ public class LoginDialog extends TitleAreaDialog {
 			cancelPressed();
 	}
 
-	/** ÅĞ¶ÏÑéÖ¤ÓÃ»§ÃûºÍÃÜÂë */
+	/** åˆ¤æ–­éªŒè¯ç”¨æˆ·åå’Œå¯†ç  */
 	private boolean checkValid() {
 		boolean bValid = false;
-		/**½«ÓÃ»§ÊäÈëÓÃ»§ÃûÓëÊ×Ñ¡ÏîÖĞÉèÖÃµÄÓÃ»§ÃûºÍÃÜÂë¶Ô±È,Èç¹ûÕıÈ·,ÔòÑéÖ¤³É¹¦*/
+		/**å°†ç”¨æˆ·è¾“å…¥ç”¨æˆ·åä¸é¦–é€‰é¡¹ä¸­è®¾ç½®çš„ç”¨æˆ·åå’Œå¯†ç å¯¹æ¯”,å¦‚æœæ­£ç¡®,åˆ™éªŒè¯æˆåŠŸ*/
 		IPreferenceStore store = SuperCRMPlugin.getDefault().getPreferenceStore();
 		if (userName.getText().equals(store.getString(PreferenceConstants.P_USER_NAME)) && password.getText().equals(store.getString(PreferenceConstants.P_USER_NAME)))
 			bValid = true;

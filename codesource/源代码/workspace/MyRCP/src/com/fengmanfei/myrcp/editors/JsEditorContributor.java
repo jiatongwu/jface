@@ -37,14 +37,14 @@ public class JsEditorContributor extends EditorActionBarContributor {
 		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
 				getImageDescriptor(ISharedImages.IMG_OBJS_WARN_TSK));
 	}
-	//¸²¸Ç¸¸ÀàÖĞµÄ·½·¨£¬´´½¨²Ëµ¥
+	//è¦†ç›–çˆ¶ç±»ä¸­çš„æ–¹æ³•ï¼Œåˆ›å»ºèœå•
 	public void contributeToMenu(IMenuManager menuManager) {
-		MenuManager editMenu = new MenuManager("±à¼­Æ÷²Ëµ¥");
+		MenuManager editMenu = new MenuManager("ç¼–è¾‘å™¨èœå•");
 		editMenu.add( action1 );
 		editMenu.add( action2 );
 		menuManager.add( editMenu );
 	}
-	//¸²¸Ç¸¸ÀàµÄ·½·¨£¬´´½¨¹¤¾ßÀ¸
+	//è¦†ç›–çˆ¶ç±»çš„æ–¹æ³•ï¼Œåˆ›å»ºå·¥å…·æ 
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
 		toolBarManager.add( action1 );
 		toolBarManager.add( action2 );

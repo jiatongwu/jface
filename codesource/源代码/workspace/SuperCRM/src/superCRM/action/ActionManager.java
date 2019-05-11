@@ -6,7 +6,7 @@ import org.eclipse.ui.views.IViewDescriptor;
 
 public class ActionManager {
 
-	/** ĞÂ½¨¿Í»§²Ù×÷ */
+	/** æ–°å»ºå®¢æˆ·æ“ä½œ */
 	public static IWorkbenchAction createNewCustomerAction(IWorkbenchWindow window) {
 		if (window == null) {
 			throw new IllegalArgumentException();
@@ -15,7 +15,7 @@ public class ActionManager {
 		return action;
 	}
 
-	/** ĞÂ½¨ÁªÏµÈË²Ù×÷ */
+	/** æ–°å»ºè”ç³»äººæ“ä½œ */
 	public static IWorkbenchAction createNewContactAction(IWorkbenchWindow window) {
 		if (window == null) {
 			throw new IllegalArgumentException();
@@ -23,12 +23,12 @@ public class ActionManager {
 		IWorkbenchAction action = new NewContactAction(window);
 		return action;
 	}
-	/**´ò¿ªÊÓÍ¼²Ù×÷ */
+	/**æ‰“å¼€è§†å›¾æ“ä½œ */
 	public static IWorkbenchAction createShowViewAction(IWorkbenchWindow window, String viewId) {
 		if (window == null) {
 			throw new IllegalArgumentException();
 		}
-		/**»ñµÃplugin.xmlÎÄ¼şÖĞÅäÖÃµÄÊÓÍ¼ĞÅÏ¢*/
+		/**è·å¾—plugin.xmlæ–‡ä»¶ä¸­é…ç½®çš„è§†å›¾ä¿¡æ¯*/
 		IViewDescriptor desc = window.getWorkbench().getViewRegistry().find(viewId);
 		IWorkbenchAction action = new ShowViewAction(window, desc);
 		return action;

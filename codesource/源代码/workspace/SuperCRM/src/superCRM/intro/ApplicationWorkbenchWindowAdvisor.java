@@ -17,33 +17,33 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import superCRM.SuperCRMPlugin;
 
-/** ¹¤×÷Çø´°¿ÚÀà */
+/** å·¥ä½œåŒºçª—å£ç±» */
 
 public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
-	/** ÏµÍ³ÍĞÅÌ¶ÔÏó */
+	/** ç³»ç»Ÿæ‰˜ç›˜å¯¹è±¡ */
 	private TrayItem trayItem;
 
-	/** ÏµÍ³ÍĞÅÌµÄÍ¼±ê¶ÔÏó */
+	/** ç³»ç»Ÿæ‰˜ç›˜çš„å›¾æ ‡å¯¹è±¡ */
 	private Image trayImage;
 
-	/** ³ÌĞòµÄ²Ëµ¥Ìõ */
+	/** ç¨‹åºçš„èœå•æ¡ */
 	private ApplicationActionBarAdvisor actionBarAdvisor;
 
-	/** ¹¹Ôì·½·¨ */
+	/** æ„é€ æ–¹æ³• */
 	public ApplicationWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
 		super(configurer);
 	}
 
-	/** ´´½¨²Ëµ¥Ìõ¶ÔÏó */
+	/** åˆ›å»ºèœå•æ¡å¯¹è±¡ */
 	public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
 		actionBarAdvisor = new ApplicationActionBarAdvisor(configurer);
 		return actionBarAdvisor;
 	}
 
-	/** ´ò¿ª´°¿ÚÇ°µ÷ÓÃ¸Ã·½·¨£¬¶Ô´°¿Ú³õÊ¼»¯ÉèÖÃ */
+	/** æ‰“å¼€çª—å£å‰è°ƒç”¨è¯¥æ–¹æ³•ï¼Œå¯¹çª—å£åˆå§‹åŒ–è®¾ç½® */
 	public void preWindowOpen() {
-		/** ÉèÖÃ´°¿Ú³õÊ¼»¯µÄ¸÷ÖÖÊôĞÔ */
+		/** è®¾ç½®çª—å£åˆå§‹åŒ–çš„å„ç§å±æ€§ */
 		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
 		configurer.setInitialSize(new Point(700, 550));
 		configurer.setShowCoolBar(true);
@@ -53,9 +53,9 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowStatusLine(true);
 
 		final IWorkbenchWindow window = getWindowConfigurer().getWindow();
-		/** ´´½¨ÏµÍ³ÍĞÅÌ */
+		/** åˆ›å»ºç³»ç»Ÿæ‰˜ç›˜ */
 		trayItem = initTrayItem(window);
-		/** Èç¹ûÖ§³ÖÏµÍ³ÍĞÅÌ£¬Ôò´´½¨ÍĞÅÌµÄ²Ëµ¥ */
+		/** å¦‚æœæ”¯æŒç³»ç»Ÿæ‰˜ç›˜ï¼Œåˆ™åˆ›å»ºæ‰˜ç›˜çš„èœå• */
 		if (trayItem != null) {
 			createPopupMenu(window);
 		}
@@ -63,20 +63,20 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	}
 
 	/**
-	 * ´´½¨ÏµÍ³ÍĞÅÌ²Ëµ¥
+	 * åˆ›å»ºç³»ç»Ÿæ‰˜ç›˜èœå•
 	 * 
 	 * @param window
-	 *            ¹¤×÷Ì¨´°¿Ú¶ÔÏó
+	 *            å·¥ä½œå°çª—å£å¯¹è±¡
 	 */
 	private void createPopupMenu(final IWorkbenchWindow window) {
 		trayItem.addListener(SWT.MenuDetect, new Listener() {
 			public void handleEvent(Event event) {
-				/** Í¨¹ıMenuManager¶ÔÏóÀ´´´½¨²Ëµ¥ */
+				/** é€šè¿‡MenuManagerå¯¹è±¡æ¥åˆ›å»ºèœå• */
 				MenuManager trayMenu = new MenuManager();
 				Menu menu = trayMenu.createContextMenu(window.getShell());
 
 				/**
-				 * µ÷ÓÃfillTrayItem·½·¨´´½¨ÏµÍ³ÍĞÅÌ¶ÔÏó£¬¿ÉÒÔÖ±½ÓÀûÓÃ²Ëµ¥À¸ÖĞµÄ²Ù×÷ ¶ø²»ĞèÒª£¬ÖØĞÂ´´½¨²Ù×÷
+				 * è°ƒç”¨fillTrayItemæ–¹æ³•åˆ›å»ºç³»ç»Ÿæ‰˜ç›˜å¯¹è±¡ï¼Œå¯ä»¥ç›´æ¥åˆ©ç”¨èœå•æ ä¸­çš„æ“ä½œ è€Œä¸éœ€è¦ï¼Œé‡æ–°åˆ›å»ºæ“ä½œ
 				 */
 				actionBarAdvisor.fillTrayItem(trayMenu);
 				menu.setVisible(true);
@@ -86,17 +86,17 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	}
 
 	/**
-	 * ³õÊ¼»¯ÏµÍ³ÍĞÅÌ¶ÔÏó
+	 * åˆå§‹åŒ–ç³»ç»Ÿæ‰˜ç›˜å¯¹è±¡
 	 * 
 	 * @param window
-	 *            ¹¤×÷Ì¨´°¿Ú¶ÔÏó
-	 * @return ¸Ã³ÌĞòËù¶ÔÓ¦µÄÏµÍ³ÍĞÅÌ¶ÔÏó
+	 *            å·¥ä½œå°çª—å£å¯¹è±¡
+	 * @return è¯¥ç¨‹åºæ‰€å¯¹åº”çš„ç³»ç»Ÿæ‰˜ç›˜å¯¹è±¡
 	 */
 	private TrayItem initTrayItem(IWorkbenchWindow window) {
 		final Tray tray = Display.getCurrent().getSystemTray();
 		if (tray == null)
 			return null;
-		/** ´´½¨ÏµÍ³ÍĞÅÌ²¢ÉèÖÃÏµÍ³ÍĞÅÌµÄ¸÷ÖÖÊôĞÔ */
+		/** åˆ›å»ºç³»ç»Ÿæ‰˜ç›˜å¹¶è®¾ç½®ç³»ç»Ÿæ‰˜ç›˜çš„å„ç§å±æ€§ */
 		TrayItem trayItem = new TrayItem(tray, SWT.NONE);
 		trayImage = SuperCRMPlugin.getImageDescriptor("icons/logo.gif").createImage();
 		trayItem.setImage(trayImage);
@@ -104,7 +104,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		return trayItem;
 	}
 
-	/** ÊÍ·Å´°¿Ú£¬ÊÍ·ÅÏµÍ³ÍĞÅÌ */
+	/** é‡Šæ”¾çª—å£ï¼Œé‡Šæ”¾ç³»ç»Ÿæ‰˜ç›˜ */
 	public void dispose() {
 		if (trayImage != null) {
 			trayImage.dispose();

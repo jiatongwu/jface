@@ -27,7 +27,7 @@ public class MyAction extends Action implements ISelectionListener,IWorkbenchAct
 		setToolTipText("My Action");
 		setImageDescriptor(MyRCPPlugin.getImageDescriptor("icons/sample.gif"));
 		this.window = window;
-		//×¢²áÑ¡Ôñ·şÎñ¼àÌıÆ÷
+		//æ³¨å†Œé€‰æ‹©æœåŠ¡ç›‘å¬å™¨
 		window.getSelectionService().addSelectionListener(this);
 	}
 
@@ -42,23 +42,23 @@ public class MyAction extends Action implements ISelectionListener,IWorkbenchAct
 		}
 
 	}
-	//½Ó¿ÚISelectionListenerÖĞµÄ·½·¨
-	//µ±ÊÂ¼ş·¢ÉúÊ±µ÷ÓÃ¸Ã·½·¨
+	//æ¥å£ISelectionListenerä¸­çš„æ–¹æ³•
+	//å½“äº‹ä»¶å‘ç”Ÿæ—¶è°ƒç”¨è¯¥æ–¹æ³•
 	public void selectionChanged(IWorkbenchPart part, ISelection incoming) {
 		if (incoming instanceof IStructuredSelection) {
-			//»ñµÃÊÂ¼ş·¢ÉúµÄÔ´ËùĞ¯´øµÄ¶ÔÏó
+			//è·å¾—äº‹ä»¶å‘ç”Ÿçš„æºæ‰€æºå¸¦çš„å¯¹è±¡
 			selection = (IStructuredSelection) incoming;
-			//Ç¿ÖÆ×ª»»
+			//å¼ºåˆ¶è½¬æ¢
 			String s = (String) selection.getFirstElement();
 			Assert.isNotNull(s);
-			//Èç¹ûÊÇÑ¡ÖĞµÄÊÇ"Three"£¬ÔòÉèÖÃÎª¿ÉÓÃ£¬·ñÔòÉèÖÃÎª²»¿ÉÓÃ
+			//å¦‚æœæ˜¯é€‰ä¸­çš„æ˜¯"Three"ï¼Œåˆ™è®¾ç½®ä¸ºå¯ç”¨ï¼Œå¦åˆ™è®¾ç½®ä¸ºä¸å¯ç”¨
 			if (s.equals("Three")) 
 				setEnabled(true);
 			else 
 				setEnabled(false);
 		}
 	}
-	//IWorkbenchAction½Ó¿ÚÖĞµÄ·½·¨£¬ÊÍ·ÅºóÈ¡Ïû×¢²á
+	//IWorkbenchActionæ¥å£ä¸­çš„æ–¹æ³•ï¼Œé‡Šæ”¾åå–æ¶ˆæ³¨å†Œ
 	public void dispose() {
 		window.getSelectionService().removeSelectionListener(this);
 	}

@@ -8,50 +8,50 @@ import superCRM.pojos.CustomerEO;
 
 public class CustomerSerivce implements ICustomerSerivce {
 
-	/** Êı¾İ¿â·ÃÎÊµÄ DAO,Í¨¹ıÕâ¸ö¶ÔÏóÀ´ÊµÏÖ¶ÔÊı¾İ¿âµÄ²Ù×÷ */
+	/** æ•°æ®åº“è®¿é—®çš„ DAO,é€šè¿‡è¿™ä¸ªå¯¹è±¡æ¥å®ç°å¯¹æ•°æ®åº“çš„æ“ä½œ */
 	private ICustomerDao customerDao;
 
-	/** ¹¹Ôì·½·¨ */
+	/** æ„é€ æ–¹æ³• */
 	public CustomerSerivce() {
 
-		/** ´´½¨Ò»¸öDaoFactory¹¤³§¶ÔÏó */
+		/** åˆ›å»ºä¸€ä¸ªDaoFactoryå·¥å‚å¯¹è±¡ */
 		DaoFactory daoFacory = new DaoFactory();
-		/** Í¨¹ı¹¤³§·½·¨À´´´½¨Ò»¸öICustomerDao¶ÔÏó */
+		/** é€šè¿‡å·¥å‚æ–¹æ³•æ¥åˆ›å»ºä¸€ä¸ªICustomerDaoå¯¹è±¡ */
 		customerDao = daoFacory.getCustomerDao();
 	}
 
 	public CustomerEO addCustomer(CustomerEO customer) {
-		/** Ìí¼ÓÒ»¸ö¿Í»§ */
+		/** æ·»åŠ ä¸€ä¸ªå®¢æˆ· */
 		return customerDao.addCustomer(customer);
 	}
 
 	public CustomerEO getCustomer(int id) {
-		/** ²éÕÒÖ¸¶¨¿Í»§ */
+		/** æŸ¥æ‰¾æŒ‡å®šå®¢æˆ· */
 		return customerDao.findById(id);
 	}
 
 	public List getCustomers(String keywords) {
 
-		/** Èç¹û¹Ø¼ü×ÖÎª¿Õ»òÕßÎªnull,Ôò·µ»ØËùÓĞµÄ¿Í»§ */
+		/** å¦‚æœå…³é”®å­—ä¸ºç©ºæˆ–è€…ä¸ºnull,åˆ™è¿”å›æ‰€æœ‰çš„å®¢æˆ· */
 		if (keywords == null || keywords.equals(""))
 			return getAllCustomers();
-		/** ¸ù¾İ¹Ø¼ü×Ö»ñµÃ²éÑ¯¿Í»§½á¹û */
+		/** æ ¹æ®å…³é”®å­—è·å¾—æŸ¥è¯¢å®¢æˆ·ç»“æœ */
 		return customerDao.findBykeywords(keywords);
 	}
 
 	public List getAllCustomers() {
-		/** »ñµÃËùÓĞµÄ¿Í»§ */
+		/** è·å¾—æ‰€æœ‰çš„å®¢æˆ· */
 		return customerDao.getAllCustomers();
 	}
 
 	public void updateCustomer(CustomerEO customer) {
-		/** ¸üĞÂ¿Í»§ */
+		/** æ›´æ–°å®¢æˆ· */
 		customerDao.updateCustomer(customer);
 
 	}
 
 	public List getContacts(CustomerEO customer) {
-		/** »ñµÃ¸Ã¿Í»§ËùÊôµÄÁªÏµÈË */
+		/** è·å¾—è¯¥å®¢æˆ·æ‰€å±çš„è”ç³»äºº */
 		return customerDao.getContacts(customer);
 	}
 

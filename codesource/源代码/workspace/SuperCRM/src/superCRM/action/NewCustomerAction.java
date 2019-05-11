@@ -9,7 +9,7 @@ import superCRM.SuperCRMPlugin;
 import superCRM.dialog.NewCustomerWizard;
 
 public class NewCustomerAction extends Action implements IWorkbenchAction {
-	/** ²Ù×÷Ëù¶ÔÓ¦µÄID */
+	/** æ“ä½œæ‰€å¯¹åº”çš„ID */
 	public static final String ID = "superCRM.action.NewCustomerAction";
 
 	private IWorkbenchWindow workbenchWindow;
@@ -19,10 +19,10 @@ public class NewCustomerAction extends Action implements IWorkbenchAction {
 			throw new IllegalArgumentException();
 		}
 		this.workbenchWindow = window;
-		/** ÉèÖÃID */
+		/** è®¾ç½®ID */
 		setId(ID);
 		setActionDefinitionId(ID);
-		setText("ĞÂ½¨¿Í»§");
+		setText("æ–°å»ºå®¢æˆ·");
 		setImageDescriptor(SuperCRMPlugin.getImageDescriptor("icons/customer.gif"));
 	}
 
@@ -30,7 +30,7 @@ public class NewCustomerAction extends Action implements IWorkbenchAction {
 		if (workbenchWindow == null) {
 			return;
 		}
-		/** ´ò¿ªĞÂ½¨¿Í»§¶Ô»°¿ò */
+		/** æ‰“å¼€æ–°å»ºå®¢æˆ·å¯¹è¯æ¡† */
 		WizardDialog dlg = new WizardDialog(workbenchWindow.getShell(), new NewCustomerWizard(workbenchWindow));
 		dlg.open();
 	}

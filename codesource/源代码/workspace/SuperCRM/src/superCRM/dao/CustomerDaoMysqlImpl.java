@@ -10,14 +10,14 @@ public class CustomerDaoMysqlImpl implements ICustomerDao{
 
 	public CustomerEO findById(int id) {
 		int row = -1;
-		// ¶Á¼ÇÂ¼µÄsqlÓï¾ä
+		// è¯»è®°å½•çš„sqlè¯­å¥
 		String sql = "select * from customer where customer_id=" + id
 				+ " and active_status='Y'";
-		ResultSet rs = DbManager.getResultSet(sql);// Ö´ĞĞsqlÓï¾ä²¢·µ»ØResultSet
+		ResultSet rs = DbManager.getResultSet(sql);// æ‰§è¡Œsqlè¯­å¥å¹¶è¿”å›ResultSet
 		try {
-			rs.last();// ÒÆ¶¯µ½×îºóÒ»ĞĞ
-			row = rs.getRow();// µÃµ½×Ü¼ÇÂ¼Êı
-			if (row == 1) {// Èç¹ûÖ»²éÑ¯µ½Ò»Ìõ¼ÇÂ¼£¬Ôò´ú±í¸Ã¼ÇÂ¼´æÔÚ²¢¸üĞÂ¸ÃÀàµÄÊôĞÔ
+			rs.last();// ç§»åŠ¨åˆ°æœ€åä¸€è¡Œ
+			row = rs.getRow();// å¾—åˆ°æ€»è®°å½•æ•°
+			if (row == 1) {// å¦‚æœåªæŸ¥è¯¢åˆ°ä¸€æ¡è®°å½•ï¼Œåˆ™ä»£è¡¨è¯¥è®°å½•å­˜åœ¨å¹¶æ›´æ–°è¯¥ç±»çš„å±æ€§
 				CustomerEO customer = new CustomerEO();
 				customer.setId( rs.getInt("customer_id"));
 				customer.setDisplayName( rs.getString("display_name"));
@@ -44,20 +44,20 @@ public class CustomerDaoMysqlImpl implements ICustomerDao{
 	}
 
 	public List findBykeywords(String keywords) {
-		//²éÑ¯¼ÇÂ¼µÄsqlÓï¾ä
+		//æŸ¥è¯¢è®°å½•çš„sqlè¯­å¥
 		String sql = "select customer_id from customer where active_status='Y'"
 			+"and (display_name like '%"+keywords+"%' or web_site like '%"+keywords+"%' or customer_category like '%"+keywords+"%,')";;
 		return getCustomerResult(sql);
 	}
 
 	public List getAllCustomers() {
-		//²éÑ¯ËùÓĞ¿Í»§¼ÇÂ¼µÄsqlÓï¾ä
+		//æŸ¥è¯¢æ‰€æœ‰å®¢æˆ·è®°å½•çš„sqlè¯­å¥
 		String sql = "select customer_id from customer where active_status='Y'";
 		return getCustomerResult(sql);
 	}
 
 	public List getCustomerResult(String sql) {
-		//Ö´ĞĞsqlÓï¾ä²¢·µ»ØResultSet
+		//æ‰§è¡Œsqlè¯­å¥å¹¶è¿”å›ResultSet
 		ResultSet rs = DbManager.getResultSet(sql);
 		List list =  new ArrayList();
 		try {
@@ -74,7 +74,7 @@ public class CustomerDaoMysqlImpl implements ICustomerDao{
 	}
 
 	public void updateCustomer(CustomerEO c) {
-		//¸üĞÂ¿Í»§µÄsqlÓï¾ä
+		//æ›´æ–°å®¢æˆ·çš„sqlè¯­å¥
 		String sql = "update customer set display_name='"+c.getDisplayName()+"',web_site='"
 			+c.getWebSite()+"', customer_category='"+c.getCategory()+"',num_employee='"+c.getNumberEmployee()
 			+"' where customer_id="+c.getId();
@@ -87,7 +87,7 @@ public class CustomerDaoMysqlImpl implements ICustomerDao{
 	}
 	 
 	public CustomerEO addCustomer(CustomerEO  c) {
-		//Ìí¼Ó¿Í»§µÄsqlÓï¾ä
+		//æ·»åŠ å®¢æˆ·çš„sqlè¯­å¥
 		String sql = "select customer_id from customer ";
 		int row = getCustomerResult(sql).size()+1;
 		sql ="insert into customer values ("+row+",'"+c.getDisplayName()+"'" +
@@ -104,7 +104,7 @@ public class CustomerDaoMysqlImpl implements ICustomerDao{
 	}
 
 	public List getContacts(CustomerEO customer) {
-		//²éÑ¯¸Ã¿Í»§µÄÁªÏµÈËsqlÓï¾ä
+		//æŸ¥è¯¢è¯¥å®¢æˆ·çš„è”ç³»äººsqlè¯­å¥
 		String sql = "select contact_id from contact where active_status='Y'and customer_id="+customer.getId();
 		DaoFactory daoFactory = new DaoFactory();
 		return daoFactory.getContactDao().getContactResult(sql);

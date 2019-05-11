@@ -15,9 +15,9 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
-	private NewAction newAction;//×Ô¶¨ÒåµÄaction
-	private IWorkbenchAction exitAction;//ÍË³ö
-	private IWorkbenchAction aboutAction;//¹ØÓÚ
+	private NewAction newAction;//è‡ªå®šä¹‰çš„action
+	private IWorkbenchAction exitAction;//é€€å‡º
+	private IWorkbenchAction aboutAction;//å…³äº
 	private IWorkbenchAction refAction;
 	private IWorkbenchAction helpAction;
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
@@ -25,18 +25,18 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	}
 
 	protected void makeActions(IWorkbenchWindow window) {
-		newAction = new NewAction();//´´½¨action¶ÔÏó
-		register(newAction);//¸¸Àà·½·¨£¬×¢²á¸Ã²Ù×÷
-		exitAction = ActionFactory.QUIT.create(window);//EclipseÄÚÖÃµÄÍË³ö²Ù×÷
+		newAction = new NewAction();//åˆ›å»ºactionå¯¹è±¡
+		register(newAction);//çˆ¶ç±»æ–¹æ³•ï¼Œæ³¨å†Œè¯¥æ“ä½œ
+		exitAction = ActionFactory.QUIT.create(window);//Eclipseå†…ç½®çš„é€€å‡ºæ“ä½œ
 		register(exitAction);
-		aboutAction = ActionFactory.ABOUT.create(window);//ÄÚÖÃµÄ¹ØÓÚ²Ù×÷
+		aboutAction = ActionFactory.ABOUT.create(window);//å†…ç½®çš„å…³äºæ“ä½œ
 		register(aboutAction);
 		refAction = ActionFactory.PREFERENCES.create(window);
 		register(refAction);
 		helpAction = ActionFactory.HELP_CONTENTS.create(window);
 		register(helpAction);
 	}
-	//¸²¸Ç¸¸ÀàÖĞµÄ·½·¨£¬´´½¨²Ëµ¥À¸
+	//è¦†ç›–çˆ¶ç±»ä¸­çš„æ–¹æ³•ï¼Œåˆ›å»ºèœå•æ 
 	protected void fillMenuBar(IMenuManager menuBar) {
 		MenuManager codeMenu = new MenuManager("CodeMenu(&C)","fileMenu");
 		codeMenu.add(newAction);
@@ -46,13 +46,13 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		codeMenu.add(helpAction);
 		menuBar.add(codeMenu);
 	}
-	//¸²¸Ç¸¸ÀàÖĞµÄ·½·¨£¬´´½¨¹¤¾ßÀ¸
+	//è¦†ç›–çˆ¶ç±»ä¸­çš„æ–¹æ³•ï¼Œåˆ›å»ºå·¥å…·æ 
 	protected void fillCoolBar(ICoolBarManager coolBar) {
 		  IToolBarManager toolbar = new ToolBarManager(coolBar.getStyle());
 		  toolbar.add(helpAction);
 		  coolBar.add(toolbar);
 	}
-	//¼Ì³Ğ×ÔAction
+	//ç»§æ‰¿è‡ªAction
 	class NewAction extends Action {
 		NewAction() {
 			super("new");

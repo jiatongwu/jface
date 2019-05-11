@@ -6,57 +6,57 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DbManager {
-	//Àà³ÉÔ±Connection
+	//ç±»æˆå‘˜Connection
 	protected static Connection conn;
-    //mysqlµÄÇı¶¯Àà£¬¶¨ÒåÎª³£Á¿
+    //mysqlçš„é©±åŠ¨ç±»ï¼Œå®šä¹‰ä¸ºå¸¸é‡
 	public static final String CLASS_NAME = "com.mysql.jdbc.Driver";
-    //Êı¾İ¿âµÄÁ¬½ÓµØÖ·£¬¶¨ÒåÎª³£Á¿
+    //æ•°æ®åº“çš„è¿æ¥åœ°å€ï¼Œå®šä¹‰ä¸ºå¸¸é‡
 	public static final String CONNET_STR = "jdbc:mysql://localhost/superCRM";
-    //»ñµÃConnetion
+    //è·å¾—Connetion
 	public static Connection getConnection() {
 		try {
-			Class.forName(CLASS_NAME);//Ê¹ÓÃÀà·´Éä¼ÓÔØ¸ÃÇı¶¯Àà
-			//»ñµÃÒ»¸öConnection
+			Class.forName(CLASS_NAME);//ä½¿ç”¨ç±»åå°„åŠ è½½è¯¥é©±åŠ¨ç±»
+			//è·å¾—ä¸€ä¸ªConnection
 			conn = DriverManager.getConnection(CONNET_STR, "root", "");
-			return conn;//·µ»Ø¸ÃConnection
+			return conn;//è¿”å›è¯¥Connection
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	//´«Èë²éÑ¯Êı¾İ¿âµÄsqlÓï¾ä£¬·µ»ØResultSet
+	//ä¼ å…¥æŸ¥è¯¢æ•°æ®åº“çš„sqlè¯­å¥ï¼Œè¿”å›ResultSet
 	public static ResultSet getResultSet(String sql) {
 		boolean bSuccess = true;
-		Statement stmt = null;//ÉùÃ÷Statement stmt
-		ResultSet rs = null;//ÉùÃ÷ResultSet rs
-		Connection con = getConnection();//µ÷ÓÃgetConnetion()·½·¨»ñµÃÒ»¸öConnetion
-		if (con == null)//Èç¹ûConnection ÎªnullÔò·µ»Ø¼Ù
+		Statement stmt = null;//å£°æ˜Statement stmt
+		ResultSet rs = null;//å£°æ˜ResultSet rs
+		Connection con = getConnection();//è°ƒç”¨getConnetion()æ–¹æ³•è·å¾—ä¸€ä¸ªConnetion
+		if (con == null)//å¦‚æœConnection ä¸ºnullåˆ™è¿”å›å‡
 			bSuccess = false;
 		if (bSuccess) {
 			try {		
-				stmt = con.createStatement();//Í¨¹ıConnection´´½¨Ò»¸öStatemet
-				rs = stmt.executeQuery(sql);//Ö´ĞĞ²éÑ¯Óï¾ä£¬
+				stmt = con.createStatement();//é€šè¿‡Connectionåˆ›å»ºä¸€ä¸ªStatemet
+				rs = stmt.executeQuery(sql);//æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ï¼Œ
 			} catch (SQLException e) {
 				e.printStackTrace();
 				bSuccess = false;
 			}
 		}
-		if (bSuccess)//Èç¹ûÖ´ĞĞ³É¹¦£¬Ôò·µ»Ørs
+		if (bSuccess)//å¦‚æœæ‰§è¡ŒæˆåŠŸï¼Œåˆ™è¿”å›rs
 			return rs;
 		else
 			return null;
 	}
-   //´«ÈëÖ´ĞĞÊı¾İ¸üĞÂµÄÓï¾ä£¬·µ»Ø¸üĞÂ½á¹û£¬ÕæÎª³É¹¦Ö´ĞĞ
+   //ä¼ å…¥æ‰§è¡Œæ•°æ®æ›´æ–°çš„è¯­å¥ï¼Œè¿”å›æ›´æ–°ç»“æœï¼ŒçœŸä¸ºæˆåŠŸæ‰§è¡Œ
 	public static boolean excute(String sql) {
 		boolean bSuccess = true;
-		Statement stmt = null;//ÉùÃ÷Statement stmt
-		Connection con = getConnection();//µ÷ÓÃgetConnetion()·½·¨»ñµÃÒ»¸öConnetion
-		if (con == null)//Èç¹ûConnection ÎªnullÔò·µ»Ø¼Ù
+		Statement stmt = null;//å£°æ˜Statement stmt
+		Connection con = getConnection();//è°ƒç”¨getConnetion()æ–¹æ³•è·å¾—ä¸€ä¸ªConnetion
+		if (con == null)//å¦‚æœConnection ä¸ºnullåˆ™è¿”å›å‡
 			bSuccess = false;
 		if (bSuccess) {
 			try {
-				stmt = con.createStatement();//Í¨¹ıConnection´´½¨Ò»¸öStatemet
-				bSuccess = stmt.execute(sql);//Ö´ĞĞ¸üĞÂÊı¾İ²Ù×÷
+				stmt = con.createStatement();//é€šè¿‡Connectionåˆ›å»ºä¸€ä¸ªStatemet
+				bSuccess = stmt.execute(sql);//æ‰§è¡Œæ›´æ–°æ•°æ®æ“ä½œ
 			} catch (SQLException e) {
 				e.printStackTrace();
 				bSuccess = false;
@@ -64,10 +64,10 @@ public class DbManager {
 		}
 		return bSuccess;
 	}
-    //ÊÍ·ÅConnection
+    //é‡Šæ”¾Connection
 	public static void releaseConnection() {
 		try {
-			if (conn != null)//  Èç¹ûConnetion ²»ÎªnullÔò¹Ø±ÕConnection
+			if (conn != null)//  å¦‚æœConnetion ä¸ä¸ºnullåˆ™å…³é—­Connection
 				conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

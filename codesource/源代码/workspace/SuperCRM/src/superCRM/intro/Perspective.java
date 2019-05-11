@@ -11,31 +11,31 @@ import superCRM.views.QuickNewCustomerView;
 import superCRM.views.SearchView;
 
 ;
-/** Ä¬ÈÏµÄÍ¸ÊÓÍ¼Àà */
+/** é»˜è®¤çš„é€è§†å›¾ç±» */
 public class Perspective implements IPerspectiveFactory {
 
 	public void createInitialLayout(IPageLayout layout) {
 		String editorArea = layout.getEditorArea();
 
-		/** ±à¼­Æ÷µÄ×ó²à·ÅÖÃµ¼º½ÊÓÍ¼ */
+		/** ç¼–è¾‘å™¨çš„å·¦ä¾§æ”¾ç½®å¯¼èˆªè§†å›¾ */
 		layout.addView(NavView.ID, IPageLayout.LEFT, 0.25f, editorArea);
 
-		/** µ¼º½ÊÓÍ¼µÄÏÂ·½·ÅÖÃÒ»Ğ©¹¤¾ßÊÓÍ¼£¬ÒÔÎÄ¼ş¼ĞµÄĞÎÊ½ */
+		/** å¯¼èˆªè§†å›¾çš„ä¸‹æ–¹æ”¾ç½®ä¸€äº›å·¥å…·è§†å›¾ï¼Œä»¥æ–‡ä»¶å¤¹çš„å½¢å¼ */
 		IFolderLayout leftBottom = layout.createFolder("left", IPageLayout.BOTTOM, 0.6f, NavView.ID);
 		
-		/** ËÑË÷ÊÓÍ¼ */
+		/** æœç´¢è§†å›¾ */
 		leftBottom.addView(SearchView.ID);
 		
-		/** ¿ìËÙĞÂ½¨ÁªÏµÈËÊÓÍ¼ */
+		/** å¿«é€Ÿæ–°å»ºè”ç³»äººè§†å›¾ */
 		leftBottom.addView(QuickNewContactView.ID);
 		
-		/** ¿ìËÙĞÂ½¨¿Í»§ÊÓÍ¼ */
+		/** å¿«é€Ÿæ–°å»ºå®¢æˆ·è§†å›¾ */
 		leftBottom.addView(QuickNewCustomerView.ID);
 		
-		/** ±à¼­Æ÷µÄÉÏ·½·ÅÖÃ¿Í»§ÁĞ±íÊÓÍ¼ */
+		/** ç¼–è¾‘å™¨çš„ä¸Šæ–¹æ”¾ç½®å®¢æˆ·åˆ—è¡¨è§†å›¾ */
 		layout.addView(CustomerSummaryView.ID, IPageLayout.TOP, 0.25f, editorArea);
 		
-		/** ±à¼­Æ÷µÄÉÏ·½Ô¤Áô·ÅÖÃÁªÏµÈËÁĞ±íÊÓÍ¼ */
+		/** ç¼–è¾‘å™¨çš„ä¸Šæ–¹é¢„ç•™æ”¾ç½®è”ç³»äººåˆ—è¡¨è§†å›¾ */
 		layout.addPlaceholder(ContactSummaryView.ID, IPageLayout.TOP, 0.25f, editorArea);
 	}
 }

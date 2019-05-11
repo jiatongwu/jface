@@ -2,30 +2,30 @@ package superCRM.dao;
 
 public class DaoFactory {
 
-	/** ¶¨ÒåÊı¾İ¿âÀàĞÍµÄ³£Á¿ */
+	/** å®šä¹‰æ•°æ®åº“ç±»å‹çš„å¸¸é‡ */
 	public static final String MYSQL = "mysql";
 
 	public static final String ORACLE = "oracle";
 
 	public static final String SQLSERVER = "sql_server";
 
-	/** Êı¾İ¿âµÄÀàĞÍ */
+	/** æ•°æ®åº“çš„ç±»å‹ */
 	private String dbType = MYSQL;
 
 	private ICustomerDao customerDao;
 
 	private IContactDao contactDao;
 
-	/** ¹¹Ôì·½·¨ */
+	/** æ„é€ æ–¹æ³• */
 	public DaoFactory() {
-		/** Èç¹ûÊı¾İ¿âÀàĞÍÎªmysql */
+		/** å¦‚æœæ•°æ®åº“ç±»å‹ä¸ºmysql */
 		if (dbType.equals(MYSQL)) {
 			customerDao = new CustomerDaoMysqlImpl();
 			contactDao = new ContactDaoMysqlImpl();
 		}
 	}
 
-	/** Ò»Ğ©getterºÍsetter·½·¨ */
+	/** ä¸€äº›getterå’Œsetteræ–¹æ³• */
 	public IContactDao getContactDao() {
 		return contactDao;
 	}

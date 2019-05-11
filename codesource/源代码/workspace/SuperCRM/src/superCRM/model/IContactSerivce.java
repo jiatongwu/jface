@@ -3,18 +3,18 @@ package superCRM.model;
 import java.util.List;
 import superCRM.pojos.ContactEO;
 
-/**ÓĞ¹Ø¶ÔÁªÏµÈË¹ÜÀíµÄ·şÎñ*/
+/**æœ‰å…³å¯¹è”ç³»äººç®¡ç†çš„æœåŠ¡*/
 public interface IContactSerivce {
 	
-	/**Ìí¼ÓÒ»¸öÁªÏµÈË*/
+	/**æ·»åŠ ä¸€ä¸ªè”ç³»äºº*/
 	public ContactEO addContact ( ContactEO contact );
 	
-	/**¸ù¾İIDºÅ»ñµÃ¸ÃÁªÏµÈËµÄĞÅÏ¢*/
+	/**æ ¹æ®IDå·è·å¾—è¯¥è”ç³»äººçš„ä¿¡æ¯*/
 	public ContactEO getContact ( int id );
 	
-	/**¸ù¾İ¹Ø¼ü×Ö»ñµÃ²éÑ¯½á¹¹µÄÁªÏµÈË*/
+	/**æ ¹æ®å…³é”®å­—è·å¾—æŸ¥è¯¢ç»“æ„çš„è”ç³»äºº*/
 	public List getContacts ( String keywords );
 	
-	/**»ñµÃËùÓĞµÄÁªÏµÈË*/
+	/**è·å¾—æ‰€æœ‰çš„è”ç³»äºº*/
 	public List getAllContacts ();
 }

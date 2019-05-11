@@ -18,41 +18,41 @@ public class SecondPage extends FormPage {
 	public static final String ID = "com.fengmanfei.myrcp.forms.SecondPage";
 
 	public SecondPage(FormEditor editor) {
-		super(editor, ID, "µÚ¶şÒ³");
+		super(editor, ID, "ç¬¬äºŒé¡µ");
 	}
 
 	protected void createFormContent(IManagedForm managedForm) {
 		ScrolledForm form = managedForm.getForm();
 		form.setText("ColumnLayout");
-		//´´½¨ÁĞ²¼¾Ö
+		//åˆ›å»ºåˆ—å¸ƒå±€
 		ColumnLayout layout = new ColumnLayout();
-		layout.topMargin = 0;//ÉÏ²¹°×
-		layout.bottomMargin = 5;//ÏÂ²¹°×
-		layout.leftMargin = 10;//×ó²¹°×
-		layout.rightMargin = 10;//ÓÒ²¹°×
-		layout.horizontalSpacing = 10;//Ë®Æ½·½Ïò¿Ø¼şµÄ¾àÀë
-		layout.verticalSpacing = 10;//´¹Ö±·½Ïò¿Ø¼şµÄ¾àÀë
-		layout.maxNumColumns = 4;//×î´óµÄÁĞÊı
-		layout.minNumColumns = 1;//×îĞ¡µÄÁĞÊı
-		form.getBody().setLayout(layout);//ÉèÖÃ±íµ¥µÄ²¼¾ÖÎªÁĞ²¼¾Ö
-		//´´½¨ËÄ¸öÄÚÈİÇø
+		layout.topMargin = 0;//ä¸Šè¡¥ç™½
+		layout.bottomMargin = 5;//ä¸‹è¡¥ç™½
+		layout.leftMargin = 10;//å·¦è¡¥ç™½
+		layout.rightMargin = 10;//å³è¡¥ç™½
+		layout.horizontalSpacing = 10;//æ°´å¹³æ–¹å‘æ§ä»¶çš„è·ç¦»
+		layout.verticalSpacing = 10;//å‚ç›´æ–¹å‘æ§ä»¶çš„è·ç¦»
+		layout.maxNumColumns = 4;//æœ€å¤§çš„åˆ—æ•°
+		layout.minNumColumns = 1;//æœ€å°çš„åˆ—æ•°
+		form.getBody().setLayout(layout);//è®¾ç½®è¡¨å•çš„å¸ƒå±€ä¸ºåˆ—å¸ƒå±€
+		//åˆ›å»ºå››ä¸ªå†…å®¹åŒº
 		for (int i = 0; i < 4; i++)
 			createSectionWithLinks(managedForm, "Section" + i, "This is Section " + i, i);
 	}
-	//´´½¨ÄÚÈİÇø¼°Æä¿Ø¼ş
+	//åˆ›å»ºå†…å®¹åŒºåŠå…¶æ§ä»¶
 	private void createSectionWithLinks(IManagedForm mform, String title, String desc, int nlinks) {
-		//´´½¨ÄÚÈİÈ¥Ãæ°å
+		//åˆ›å»ºå†…å®¹å»é¢æ¿
 		Composite client = createSection(mform, title, desc, 1);
 		FormToolkit toolkit = mform.getToolkit();
-		//´´½¨ÄÚÈİÇøÖĞµÄ¿Ø¼ş
+		//åˆ›å»ºå†…å®¹åŒºä¸­çš„æ§ä»¶
 		for (int i = 1; i <= nlinks; i++)
 			toolkit.createHyperlink(client, "link" + i, SWT.WRAP); 
 	}
-	//´´½¨ÄÚÈİÇøµÄ·½·¨
+	//åˆ›å»ºå†…å®¹åŒºçš„æ–¹æ³•
 	private Composite createSection(IManagedForm mform, String title, String desc, int numColumns) {
 		final ScrolledForm form = mform.getForm();
 		FormToolkit toolkit = mform.getToolkit();
-		//´´½¨ÄÚÈİÇø
+		//åˆ›å»ºå†…å®¹åŒº
 		Section section = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.TITLE_BAR | Section.DESCRIPTION | Section.EXPANDED);
 		section.setText(title);
 		section.setDescription(desc);
@@ -61,7 +61,7 @@ public class SecondPage extends FormPage {
 		layout.marginWidth = layout.marginHeight = 0;
 		layout.numColumns = numColumns;
 		client.setLayout(layout);
-		//ÉèÖÃÄÚÈİÇøµÄÃæ°å
+		//è®¾ç½®å†…å®¹åŒºçš„é¢æ¿
 		section.setClient(client);
 		section.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {

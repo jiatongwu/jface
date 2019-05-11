@@ -1,11 +1,11 @@
 package superCRM.model;
 
-/**¶¨ÒåÕû¸öÏµÍ³µÄ¸÷¸ö·şÎñÄ£¿é*/
+/**å®šä¹‰æ•´ä¸ªç³»ç»Ÿçš„å„ä¸ªæœåŠ¡æ¨¡å—*/
 public interface ISuperApplication {
 	
-	/**¿Í»§¹ÜÀí·şÎñÄ£¿é*/
+	/**å®¢æˆ·ç®¡ç†æœåŠ¡æ¨¡å—*/
 	public ICustomerSerivce getCustomerSerivce();
 	
-	/**ÁªÏµÈË¹ÜÀí·şÎñÄ£¿é*/
+	/**è”ç³»äººç®¡ç†æœåŠ¡æ¨¡å—*/
 	public IContactSerivce getContactSerivce();
 }

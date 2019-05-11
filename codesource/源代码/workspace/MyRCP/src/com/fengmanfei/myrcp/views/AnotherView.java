@@ -6,7 +6,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
 public class AnotherView extends ViewPart {
-	private Text text;//ÎÄ±¾¿ò
+	private Text text;//æ–‡æœ¬æ¡†
 	public static final String ID = "com.fengmanfei.myrcp.views.AnotherView";
 	public AnotherView() {
 		super();
@@ -17,7 +17,7 @@ public class AnotherView extends ViewPart {
 	public void setFocus() {
 		text.setFocus();
 	}
-	//ÉèÖÃÎÄ±¾¿òµÄÄÚÈÝ
+	//è®¾ç½®æ–‡æœ¬æ¡†çš„å†…å®¹
 	public void setContent(String content) {
 		text.setText(content);
 	}

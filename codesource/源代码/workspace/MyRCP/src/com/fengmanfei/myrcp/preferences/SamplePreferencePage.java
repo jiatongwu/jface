@@ -10,11 +10,11 @@ public class SamplePreferencePage extends FieldEditorPreferencePage implements
 
 	public SamplePreferencePage() {
 		super(GRID);
-		//ÉèÖÃÊ×Ñ¡Ïî±£´æ¶ÔÏó
+		//è®¾ç½®é¦–é€‰é¡¹ä¿å­˜å¯¹è±¡
 		setPreferenceStore(MyRCPPlugin.getDefault().getPreferenceStore());
 		setDescription("A demonstration of a preference page implementation");
 	}
-	//´´½¨×Ö¶Î±à¼­Æ÷
+	//åˆ›å»ºå­—æ®µç¼–è¾‘å™¨
 	public void createFieldEditors() {
 		addField(new DirectoryFieldEditor(PreferenceConstants.P_PATH,
 				"&Directory preference:", getFieldEditorParent()));
@@ -27,7 +27,7 @@ public class SamplePreferencePage extends FieldEditorPreferencePage implements
 		addField(new StringFieldEditor(PreferenceConstants.P_STRING,
 				"A &text preference:", getFieldEditorParent()));
 	}
-	//IWorkbenchPreferencePage ÖĞµÄ·½·¨£¬ÔİÊ±¿ÕÊµÏÖ
+	//IWorkbenchPreferencePage ä¸­çš„æ–¹æ³•ï¼Œæš‚æ—¶ç©ºå®ç°
 	public void init(IWorkbench workbench) {
 	}
 

@@ -13,10 +13,10 @@ import org.eclipse.swt.widgets.*;
 
 public class OleSample {
 	private Shell sShell;
-	private MenuItem[] fileItem;//OLEµÄ²Ëµ¥Ïî
-	private OleClientSite clientSite;//OLE¿Ø¼ş¶ÔÏó
-	private OleFrame frame;//OLEµÄÃæ°åµÄ¶ÔÏó
-	private File openFile;//´ò¿ªµÄÎÄ¼ş
+	private MenuItem[] fileItem;//OLEçš„èœå•é¡¹
+	private OleClientSite clientSite;//OLEæ§ä»¶å¯¹è±¡
+	private OleFrame frame;//OLEçš„é¢æ¿çš„å¯¹è±¡
+	private File openFile;//æ‰“å¼€çš„æ–‡ä»¶
 	public static void main(String[] args) {
 		Display display = Display.getDefault();
 		OleSample thisClass = new OleSample();
@@ -37,7 +37,7 @@ public class OleSample {
 		createMenu();
 		sShell.setSize(new Point(300, 200));
 	}
-	//´´½¨OLE¿Ø¼ş¶ÔÏó
+	//åˆ›å»ºOLEæ§ä»¶å¯¹è±¡
 	private void createOle() {
 		frame = new OleFrame(sShell, SWT.NONE);
 		frame.setFileMenus(fileItem);
@@ -50,14 +50,14 @@ public class OleSample {
 		Menu main = new Menu(sShell, SWT.BAR);
 
 		MenuItem file = new MenuItem(main, SWT.CASCADE);
-		file.setText("ÎÄ¼ş(&F)");
+		file.setText("æ–‡ä»¶(&F)");
 
 		Menu fileMenu = new Menu(file);
 		fileItem = new MenuItem[2];
 		fileItem[0] = new MenuItem(fileMenu, SWT.PUSH);
-		fileItem[0].setText("´ò¿ª");
+		fileItem[0].setText("æ‰“å¼€");
 		fileItem[1] = new MenuItem(fileMenu, SWT.PUSH);
-		fileItem[1].setText("±£´æ");
+		fileItem[1].setText("ä¿å­˜");
 		file.setMenu(fileMenu);
 
 		sShell.setMenuBar(main);
@@ -69,7 +69,7 @@ public class OleSample {
 				String file = dialog.open();
 				if (file != null) {
 					openFile = new File(file);
-					//´ò¿ªOLE¿Ø¼ş
+					//æ‰“å¼€OLEæ§ä»¶
 					createOle();
 				}
 			}
@@ -77,12 +77,12 @@ public class OleSample {
 		});
 		fileItem[1].addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				//Èç¹û´ò¿ªÎÄ¼ş±»ĞŞ¸Ä¹ı
+				//å¦‚æœæ‰“å¼€æ–‡ä»¶è¢«ä¿®æ”¹è¿‡
 				if (clientSite.isDirty()) {
-					//´´½¨Ò»¸öÁÙÊ±ÎÄ¼ş
+					//åˆ›å»ºä¸€ä¸ªä¸´æ—¶æ–‡ä»¶
 					File tempFile = new File(openFile.getAbsolutePath() + ".tmp");
 					openFile.renameTo(tempFile);
-					//Èç¹û±£´æ³É¹¦£¬ÔòÉ¾³ıÁÙÊ±ÎÄ¼ş£¬·ñÔò»Ö¸´µ½ÁÙÊ±ÎÄ¼ş±£´æµÄ×´Ì¬
+					//å¦‚æœä¿å­˜æˆåŠŸï¼Œåˆ™åˆ é™¤ä¸´æ—¶æ–‡ä»¶ï¼Œå¦åˆ™æ¢å¤åˆ°ä¸´æ—¶æ–‡ä»¶ä¿å­˜çš„çŠ¶æ€
 					if (clientSite.save(openFile, true))
 						tempFile.delete();
 					else

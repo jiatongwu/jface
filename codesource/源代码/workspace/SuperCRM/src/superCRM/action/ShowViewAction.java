@@ -16,13 +16,13 @@ public class ShowViewAction extends Action implements IWorkbenchAction {
 
 	public ShowViewAction(IWorkbenchWindow window, IViewDescriptor desc) {
 		super("");
-		/** »ñµÃÊÓÍ¼µÄÃû³Æ */
+		/** è·å¾—è§†å›¾çš„åç§° */
 		String label = desc.getLabel();
-		/** ÉèÖÃ²Ù×÷µÄÃû³Æ */
+		/** è®¾ç½®æ“ä½œçš„åç§° */
 		setText(label);
-		/** ÉèÖÃ²Ù×÷µÄÍ¼±êÎªÊÓÍ¼µÄÍ¼±ê */
+		/** è®¾ç½®æ“ä½œçš„å›¾æ ‡ä¸ºè§†å›¾çš„å›¾æ ‡ */
 		setImageDescriptor(desc.getImageDescriptor());
-		/** ÉèÖÃ²Ù×÷µÄÌáÊ¾ÎÄ±¾ */
+		/** è®¾ç½®æ“ä½œçš„æç¤ºæ–‡æœ¬ */
 		setToolTipText(label);
 		setId("ShowView" + desc.getId());
 		this.workbenchWindow = window;
@@ -30,15 +30,15 @@ public class ShowViewAction extends Action implements IWorkbenchAction {
 	}
 
 	public void run() {
-		/** »ñµÃµ±Ç°¹¤×÷Çø¼°»ñµÃ¹¤×÷Ò³Ãæ */
+		/** è·å¾—å½“å‰å·¥ä½œåŒºåŠè·å¾—å·¥ä½œé¡µé¢ */
 		IWorkbenchPage page = workbenchWindow.getActivePage();
-		/** Èç¹ûÒ³Ãæ²»Îªnull */
+		/** å¦‚æœé¡µé¢ä¸ä¸ºnull */
 		if (page != null) {
 			try {
-				/** ÏÔÊ¾ÊÓÍ¼ */
+				/** æ˜¾ç¤ºè§†å›¾ */
 				page.showView(desc.getId());
 			} catch (PartInitException e) {
-				ErrorDialog.openError(workbenchWindow.getShell(), "´ò¿ªÊÓÍ¼´íÎó£¡", e.getMessage(), e.getStatus());
+				ErrorDialog.openError(workbenchWindow.getShell(), "æ‰“å¼€è§†å›¾é”™è¯¯ï¼", e.getMessage(), e.getStatus());
 			}
 		}
 	}

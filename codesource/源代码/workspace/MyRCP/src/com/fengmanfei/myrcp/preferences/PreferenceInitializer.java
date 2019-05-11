@@ -7,9 +7,9 @@ import myRCP.MyRCPPlugin;
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
 	public void initializeDefaultPreferences() {
-		//»ñµÃ¸Ã²å¼ş±£´æµÄÊ×Ñ¡Ïî±£´æ¶ÔÏó
+		//è·å¾—è¯¥æ’ä»¶ä¿å­˜çš„é¦–é€‰é¡¹ä¿å­˜å¯¹è±¡
 		IPreferenceStore store = MyRCPPlugin.getDefault().getPreferenceStore();
-		//ÉèÖÃÄ¬ÈÏµÄÒ»Ğ©Ê×Ñ¡ÏîÖµ
+		//è®¾ç½®é»˜è®¤çš„ä¸€äº›é¦–é€‰é¡¹å€¼
 		store.setDefault(PreferenceConstants.P_BOOLEAN, true);
 		store.setDefault(PreferenceConstants.P_CHOICE, "choice2");
 		store.setDefault(PreferenceConstants.P_STRING,"Default value");

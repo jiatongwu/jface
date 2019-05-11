@@ -19,16 +19,16 @@ import superCRM.model.SuperFactory;
 import superCRM.pojos.ContactEO;
 
 public class QuickNewContactView extends ViewPart {
-	/** ¸ÃÊÓÍ¼µÄID */
+	/** è¯¥è§†å›¾çš„ID */
 	public static final String ID = "superCRM.views.QuickNewContactView";
 
-	/** ĞÕÃû */
+	/** å§“å */
 	private Text displayName;
 
-	/** Àà±ğ */
+	/** ç±»åˆ« */
 	private Combo category;
 
-	/** ĞÔ±ğ */
+	/** æ€§åˆ« */
 	private Combo sex;
 
 	public QuickNewContactView() {
@@ -36,46 +36,46 @@ public class QuickNewContactView extends ViewPart {
 	}
 
 	public void createPartControl(Composite parent) {
-		/** ÉèÖÃÃæ°å²¼¾Ö */
+		/** è®¾ç½®é¢æ¿å¸ƒå±€ */
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new GridLayout(2, false));
 		GridData data = new GridData(GridData.FILL_HORIZONTAL);
-		/** ĞÕÃû */
-		new Label(composite, SWT.NONE).setText("ĞÕÃû£º");
+		/** å§“å */
+		new Label(composite, SWT.NONE).setText("å§“åï¼š");
 		displayName = new Text(composite, SWT.BORDER);
 		displayName.setLayoutData(data);
-		/** Àà±ğ */
-		new Label(composite, SWT.NONE).setText("Àà±ğ£º");
+		/** ç±»åˆ« */
+		new Label(composite, SWT.NONE).setText("ç±»åˆ«ï¼š");
 		category = new Combo(composite, SWT.BORDER);
 		category.setItems(new String[] { "Friend", "Family", "Contact" });
 		category.select(0);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		category.setLayoutData(data);
-		/** ĞÔ±ğ */
-		new Label(composite, SWT.NONE).setText("ĞÔ±ğ£º");
+		/** æ€§åˆ« */
+		new Label(composite, SWT.NONE).setText("æ€§åˆ«ï¼š");
 		sex = new Combo(composite, SWT.BORDER);
 		sex.setItems(new String[] { "Female", "Male" });
 		sex.select(0);
 		data = new GridData(GridData.FILL_HORIZONTAL);
 		sex.setLayoutData(data);
-		/** Ìí¼Ó°´Å¥ */
+		/** æ·»åŠ æŒ‰é’® */
 		Button btAdd = new Button(composite, SWT.PUSH);
-		btAdd.setText("Ìí¼Ó");
+		btAdd.setText("æ·»åŠ ");
 		btAdd.addSelectionListener(new SelectionAdapter() {
 
 			public void widgetSelected(SelectionEvent e) {
-				/** ´´½¨ÁªÏµÈË¶ÔÏó */
+				/** åˆ›å»ºè”ç³»äººå¯¹è±¡ */
 				ContactEO contact = new ContactEO();
-				/** ÉèÖÃÊäÈëµÄÁªÏµÈËĞÅÏ¢ */
+				/** è®¾ç½®è¾“å…¥çš„è”ç³»äººä¿¡æ¯ */
 				contact.setDisplayName(displayName.getText());
 				contact.setCategory(category.getText());
 				contact.setSex(sex.getText());
-				/** µ÷ÓÃÒµÎñ²ã±£´æµ½Êı¾İ¿â */
+				/** è°ƒç”¨ä¸šåŠ¡å±‚ä¿å­˜åˆ°æ•°æ®åº“ */
 				IContactSerivce contactSerivce = SuperFactory.getSuperApplication().getContactSerivce();
 				contactSerivce.addContact(contact);
-				/** ²éÕÒµ±Ç°Ò³ÃæÊÇ·ñ´ò¿ªÁËÁªÏµÈËÁĞ±íÊÓÍ¼ */
+				/** æŸ¥æ‰¾å½“å‰é¡µé¢æ˜¯å¦æ‰“å¼€äº†è”ç³»äººåˆ—è¡¨è§†å›¾ */
 				IViewPart view = getViewSite().getPage().findView(ContactSummaryView.ID);
-				/** Èç¹ûÎ´´ò¿ªÁªÏµÈËÁĞ±íÊÓÍ¼,Ôò´ò¿ªÊÓÍ¼ */
+				/** å¦‚æœæœªæ‰“å¼€è”ç³»äººåˆ—è¡¨è§†å›¾,åˆ™æ‰“å¼€è§†å›¾ */
 				if (view == null) {
 					try {
 						view = getViewSite().getPage().showView(ContactSummaryView.ID);
@@ -83,7 +83,7 @@ public class QuickNewContactView extends ViewPart {
 						ee.printStackTrace();
 					}
 				}
-				/** ¸üĞÂÁªÏµÈËÁĞ±íÊÓÍ¼ */
+				/** æ›´æ–°è”ç³»äººåˆ—è¡¨è§†å›¾ */
 				ContactSummaryView contactSummaryView = (ContactSummaryView) view;
 				contactSummaryView.refreshData();
 			}

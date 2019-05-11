@@ -12,24 +12,24 @@ import superCRM.dialog.LoginDialog;
 import superCRM.preferences.PreferenceConstants;
 
 /**
- * ¸ÃÀàÎªÖ÷³ÌĞòµÄÈë¿ÚÀà
+ * è¯¥ç±»ä¸ºä¸»ç¨‹åºçš„å…¥å£ç±»
  */
 public class Application implements IPlatformRunnable {
 
 	/**
-	 * IPlatformRunnable½Ó¿ÚÖĞµÄ·½·¨
+	 * IPlatformRunnableæ¥å£ä¸­çš„æ–¹æ³•
 	 * 
 	 * @see org.eclipse.core.runtime.IPlatformRunnable#run(java.lang.Object)
 	 */
 	public Object run(Object args) throws Exception {
 		Display display = PlatformUI.createDisplay();
 		try {
-		/**»ñµÃµ±Ç°ÓÃ»§µÄÉÏÏÂ¶ÔÏó*/
+		/**è·å¾—å½“å‰ç”¨æˆ·çš„ä¸Šä¸‹å¯¹è±¡*/
 			SuperContext context = SuperContext.getInstance();
-		/**µ÷ÓÃlogin·½·¨ÑéÖ¤ÓÃ»§£¬Èç¹ûÓÃ»§ÃûÃÜÂë²»ÕıÈ·ÔòÍË³ö³ÌĞò*/
+		/**è°ƒç”¨loginæ–¹æ³•éªŒè¯ç”¨æˆ·ï¼Œå¦‚æœç”¨æˆ·åå¯†ç ä¸æ­£ç¡®åˆ™é€€å‡ºç¨‹åº*/
 			if (!login(context))
 				return IPlatformRunnable.EXIT_OK;
-		/**ÑéÖ¤³É¹¦ºó£¬´´½¨×¡³ÌĞò´°¿Ú*/
+		/**éªŒè¯æˆåŠŸåï¼Œåˆ›å»ºä½ç¨‹åºçª—å£*/
 			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
 			if (returnCode == PlatformUI.RETURN_RESTART) {
 				return IPlatformRunnable.EXIT_RESTART;
@@ -40,22 +40,22 @@ public class Application implements IPlatformRunnable {
 		}
 	}
 	/**
-	 * ÅĞ¶ÏÓÃ»§ÊÇ·ñÒÑµÇÂ¼
+	 * åˆ¤æ–­ç”¨æˆ·æ˜¯å¦å·²ç™»å½•
 	 * 
-	 * @param context ±£´æµÇÂ¼ĞÅÏ¢µÄÉÏÏÂÎÄ¶ÔÏó
-	 * @return true±íÊ¾ÒÑ¾­µÇÂ¼
+	 * @param context ä¿å­˜ç™»å½•ä¿¡æ¯çš„ä¸Šä¸‹æ–‡å¯¹è±¡
+	 * @return trueè¡¨ç¤ºå·²ç»ç™»å½•
 	 */
 	private boolean login(SuperContext context) {
-		/**»ñµÃÊ×Ñ¡ÏîÖĞ¶ÔµÇÂ¼µÄÉèÖÃ*/
+		/**è·å¾—é¦–é€‰é¡¹ä¸­å¯¹ç™»å½•çš„è®¾ç½®*/
 		IPreferenceStore store = SuperCRMPlugin.getDefault().getPreferenceStore();
 		
-		/**Èç¹ûÊ×Ñ¡ÏîÉèÖÃÎª×Ô¶¯µÇÂ½£¬Ôò²»ĞèÒªµÇÂ¼*/
+		/**å¦‚æœé¦–é€‰é¡¹è®¾ç½®ä¸ºè‡ªåŠ¨ç™»é™†ï¼Œåˆ™ä¸éœ€è¦ç™»å½•*/
 		if ( store.getBoolean(PreferenceConstants.P_AUTO_LOGIN)){
 			context.setLogin( true );
-		/**·ñÔò£¬µ¯³öµÇÂ½¶Ô»°¿ò*/
+		/**å¦åˆ™ï¼Œå¼¹å‡ºç™»é™†å¯¹è¯æ¡†*/
 		}else {
 			LoginDialog loginDialog = new LoginDialog(null);
-		/**Èç¹ûÊäÈëÁËÕıÈ·µÄÓÃ»§ÃûºÍÃÜÂë£¬ÔòÉèÖÃµÇÂ½³É¹¦*/
+		/**å¦‚æœè¾“å…¥äº†æ­£ç¡®çš„ç”¨æˆ·åå’Œå¯†ç ï¼Œåˆ™è®¾ç½®ç™»é™†æˆåŠŸ*/
 			if (loginDialog.open() == Window.OK)
 				context.setLogin(true);		
 		}

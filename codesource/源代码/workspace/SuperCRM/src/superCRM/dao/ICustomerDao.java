@@ -3,27 +3,27 @@ package superCRM.dao;
 import java.util.List;
 import superCRM.pojos.CustomerEO;
 
-/** ¿Í»§Êı¾İ¿â·ÃÎÊDAO */
+/** å®¢æˆ·æ•°æ®åº“è®¿é—®DAO */
 public interface ICustomerDao {
 
-	/** ¿Í»§Êı¾İ¿â·ÃÎÊDAO */
+	/** å®¢æˆ·æ•°æ®åº“è®¿é—®DAO */
 	public CustomerEO findById(int id);
 
-	/** ¸ù¾İ¹Ø¼ü×Ö²éÕÒ»ñµÃ²éÑ¯½á¹û */
+	/** æ ¹æ®å…³é”®å­—æŸ¥æ‰¾è·å¾—æŸ¥è¯¢ç»“æœ */
 	public List findBykeywords(String keywords);
 
-	/** »ñµÃËùÓĞµÄ¿Í»§¼ÇÂ¼ */
+	/** è·å¾—æ‰€æœ‰çš„å®¢æˆ·è®°å½• */
 	public List getAllCustomers();
 
-	/** »ñµÃ¸Ã¿Í»§µÄÁªÏµÈË */
+	/** è·å¾—è¯¥å®¢æˆ·çš„è”ç³»äºº */
 	public List getContacts(CustomerEO customer);
 
-	/** ¸ù¾İsqlÓï¾ä»ñµÃ¿Í»§¼ÇÂ¼ */
+	/** æ ¹æ®sqlè¯­å¥è·å¾—å®¢æˆ·è®°å½• */
 	public List getCustomerResult(String sql);
 
-	/** Ìí¼Ó¿Í»§ */
+	/** æ·»åŠ å®¢æˆ· */
 	public CustomerEO addCustomer(CustomerEO c);
 
-	/** ¸üĞÂ¿Í»§ */
+	/** æ›´æ–°å®¢æˆ· */
 	public void updateCustomer(CustomerEO c);
 }

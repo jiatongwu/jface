@@ -5,24 +5,24 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
-/**¹¤×÷ÇøÀà*/
+/**å·¥ä½œåŒºç±»*/
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	
-	/**¹¤×÷ÇøÄ¬ÈÏµÄÍ¸ÊÓÍ¼ID*/
+	/**å·¥ä½œåŒºé»˜è®¤çš„é€è§†å›¾ID*/
 	private static final String PERSPECTIVE_ID = "SuperCRM.perspective";
 
-	/**´´½¨¹¤×÷Çø´°¿Ú*/
+	/**åˆ›å»ºå·¥ä½œåŒºçª—å£*/
     public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
         return new ApplicationWorkbenchWindowAdvisor(configurer);
     }
     
-    /**³õÊ¼»¯¹¤×÷ÇøÉèÖÃ*/
+    /**åˆå§‹åŒ–å·¥ä½œåŒºè®¾ç½®*/
     public void initialize(IWorkbenchConfigurer configurer) {
         super.initialize(configurer);
         configurer.setSaveAndRestore(true);
     }
     
-    /**»ñµÃÄ¬ÈÏÍ¸ÊÓÍ¼µÄID*/
+    /**è·å¾—é»˜è®¤é€è§†å›¾çš„ID*/
 	public String getInitialWindowPerspectiveId() {
 		return PERSPECTIVE_ID;
 	}

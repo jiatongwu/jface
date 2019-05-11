@@ -33,28 +33,28 @@ import org.eclipse.ui.part.ViewPart;
 import superCRM.SuperCRMPlugin;
 import superCRM.action.ActionManager;
 
-/** µ¼º½²Ëµ¥ÊÓÍ¼ */
+/** å¯¼èˆªèœå•è§†å›¾ */
 public class NavView extends ViewPart {
 
-	/** µ¼º½µÄÊ÷¶ÔÏó */
+	/** å¯¼èˆªçš„æ ‘å¯¹è±¡ */
 	private TreeViewer viewer;
 
-	/** ¿ÉÒÔÎªÊ÷Ìí¼Ó·µ»Øµ¼º½²Ù×÷¶ÔÏó */
+	/** å¯ä»¥ä¸ºæ ‘æ·»åŠ è¿”å›å¯¼èˆªæ“ä½œå¯¹è±¡ */
 	private DrillDownAdapter drillDownAdapter;
 
-	/** ÕÛµşÊ÷²Ù×÷ */
+	/** æŠ˜å æ ‘æ“ä½œ */
 	private Action collapseAction;
 
-	/** Õ¹¿ªÊ÷²Ù×÷ */
+	/** å±•å¼€æ ‘æ“ä½œ */
 	private Action expandAction;
 
-	/** Ë«»÷Ê÷½áµãÊ±²Ù×÷ */
+	/** åŒå‡»æ ‘ç»“ç‚¹æ—¶æ“ä½œ */
 	private Action doubleClickAction;
 
-	/** ¸ÃÊÓÍ¼µÄID */
+	/** è¯¥è§†å›¾çš„ID */
 	public static final String ID = "superCRM.views.NavView";
 
-	/** Ê÷½áµãÀà */
+	/** æ ‘ç»“ç‚¹ç±» */
 	class TreeObject implements IAdaptable {
 		private String name;
 
@@ -96,7 +96,7 @@ public class NavView extends ViewPart {
 		}
 	}
 
-	/** Ê÷µÄ¸¸½áµãÀà */
+	/** æ ‘çš„çˆ¶ç»“ç‚¹ç±» */
 	class TreeParent extends TreeObject {
 		private ArrayList children;
 
@@ -124,7 +124,7 @@ public class NavView extends ViewPart {
 		}
 	}
 
-	/** Ê÷µÄÄÚÈİÆ÷ */
+	/** æ ‘çš„å†…å®¹å™¨ */
 	class ViewContentProvider implements IStructuredContentProvider, ITreeContentProvider {
 		private TreeParent invisibleRoot;
 
@@ -163,23 +163,23 @@ public class NavView extends ViewPart {
 			return false;
 		}
 
-		/** ³õÊ¼»¯Ê÷ÖĞµÄÊı¾İ */
+		/** åˆå§‹åŒ–æ ‘ä¸­çš„æ•°æ® */
 		private void initialize() {
 
-			TreeObject c1 = new TreeObject("¿Í»§ÁĞ±í", "CUSTOMER_LIST");
-			TreeObject c2 = new TreeObject("Ìí¼Ó¿Í»§", "CUSTOMER_ADD");
-			TreeParent t1 = new TreeParent("¿Í»§¹ÜÀí");
+			TreeObject c1 = new TreeObject("å®¢æˆ·åˆ—è¡¨", "CUSTOMER_LIST");
+			TreeObject c2 = new TreeObject("æ·»åŠ å®¢æˆ·", "CUSTOMER_ADD");
+			TreeParent t1 = new TreeParent("å®¢æˆ·ç®¡ç†");
 			t1.addChild(c1);
 			t1.addChild(c2);
 
-			TreeObject l1 = new TreeObject("ÁªÏµÈËÁĞ±í", "CONTACT_LIST");
-			TreeObject l2 = new TreeObject("Ìí¼ÓÁªÏµÈË", "CONTACT_ADD");
-			TreeParent t2 = new TreeParent("ÁªÏµÈË¹ÜÀí");
+			TreeObject l1 = new TreeObject("è”ç³»äººåˆ—è¡¨", "CONTACT_LIST");
+			TreeObject l2 = new TreeObject("æ·»åŠ è”ç³»äºº", "CONTACT_ADD");
+			TreeParent t2 = new TreeParent("è”ç³»äººç®¡ç†");
 			t2.addChild(l1);
 			t2.addChild(l2);
 
-			TreeObject p2 = new TreeObject("Ê×Ñ¡ÏîÉèÖÃ", "PREF");
-			TreeParent t3 = new TreeParent("¹ÜÀíÉèÖÃ");
+			TreeObject p2 = new TreeObject("é¦–é€‰é¡¹è®¾ç½®", "PREF");
+			TreeParent t3 = new TreeParent("ç®¡ç†è®¾ç½®");
 			t3.addChild(p2);
 
 			invisibleRoot = new TreeParent("");
@@ -189,7 +189,7 @@ public class NavView extends ViewPart {
 		}
 	}
 
-	/** Ê÷µÄÄÚÈİÆ÷ */
+	/** æ ‘çš„å†…å®¹å™¨ */
 	class ViewLabelProvider extends LabelProvider {
 
 		public String getText(Object obj) {
@@ -204,29 +204,29 @@ public class NavView extends ViewPart {
 		}
 	}
 
-	/** ¹¹Ôì·½·¨ */
+	/** æ„é€ æ–¹æ³• */
 	public NavView() {
 	}
 
 	public void createPartControl(Composite parent) {
-		/** ´´½¨Ê÷ */
+		/** åˆ›å»ºæ ‘ */
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		/** ³õÊ¼»¯Ê÷ */
+		/** åˆå§‹åŒ–æ ‘ */
 		drillDownAdapter = new DrillDownAdapter(viewer);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setInput(getViewSite());
-		/** ´´½¨Ê÷ÖĞËùÊ¹ÓÃ²Ù×÷¶ÔÏó */
+		/** åˆ›å»ºæ ‘ä¸­æ‰€ä½¿ç”¨æ“ä½œå¯¹è±¡ */
 		makeActions();
-		/** Ìí¼ÓÉÏÏÂÎÄ²Ëµ¥ */
+		/** æ·»åŠ ä¸Šä¸‹æ–‡èœå• */
 		hookContextMenu();
-		/** Ìí¼ÓË«»÷ÊÂ¼ş */
+		/** æ·»åŠ åŒå‡»äº‹ä»¶ */
 		hookDoubleClickAction();
-		/** Ìí¼Óµ½²Ù×÷ÌõÖĞ */
+		/** æ·»åŠ åˆ°æ“ä½œæ¡ä¸­ */
 		contributeToActionBars();
 	}
 
-	/** Ìí¼ÓÉÏÏÂÎÄ²Ëµ¥ */
+	/** æ·»åŠ ä¸Šä¸‹æ–‡èœå• */
 	private void hookContextMenu() {
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
 		menuMgr.setRemoveAllWhenShown(true);
@@ -240,21 +240,21 @@ public class NavView extends ViewPart {
 		getSite().registerContextMenu(menuMgr, viewer);
 	}
 
-	/** Ìí¼Óµ½²Ù×÷ÌõÖĞ */
+	/** æ·»åŠ åˆ°æ“ä½œæ¡ä¸­ */
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
 		fillLocalPullDown(bars.getMenuManager());
 		fillLocalToolBar(bars.getToolBarManager());
 	}
 
-	/** Ìí¼ÓÏÂÀ­²Ëµ¥Ïî */
+	/** æ·»åŠ ä¸‹æ‹‰èœå•é¡¹ */
 	private void fillLocalPullDown(IMenuManager manager) {
 		manager.add(collapseAction);
 		manager.add(new Separator());
 		manager.add(expandAction);
 	}
 
-	/** Ìí¼ÓÉÏÏÂÎÄ²Ëµ¥Ïî */
+	/** æ·»åŠ ä¸Šä¸‹æ–‡èœå•é¡¹ */
 	private void fillContextMenu(IMenuManager manager) {
 		manager.add(collapseAction);
 		manager.add(expandAction);
@@ -263,7 +263,7 @@ public class NavView extends ViewPart {
 		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
 
-	/** Ìí¼Ó¹¤¾ßÀ¸¹¤¾ß°´Å¥ */
+	/** æ·»åŠ å·¥å…·æ å·¥å…·æŒ‰é’® */
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(collapseAction);
 		manager.add(expandAction);
@@ -271,36 +271,36 @@ public class NavView extends ViewPart {
 		drillDownAdapter.addNavigationActions(manager);
 	}
 
-	/** ´´½¨ÊÓÍ¼ËùÊ¹ÓÃµÄ²Ù×÷¶ÔÏó */
+	/** åˆ›å»ºè§†å›¾æ‰€ä½¿ç”¨çš„æ“ä½œå¯¹è±¡ */
 	private void makeActions() {
-		/** Õ¹¿ªÈ«²¿°´Å¥ */
+		/** å±•å¼€å…¨éƒ¨æŒ‰é’® */
 		collapseAction = new Action() {
 			public void run() {
 				viewer.collapseAll();
 			}
 		};
-		collapseAction.setText("ÕÛµşÈ«²¿");
-		collapseAction.setToolTipText("ÕÛµşÈ«²¿");
+		collapseAction.setText("æŠ˜å å…¨éƒ¨");
+		collapseAction.setToolTipText("æŠ˜å å…¨éƒ¨");
 		collapseAction.setImageDescriptor(SuperCRMPlugin.getImageDescriptor("icons/collapse.gif"));
-		/** ÕÛµşÈ«²¿°´Å¥ */
+		/** æŠ˜å å…¨éƒ¨æŒ‰é’® */
 		expandAction = new Action() {
 			public void run() {
 				viewer.expandAll();
 			}
 		};
-		expandAction.setText("Õ¹¿ªÈ«²¿");
-		expandAction.setToolTipText("Õ¹¿ªÈ«²¿");
+		expandAction.setText("å±•å¼€å…¨éƒ¨");
+		expandAction.setToolTipText("å±•å¼€å…¨éƒ¨");
 		expandAction.setImageDescriptor(SuperCRMPlugin.getImageDescriptor("icons/expand.gif"));
-		/** Ë«»÷²Ù×÷ */
+		/** åŒå‡»æ“ä½œ */
 		doubleClickAction = new Action() {
 			public void run() {
-				/** »ñµÃµ±Ç°Ñ¡ÖĞµÄÊ÷½Úµã */
+				/** è·å¾—å½“å‰é€‰ä¸­çš„æ ‘èŠ‚ç‚¹ */
 				ISelection selection = viewer.getSelection();
 				Object obj = ((IStructuredSelection) selection).getFirstElement();
-				/** Èç¹ûÑ¡ÖĞµÄÎªTreeParent¶ÔÏó,Ôò·µ»Ø */
+				/** å¦‚æœé€‰ä¸­çš„ä¸ºTreeParentå¯¹è±¡,åˆ™è¿”å› */
 				if (obj instanceof TreeParent)
 					return;
-				/** Èç¹ûÑ¡ÖĞµÄÎª×Ó½Úµã,Ôò¸ù¾İkeyÖµ´ò¿ªÏàÓ¦µÄ²Ù×÷ */
+				/** å¦‚æœé€‰ä¸­çš„ä¸ºå­èŠ‚ç‚¹,åˆ™æ ¹æ®keyå€¼æ‰“å¼€ç›¸åº”çš„æ“ä½œ */
 				TreeObject object = (TreeObject) obj;
 				if (object.getKey().equals("CUSTOMER_LIST")) {
 					ActionManager.createShowViewAction(getSite().getWorkbenchWindow(), CustomerSummaryView.ID).run();
@@ -318,7 +318,7 @@ public class NavView extends ViewPart {
 
 	}
 
-	/** Ë«»÷Ê÷ÊÂ¼ş */
+	/** åŒå‡»æ ‘äº‹ä»¶ */
 	private void hookDoubleClickAction() {
 		viewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {

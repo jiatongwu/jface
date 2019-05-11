@@ -14,7 +14,7 @@ public class EventManager {
 	public EventManager(JSEditor editor) {
 		this.editor = editor;
 	}
-	//ÉèÖÃ×ÖÌå
+	//è®¾ç½®å­—ä½“
 	public void setCodeFont(FontData[] fontData) {
 		Font font = editor.getViewer().getTextWidget().getFont();
 		if (font != null)
@@ -22,7 +22,7 @@ public class EventManager {
 		font = new Font(editor.getShell().getDisplay(), fontData);
 		editor.getViewer().getTextWidget().setFont(font);
 	}
-	//´ò¿ªÎÄ¼þ
+	//æ‰“å¼€æ–‡ä»¶
 	public void openFile() {
 		FileDialog dialog = new FileDialog(editor.getShell(), SWT.OPEN);
 		dialog.setFilterExtensions(new String[] { "*.js", "*.html", "*.htm",
@@ -37,12 +37,12 @@ public class EventManager {
 			e.printStackTrace();
 		}
 	}
-	//±£´æÎÄ¼þ
+	//ä¿å­˜æ–‡ä»¶
 	public void saveFile() {
 		if (!editor.getDocument().isDirty())
 			return;
-		boolean b = MessageDialog.openConfirm(editor.getShell(), "È·ÈÏ±£´æ",
-				"ÄúÈ·ÊµÒª±£´æÎÄ¼þÂð£¿");
+		boolean b = MessageDialog.openConfirm(editor.getShell(), "ç¡®è®¤ä¿å­˜",
+				"æ‚¨ç¡®å®žè¦ä¿å­˜æ–‡ä»¶å—ï¼Ÿ");
 		if (b) {
 			try {
 				editor.getDocument().save();
@@ -51,14 +51,14 @@ public class EventManager {
 			}
 		}
 	}
-	//²éÕÒ×Ö·û
+	//æŸ¥æ‰¾å­—ç¬¦
 	public boolean isFind(FindReplaceDocumentAdapter adapter, String find,
 			boolean forward, boolean matchCase, boolean wholeWord,
 			boolean regexp) {
 		boolean bFind = false;
 		IRegion region = null;
 		try {
-			// »ñµÃµ±Ç°ÎÄ±¾ËùÔÚµÄÎ»ÖÃ£¬Ò²¾ÍÊÇÆ«ÒÆÁ¿
+			// èŽ·å¾—å½“å‰æ–‡æœ¬æ‰€åœ¨çš„ä½ç½®ï¼Œä¹Ÿå°±æ˜¯åç§»é‡
 			int offset = editor.getViewer().getTextWidget().getCaretOffset();
 
 			if (!forward) {
@@ -67,14 +67,14 @@ public class EventManager {
 					offset = pt.x - 1;
 				}
 			}
-			//È·±£Ã»ÓÐ³¬³öadapterµÄ·¶Î§
+			//ç¡®ä¿æ²¡æœ‰è¶…å‡ºadapterçš„èŒƒå›´
 			if (offset >= adapter.length())
 				offset = adapter.length() - 1;
 			if (offset < 0)
 				offset = 0;
-			//²éÕÒ×Ö·û
+			//æŸ¥æ‰¾å­—ç¬¦
 			region = adapter.find(offset, find, forward, matchCase, wholeWord,regexp);
-			//Èç¹ûÕÒµ½£¬ÉèÖÃÆ¥ÅäµÄ×Ö·ûÑ¡ÖÐ£¬²¢·µ»Øtrue
+			//å¦‚æžœæ‰¾åˆ°ï¼Œè®¾ç½®åŒ¹é…çš„å­—ç¬¦é€‰ä¸­ï¼Œå¹¶è¿”å›žtrue
 			if (region != null) {
 				editor.getViewer().setSelectedRange(region.getOffset(),region.getLength());
 				bFind = true;
@@ -87,7 +87,7 @@ public class EventManager {
 		}
 		return bFind;
 	}
-	//Ìæ»»×Ö·û
+	//æ›¿æ¢å­—ç¬¦
 	public void doReplace(FindReplaceDocumentAdapter adapter, String replaceText) {
 		try {
 			adapter.replace(replaceText, false);
