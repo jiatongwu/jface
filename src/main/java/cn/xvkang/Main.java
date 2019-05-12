@@ -23,9 +23,7 @@ public class Main extends ApplicationWindow {
 		this.addMenuBar();
 		this.addToolBar(SWT.FLAT);
 		this.addStatusLine();
-
-		statusLineManager = this.getStatusLineManager();
-		
+		statusLineManager = this.getStatusLineManager();		
 	}
 
 	@Override

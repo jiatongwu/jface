@@ -13,7 +13,7 @@ public class ExitAction extends Action{
 		this.applicationWindow=applicationWindow;
 		setText("退出(&E)");
 		setToolTipText("退出系统");
-		setImageDescriptor(ImageDescriptor.createFromFile(ExitAction.class, "icons"+File.separator+"exit.gif"));
+		setImageDescriptor(ImageDescriptor.createFromFile(ExitAction.class, "/icons"+File.separator+"exit.gif"));
 	}
 	public void run() {
 		applicationWindow.close();
