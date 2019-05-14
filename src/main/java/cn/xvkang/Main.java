@@ -5,6 +5,9 @@ import org.eclipse.jface.action.StatusLineManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -12,6 +15,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 import cn.xvkang.action.ExitAction;
+import cn.xvkang.compoent.SearchTableListPageAbleComposite;
 
 public class Main extends ApplicationWindow {
 
@@ -26,6 +30,7 @@ public class Main extends ApplicationWindow {
 		statusLineManager = this.getStatusLineManager();		
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	protected Control createContents(Composite parent) {
 		// text = new Text(parent, SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);
@@ -40,6 +45,29 @@ public class Main extends ApplicationWindow {
 		Composite control = (Composite) statusLineManager.getControl();
 		Text t = new Text(control, SWT.CENTER);
 		t.setText("当前用户");
+		
+		
+		//总的主体部分
+		GridLayout gridLayout=new GridLayout();
+		gridLayout.numColumns=1;
+		
+		Composite content=new Composite(parent, SWT.NONE);
+		content.setLayout(gridLayout);
+		
+		//		Button button=new Button(content, SWT.NONE);
+		//		button.setText("点击");
+		//搜索列表带分页部分
+		SearchTableListPageAbleComposite searchTableListPageAbleComposite=new SearchTableListPageAbleComposite(content, SWT.BORDER);
+		GridData griddata=new GridData();
+		griddata.horizontalAlignment=GridData.FILL;
+		griddata.grabExcessHorizontalSpace=true;
+		searchTableListPageAbleComposite.setLayoutData(griddata);
+		
+		FillLayout fillLayout = new FillLayout(SWT.HORIZONTAL);
+		searchTableListPageAbleComposite.setLayout(fillLayout);
+		
+		
+		
 		parent.pack();
 		return parent;
 	}

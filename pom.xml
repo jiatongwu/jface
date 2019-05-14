@@ -11,7 +11,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse</groupId>
-			<artifactId>swt-win</artifactId>
+			<artifactId>swt-mac</artifactId>
 			<version>4.11</version>
 		</dependency>
 		<dependency>
