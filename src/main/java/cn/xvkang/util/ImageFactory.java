@@ -1,4 +1,4 @@
-package com.fengmanfei.util;
+package cn.xvkang.util;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -63,7 +63,7 @@ public class ImageFactory {
 			
 			
 			//image = new Image(display, REAL_PATH + imageName);
-			image = new Image(display, ImageFactory.class.getClassLoader().getResourceAsStream("/icons/"+imageName));
+			image = new Image(display, ImageFactory.class.getResourceAsStream("/icons/"+imageName));
 			htImage.put(imageName.toUpperCase(), image);
 		}
 		return image;

@@ -8,6 +8,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ViewForm;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
@@ -25,8 +28,13 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ToolItem;
 
-public class PageAbleTableComposite extends Composite {
+import cn.xvkang.util.ImageFactory;
+
+
+
+public class PageAbleTableComposite extends Composite implements Listener {
 	private Table table;
 	private Composite pageComposite;
 	private Composite tableComposite;
@@ -36,9 +44,12 @@ public class PageAbleTableComposite extends Composite {
 	private Menu tableMenu;
 	@SuppressWarnings("unused")
 	private Composite parent;
+	private Shell parentShell;
 	private Point itemMouseDownPoint;
 	@SuppressWarnings("unused")
 	private List<String> columnNames;
+
+	private ToolItem add;
 
 	/**
 	 * Create the composite.
@@ -49,6 +60,7 @@ public class PageAbleTableComposite extends Composite {
 	public PageAbleTableComposite(Composite parent, Shell shell, int style) {
 		super(parent, style);
 		this.parent = parent;
+		this.parentShell = shell;
 		setLayout(new FormLayout());
 
 		pageComposite = new Composite(this, SWT.BORDER);
@@ -73,7 +85,12 @@ public class PageAbleTableComposite extends Composite {
 		viewForm = new ViewForm(tableComposite, SWT.NONE);
 		viewForm.setTopCenterSeparate(true);
 
-		toolBar = new ToolBar(viewForm, SWT.FLAT | SWT.RIGHT);
+		toolBar = new ToolBar(viewForm, SWT.FLAT);
+		add = new ToolItem(toolBar, SWT.PUSH);
+		add.setText("新增");
+		add.addListener(SWT.Selection, this);
+		Image newImage = ImageFactory.loadImage(toolBar.getDisplay(), ImageFactory.NEW);
+		add.setImage(newImage);
 
 		viewForm.setTopLeft(toolBar);
 
@@ -227,6 +244,9 @@ public class PageAbleTableComposite extends Composite {
 				display.sleep();
 			}
 		}
+		ImageFactory.dispose();
+		display.dispose();
+		
 	}
 
 	public static void aotuColWidth(Table table, List<Integer> columnWidthPercents) {
@@ -245,5 +265,39 @@ public class PageAbleTableComposite extends Composite {
 				}
 			}
 		});
+	}
+
+	@Override
+	public void handleEvent(Event event) {
+		if (event.widget == add) {
+			// 弹出一个面板进行新增
+			Shell addShell = new Shell(parentShell, SWT.PRIMARY_MODAL|SWT.TITLE|SWT.CLOSE);
+			addShell.setText("新增");
+			addShell.setLayout(new FillLayout());
+			AddComposite addComposite = new AddComposite(addShell, SWT.NONE);
+
+			Rectangle screenSize = getDisplay().getPrimaryMonitor().getBounds();
+			addShell.setLocation((screenSize.width - addShell.getBounds().width) / 2,
+					(screenSize.height - addShell.getBounds().height) / 2);
+			addComposite.getSaveBtn().addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent arg0) {
+					addShell.close();
+					addShell.dispose();					
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+					
+					
+				}
+			});
+
+			addShell.pack();
+			addShell.setSize(800, 600);
+			addShell.open();
+
+		}
 	}
 }
